@@ -34,6 +34,11 @@ Use web search before writing. For the chosen keyword:
   help.sap.com, support.sap.com, community.sap.com). Note the source URLs.
 - Product names and dates change. If sources disagree or you cannot verify something, leave it
   out or say plainly that it should be confirmed with SAP.
+- Minimum depth: at least **6 searches** and **open and read at least 4 source pages in full**
+  (at least 2 of them from SAP), yourself rather than through a summarising sub-agent. Search
+  results alone are not verification. Take the time this needs; a rushed post is worse than none.
+- Before writing, list the key facts you will use with the URL that confirms each one, and keep
+  that list in your final message.
 
 ## 4. Write the post
 

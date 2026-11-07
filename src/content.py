@@ -274,3 +274,10 @@ INDUSTRIES = [
     ("Pharma & Life Sciences", "Batch management, GMP-compliant quality processes and serialisation."),
     ("Consumer Electronics", "Serial-number tracking, warranty, service management and dealer networks."),
 ]
+
+# ---- Training (external site) ---------------------------------------------
+TRAINING = {
+    "url": "https://youronementor.com",
+    "brand": "theTechMentor",
+    "title": "SAP MM & EWM training",
+}

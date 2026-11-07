@@ -473,3 +473,19 @@ h1 em, h2 em { background: var(--grad); -webkit-background-clip: text; backgroun
 @media (max-width: 640px) { .bento .bento-card.b-wide { padding-right: 26px; } .bento .b-wide h2, .bento .b-wide h3 { padding-top: 28px; } .bento .b-wide .go { top: 26px; translate: none; } }
 .bento.three .bento-card { grid-column: auto; grid-row: auto; }
 @media (max-width: 960px) { .primary-nav { background: #0c1121; backdrop-filter: none; } }
+
+/* Training */
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.ext { display: inline-flex; opacity: .6; }
+.ext .ico { width: 13px; height: 13px; }
+.training-card { position: relative; isolation: isolate; overflow: hidden; display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(32px, 5vw, 70px); align-items: center; padding: clamp(36px, 6vw, 80px); border-radius: 36px; background: var(--night); color: var(--on-dark-muted); }
+.training-card::after { content: ""; position: absolute; inset: 0; border-radius: inherit; border: 1px solid rgba(255,255,255,.08); pointer-events: none; }
+.training-card h2 { color: #fff; max-width: 15ch; }
+.training-card .hero-actions { margin-top: 8px; }
+.training-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; position: relative; }
+.training-list li { display: flex; gap: 16px; align-items: flex-start; padding: 22px; border-radius: var(--r); background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); backdrop-filter: blur(12px); transition: transform .4s var(--ease), background .3s; }
+.training-list li:hover { transform: translateX(6px); background: rgba(255,255,255,.08); }
+.training-list .ico { width: 24px; height: 24px; color: #a5b4ff; margin-top: 2px; }
+.training-list strong { display: block; color: #fff; font-weight: 500; }
+.training-list span { font-size: .95rem; }
+@media (max-width: 960px) { .training-card { grid-template-columns: 1fr; border-radius: 26px; } }

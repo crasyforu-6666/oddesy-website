@@ -12,7 +12,7 @@ import shutil
 from datetime import date
 from pathlib import Path
 
-from content import SITE, SERVICES, INDUSTRIES
+from content import SITE, SERVICES, INDUSTRIES, TRAINING
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "src"
@@ -46,6 +46,9 @@ ICONS = {
     "linkedin": '<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/>',
     "spark": '<path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5L18 18M6 18l2.5-2.5M15.5 8.5L18 6"/>',
     "plus": '<path d="M12 5v14M5 12h14"/>',
+    "cap": '<path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/><path d="M22 9v6"/>',
+    "play": '<circle cx="12" cy="12" r="9"/><path d="M10 8.5v7l6-3.5z"/>',
+    "user": '<circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/>',
 }
 
 
@@ -64,6 +67,9 @@ TECH = ["SAP S/4HANA", "RISE with SAP", "SAP BTP", "SAP Fiori", "Integration Sui
 
 # --------------------------------------------------------------------------
 # Layout
+
+TRAINING_LINK = f'<a href="{TRAINING["url"]}" target="_blank" rel="noopener">Training <span class="ext">{icon("arrow-ur")}</span><span class="sr">(opens in a new tab)</span></a>'
+
 
 def nav_html(active):
     svc_links = "".join(
@@ -88,6 +94,7 @@ def nav_html(active):
             <a class="mega-all" href="/services/">All SAP services {icon("arrow")}</a></div>
         </li>
         <li><a href="/industries/"{cur("industries")}>Industries</a></li>
+        <li>{TRAINING_LINK}</li>
         <li><a href="/careers/"{cur("careers")}>Careers</a></li>
         <li><a href="/contact/"{cur("contact")}>Contact</a></li>
       </ul>
@@ -131,6 +138,7 @@ def footer_html():
     <div><h2 class="footer-h">Services</h2><ul>{svc}</ul></div>
     <div><h2 class="footer-h">Company</h2><ul>
       <li><a href="/about/">About</a></li><li><a href="/industries/">Industries</a></li>
+      <li>{TRAINING_LINK}</li>
       <li><a href="/careers/">Careers</a></li><li><a href="/contact/">Contact</a></li>
       <li><a href="/privacy-policy/">Privacy</a></li></ul></div>
     <div><h2 class="footer-h">Get in touch</h2><ul class="footer-contact">
@@ -353,6 +361,27 @@ def countdown():
 </div></section>'''
 
 
+def training_html():
+    feats = [("users", "Live instructor-led batches", "Interactive classes for SAP MM, SAP EWM, or both as a bundle."),
+             ("play", "Self-paced programmes", "Recorded courses you can follow on your own schedule."),
+             ("user", "1-on-1 mentorship", "Personal guidance to plan and make your move into SAP.")]
+    f = "".join(f'<li class="spot">{icon(i)}<div><strong>{t}</strong><span>{d}</span></div></li>' for i, t, d in feats)
+    return f'''<section class="section" id="training"><div class="container">
+  <div class="training-card reveal">
+    {AURORA}
+    <div class="training-copy">
+      <p class="pill"><span class="dot"></span>Training &amp; mentorship</p>
+      <h2>Build your SAP career with <em>hands-on</em> training.</h2>
+      <p class="lead-sm">Job-ready {e(TRAINING["title"])} built around real project scenarios, delivered through {e(TRAINING["brand"])}.</p>
+      <div class="hero-actions">
+        <a href="{TRAINING["url"]}" class="btn btn-light" target="_blank" rel="noopener">Explore training {icon("arrow-ur")}<span class="sr">(opens in a new tab)</span></a>
+      </div>
+    </div>
+    <ul class="training-list">{f}</ul>
+  </div>
+</div></section>'''
+
+
 # --------------------------------------------------------------------------
 # Pages
 
@@ -444,6 +473,7 @@ def build_home():
   <p class="center-x mt"><a href="/industries/" class="btn btn-dark">Explore industries {icon("arrow-ur")}</a></p>
 </div></section>
 
+{training_html()}
 {faq_html(home_faq)}
 '''
     page("/", "SAP Consulting Services | S/4HANA, RISE & AMS | Oddesy",

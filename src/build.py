@@ -6,6 +6,7 @@ Output: public/  (published to the gh-pages branch)
 
 Edit copy in src/content.py; edit styles in src/assets/css/site.css.
 """
+import hashlib
 import html
 import json
 import shutil
@@ -19,6 +20,11 @@ SRC = ROOT / "src"
 OUT = ROOT / "public"
 BASE = f"https://{SITE['domain']}"
 TODAY = date.today().isoformat()
+
+
+def ver(rel):
+    """Short content hash so browsers fetch new CSS/JS after every update."""
+    return hashlib.md5((SRC / "assets" / rel).read_bytes()).hexdigest()[:8]
 e = html.escape
 
 # --------------------------------------------------------------------------
@@ -219,7 +225,7 @@ def page(path, title, description, body, active="", schemas=(), cta=True):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="/assets/css/site.css?v={ver("css/site.css")}">
 {ld}
 </head>
 <body>
@@ -231,7 +237,7 @@ def page(path, title, description, body, active="", schemas=(), cta=True):
 </main>
 {footer_html()}
 <script>window.ODDESY = {json.dumps({"formEndpoint": SITE["form_endpoint"], "email": SITE["email"]})};</script>
-<script src="/assets/js/site.js" defer></script>
+<script src="/assets/js/site.js?v={ver("js/site.js")}" defer></script>
 </body>
 </html>
 '''

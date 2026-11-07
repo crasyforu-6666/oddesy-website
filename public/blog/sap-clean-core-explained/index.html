@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script>document.documentElement.classList.add("js")</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAP Clean Core Explained: Why It Matters for S/4HANA</title>
+<meta name="description" content="What does clean core mean in SAP S/4HANA? Learn the principles, the benefits for upgrades and cost, and practical steps to move towards a clean core.">
+<link rel="canonical" href="https://oddesyconsultingandservices.com/blog/sap-clean-core-explained/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#070a14">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Oddesy Consulting and Services">
+<meta property="og:title" content="SAP Clean Core Explained: Why It Matters for S/4HANA">
+<meta property="og:description" content="What does clean core mean in SAP S/4HANA? Learn the principles, the benefits for upgrades and cost, and practical steps to move towards a clean core.">
+<meta property="og:url" content="https://oddesyconsultingandservices.com/blog/sap-clean-core-explained/">
+<meta property="og:image" content="https://oddesyconsultingandservices.com/assets/img/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/img/logo-mark.svg" type="image/svg+xml">
+<link rel="alternate" type="application/rss+xml" title="Oddesy Consulting and Services Blog" href="/blog/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css?v=b01d1ddf">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "@id": "https://oddesyconsultingandservices.com/#organization", "name": "Oddesy Consulting and Services", "url": "https://oddesyconsultingandservices.com/", "logo": "https://oddesyconsultingandservices.com/assets/img/logo-mark.svg", "image": "https://oddesyconsultingandservices.com/assets/img/og-image.png", "email": "info@oddesyconsultingandservices.com", "telephone": "+00 0000 000000", "address": {"@type": "PostalAddress", "streetAddress": "Your street address, City, State, Postal code, Country", "addressLocality": "Your City", "addressCountry": "Your Country"}, "sameAs": ["https://www.linkedin.com/"], "knowsAbout": ["SAP S/4HANA", "RISE with SAP", "SAP BTP", "SAP Integration Suite", "SAP AMS"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://oddesyconsultingandservices.com/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://oddesyconsultingandservices.com/blog/"}, {"@type": "ListItem", "position": 3, "name": "Development & BTP", "item": "https://oddesyconsultingandservices.com/blog/category/development-btp/"}, {"@type": "ListItem", "position": 4, "name": "SAP Clean Core Explained: What It Means…", "item": "https://oddesyconsultingandservices.com/blog/sap-clean-core-explained/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "SAP Clean Core Explained: What It Means and Why It Matters", "description": "What does clean core mean in SAP S/4HANA? Learn the principles, the benefits for upgrades and cost, and practical steps to move towards a clean core.", "datePublished": "2026-11-07", "dateModified": "2026-11-07", "url": "https://oddesyconsultingandservices.com/blog/sap-clean-core-explained/", "mainEntityOfPage": "https://oddesyconsultingandservices.com/blog/sap-clean-core-explained/", "image": "https://oddesyconsultingandservices.com/assets/img/og-image.png", "author": {"@type": "Organization", "name": "Oddesy Consulting and Services", "url": "https://oddesyconsultingandservices.com/"}, "publisher": {"@id": "https://oddesyconsultingandservices.com/#organization"}, "articleSection": "Development & BTP", "keywords": "sap clean core", "wordCount": 717}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is clean core in SAP?", "acceptedAnswer": {"@type": "Answer", "text": "Clean core means keeping the SAP system close to standard and building extensions on stable, released interfaces, either in-stack with ABAP Cloud or side by side on SAP BTP."}}, {"@type": "Question", "name": "Why is clean core important?", "acceptedAnswer": {"@type": "Answer", "text": "It makes upgrades faster and cheaper, reduces maintenance cost and makes it easier to adopt new SAP innovations and move to the cloud."}}, {"@type": "Question", "name": "Do I need clean core for S/4HANA Cloud public edition?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The public edition only allows extensions through released, upgrade-stable interfaces, so a clean-core approach is required."}}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="nav-shell">
+    <a href="/" class="brand" aria-label="Oddesy Consulting and Services home">
+      <img src="/assets/img/logo-mark.svg" alt="" width="34" height="34">
+      <span class="brand-text">Oddesy<span>Consulting &amp; Services</span></span>
+    </a>
+    <nav id="primary-nav" class="primary-nav" aria-label="Main">
+      <ul class="menu">
+        <li><a href="/about/">About</a></li>
+        <li class="has-sub">
+          <a href="/services/" class="sub-trigger" aria-haspopup="true">Services <span class="caret" aria-hidden="true"></span></a>
+          <div class="mega"><ul><li><a href="/services/sap-s4hana-implementation/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 15c-1.5 1.5-2 5-2 5s3.5-.5 5-2"/><path d="M9 15l-3-3c1-4 4-9 13-9 0 9-5 12-9 13z"/><circle cx="15" cy="9" r="1.6"/></svg></span><span><strong>S/4HANA Implementation</strong><small>Greenfield S/4HANA deployments in public or private cloud, designed fit-to-standard and delivered on SAP Activate.</small></span></a></li><li><a href="/services/rise-with-sap/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18h10a4 4 0 0 0 .6-7.96A6 6 0 0 0 6.1 10.5 3.75 3.75 0 0 0 7 18z"/></svg></span><span><strong>RISE with SAP</strong><small>Business case, scoping and transition support for the RISE with SAP subscription.</small></span></a></li><li><a href="/services/sap-s4hana-migration/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h12l-3-3"/><path d="M20 17H8l3 3"/></svg></span><span><strong>S/4HANA Migration &amp; Upgrades</strong><small>ECC to S/4HANA conversion, selective data transition and S/4HANA release upgrades.</small></span></a></li><li><a href="/services/sap-integration/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1"/><path d="M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"/></svg></span><span><strong>SAP Integration</strong><small>SAP Integration Suite, APIs and EDI connecting SAP to CRM, e-commerce, banks and machines.</small></span></a></li><li><a href="/services/sap-support-ams/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/></svg></span><span><strong>SAP Support &amp; AMS</strong><small>SLA-based functional, technical and Basis support for SAP ECC and S/4HANA.</small></span></a></li><li><a href="/services/sap-btp-development/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8l-4 4 4 4"/><path d="M16 8l4 4-4 4"/><path d="M13.5 5l-3 14"/></svg></span><span><strong>BTP &amp; Development</strong><small>Fiori/UI5 apps, ABAP, workflows and self-service portals built on SAP BTP.</small></span></a></li><li><a href="/services/sap-staffing/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2c2.9.4 5 2.8 5 5.8"/></svg></span><span><strong>Staffing &amp; Augmentation</strong><small>Pre-screened SAP consultants on contract, contract-to-hire or permanent terms.</small></span></a></li></ul>
+            <a class="mega-all" href="/services/">All SAP services <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a></div>
+        </li>
+        <li><a href="/industries/">Industries</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youronementor.com" target="_blank" rel="noopener">Training <span class="ext"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span><span class="sr">(opens in a new tab)</span></a></li>
+        <li><a href="/careers/">Careers</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+      <a href="/contact/" class="btn btn-glow btn-sm nav-cta">Book a call <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
+    </nav>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu"><span></span><span></span></button>
+  </div>
+</header>
+<main id="main">
+<section class="page-hero dark article-hero"><div class="aurora" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div><div class="grid-overlay" aria-hidden="true"></div><div class="container hero-inner narrow">
+  <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/blog/">Blog</a></li><li><a href="/blog/category/development-btp/">Development &amp; BTP</a></li><li aria-current="page">SAP Clean Core Explained: What It Means…</li></ol></nav>
+  <p class="pill"><span class="dot"></span>Development &amp; BTP &middot; 3 min read</p>
+  <h1>SAP Clean Core Explained: What It Means and Why It Matters</h1>
+  <p class="lead">Clean core is the principle behind upgrade-friendly SAP systems. Here&#x27;s what it means in practice and how to move towards it, step by step.</p>
+  <p class="byline">By the Oddesy Consulting and Services team &middot; <time datetime="2026-11-07">7 Nov 2026</time></p>
+</div></section>
+<section class="section article-sec"><div class="container article-grid">
+  <article class="prose article-body"><p>"Clean core" has become one of the most important ideas in SAP S/4HANA projects. It is SAP's recommended way to keep your ERP system stable, upgradeable and ready for innovation, while still meeting requirements that standard SAP does not cover.</p>
+
+<h2>What does clean core mean?</h2>
+<p>A clean core is an SAP system that stays as close to standard as possible. Instead of modifying SAP's own code or building tightly coupled custom objects inside the ERP, extensions are built on <strong>stable, released interfaces</strong>, either side by side on SAP Business Technology Platform (BTP) or in-stack using modern, upgrade-safe ABAP.</p>
+<p>Clean core is not only about code. It also covers:</p>
+<ul>
+  <li><strong>Processes:</strong> adopting SAP best practices where they fit.</li>
+  <li><strong>Data:</strong> good master data quality and governance.</li>
+  <li><strong>Integration:</strong> using released APIs and standard integration tools.</li>
+  <li><strong>Operations:</strong> keeping the system current and well documented.</li>
+</ul>
+
+<h2>Why it matters</h2>
+<ul>
+  <li><strong>Faster, cheaper upgrades.</strong> Fewer modifications means less testing and fewer surprises with each release.</li>
+  <li><strong>Access to innovation.</strong> New SAP features and AI capabilities are easier to adopt on a standard system.</li>
+  <li><strong>Lower total cost of ownership.</strong> Less custom code to maintain and support.</li>
+  <li><strong>Cloud readiness.</strong> S/4HANA Cloud, and especially the public edition, requires a clean-core approach.</li>
+</ul>
+
+<h2>Where should extensions live?</h2>
+<h3>Key user extensibility</h3>
+<p>Custom fields, simple logic and forms created with SAP's in-app tools. Ideal for small, business-driven changes.</p>
+<h3>Developer extensibility (ABAP Cloud)</h3>
+<p>In-stack development using the ABAP RESTful Application Programming Model and released APIs only. Suited to extensions that need to be close to SAP data and processes.</p>
+<h3>Side-by-side extensibility on SAP BTP</h3>
+<p>Separate applications, workflows and portals that connect to S/4HANA through APIs. Best for customer and supplier portals, mobile apps, complex workflows and anything that changes often.</p>
+
+<h2>How to move towards a clean core</h2>
+<ol>
+  <li><strong>Measure usage.</strong> Identify which custom objects are actually used. Unused code can often be retired.</li>
+  <li><strong>Classify what remains.</strong> Decide what can be replaced by standard functionality, rebuilt on released APIs, or moved to BTP.</li>
+  <li><strong>Set governance.</strong> Define development guidelines and a review process so new code follows clean-core rules.</li>
+  <li><strong>Improve step by step.</strong> Clean core is a journey: tackle the highest-value areas first, often during an S/4HANA move.</li>
+</ol>
+
+<h2>Clean core extensibility levels</h2>
+<p>SAP now describes extensions in terms of how upgrade-safe they are. In simple terms:</p>
+<ul>
+  <li><strong>Fully clean:</strong> extensions that use only released, stable APIs and extension points, such as ABAP Cloud development, key user tools and side-by-side BTP apps.</li>
+  <li><strong>Conditionally clean:</strong> classic extensions that use well-established but not formally released interfaces. These are acceptable in private edition but carry some upgrade risk.</li>
+  <li><strong>Not clean:</strong> modifications to SAP code and use of internal objects that SAP may change at any time. These should be reduced over time.</li>
+</ul>
+<p>Classifying your current custom code against these levels is a practical first step and shows where the biggest upgrade risks are.</p>
+
+<h2>Clean core and AI</h2>
+<p>SAP's AI capabilities, including the Joule assistant and embedded AI scenarios, work best on standard processes and well-governed data. Heavily modified systems make it harder to adopt these features because the AI depends on SAP's standard data model and business logic. A clean core is therefore not just about cheaper upgrades; it is also the foundation for using AI in day-to-day operations.</p>
+
+<h2>Measuring progress</h2>
+<ul>
+  <li><strong>ABAP Test Cockpit (ATC) checks</strong> configured for cloud readiness show which objects use non-released APIs.</li>
+  <li><strong>Usage data</strong> from your system shows which custom objects nobody uses any more.</li>
+  <li><strong>Modification counts</strong> and the number of changes needed at each upgrade are useful trend indicators.</li>
+  <li><strong>Upgrade effort</strong> itself: if each upgrade gets faster and needs less testing, your core is getting cleaner.</li>
+</ul>
+
+<h2>Common objections, answered</h2>
+<p><strong>"Our processes are unique, so we need custom code."</strong> Some are, and those deserve investment. Many are not, and standard functionality now covers far more than when the original code was written.</p>
+<p><strong>"BTP adds cost and complexity."</strong> It can, if used for everything. Use it where side-by-side makes sense, such as portals, mobile apps and fast-changing logic, and keep simple extensions in-stack with ABAP Cloud.</p>
+<p><strong>"We will clean up after the migration."</strong> In practice, the migration is the best moment, because custom code must be analysed and adapted anyway. Our <a href="/services/sap-btp-development/">BTP and development team</a> and <a href="/services/sap-s4hana-implementation/">implementation consultants</a> plan clean-core work as part of every S/4HANA project. For background on the move itself, see our <a href="/blog/sap-ecc-end-of-maintenance-2027/">ECC 2027 guide</a>.</p>
+    <h2>Frequently asked questions</h2><div class="faq inline-faq"><details><summary>What is clean core in SAP?<span class="plus"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>Clean core means keeping the SAP system close to standard and building extensions on stable, released interfaces, either in-stack with ABAP Cloud or side by side on SAP BTP.</p></details><details><summary>Why is clean core important?<span class="plus"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>It makes upgrades faster and cheaper, reduces maintenance cost and makes it easier to adopt new SAP innovations and move to the cloud.</p></details><details><summary>Do I need clean core for S/4HANA Cloud public edition?<span class="plus"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>Yes. The public edition only allows extensions through released, upgrade-stable interfaces, so a clean-core approach is required.</p></details></div>
+  </article>
+  <aside class="sidebar">
+    <div class="side-box"><h2 class="side-h">Related services</h2><ul class="side-nav"><li><a href="/services/sap-s4hana-implementation/"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 15c-1.5 1.5-2 5-2 5s3.5-.5 5-2"/><path d="M9 15l-3-3c1-4 4-9 13-9 0 9-5 12-9 13z"/><circle cx="15" cy="9" r="1.6"/></svg>SAP S/4HANA Implementation</a></li><li><a href="/services/sap-btp-development/"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8l-4 4 4 4"/><path d="M16 8l4 4-4 4"/><path d="M13.5 5l-3 14"/></svg>SAP BTP &amp; Custom Development</a></li></ul></div>
+    
+    <div class="side-box side-cta"><div class="aurora" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div><div class="grid-overlay" aria-hidden="true"></div><div class="rel"><h2 class="side-h">Talk to an expert</h2>
+      <p>Get a free 30-minute review of your SAP roadmap.</p>
+      <a href="/contact/" class="btn btn-light btn-block">Book a call <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a></div></div>
+  </aside>
+</div></section>
+<section class="section soft"><div class="container"><div class="section-head center reveal"><p class="eyebrow">Keep reading</p><h2>More from <em>the blog</em></h2></div><div class="post-grid"><a class="post-card spot reveal" href="/blog/sap-ecc-end-of-maintenance-2027/">
+  <div class="post-meta"><span class="tag">Migration</span><span>4 min read</span></div>
+  <h3>SAP ECC End of Maintenance in 2027: What It Means and What to Do Next</h3><p>Mainstream maintenance for SAP ECC ends on 31 December 2027. Here is what changes, what your options are and how to plan a move that does not rush your business.</p>
+  <span class="post-foot"><time datetime="2026-11-07">7 Nov 2026</time><span class="more">Read <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></span></a><a class="post-card spot reveal" href="/blog/rise-with-sap-explained/">
+  <div class="post-meta"><span class="tag">Cloud &amp; RISE</span><span>3 min read</span></div>
+  <h3>RISE with SAP Explained: What&#x27;s Included and What to Ask Before You Sign</h3><p>A plain-English guide to the RISE with SAP subscription, what it covers, what it doesn&#x27;t, and the questions that protect you in negotiation.</p>
+  <span class="post-foot"><time datetime="2026-11-07">7 Nov 2026</time><span class="more">Read <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></span></a><a class="post-card spot reveal" href="/blog/brownfield-vs-greenfield-s4hana-migration/">
+  <div class="post-meta"><span class="tag">Migration</span><span>4 min read</span></div>
+  <h3>Brownfield vs Greenfield vs Selective Data Transition: Choosing Your S/4HANA Approach</h3><p>The three ways to get to S/4HANA compared side by side, with the questions that decide which one is right for you.</p>
+  <span class="post-foot"><time datetime="2026-11-07">7 Nov 2026</time><span class="more">Read <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></span></a></div></div></section>
+
+<section class="section cta-section"><div class="container">
+  <div class="cta-card reveal">
+    <div class="aurora" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div><div class="grid-overlay" aria-hidden="true"></div>
+    <div class="cta-content">
+      <p class="pill pill-dark"><span class="dot"></span>Free 30-minute consultation</p>
+      <h2>Let's map your next <em>SAP move</em>.</h2>
+      <p>Talk to a senior consultant about your landscape, timeline and options. Practical advice, no sales pitch.</p>
+      <div class="hero-actions center-x">
+        <a href="/contact/" class="btn btn-light">Book your consultation <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
+        <a href="mailto:info@oddesyconsultingandservices.com" class="btn btn-ghost"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6 8.5-6"/></svg>info@oddesyconsultingandservices.com</a>
+      </div>
+    </div>
+  </div>
+</div></section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-about">
+      <a href="/" class="brand"><img src="/assets/img/logo-mark.svg" alt="" width="34" height="34">
+      <span class="brand-text">Oddesy<span>Consulting &amp; Services</span></span></a>
+      <p>Independent SAP consultancy for implementation, migration, integration and support.</p>
+      <a class="social" href="https://www.linkedin.com/" rel="noopener" aria-label="LinkedIn"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg></a>
+    </div>
+    <div><h2 class="footer-h">Services</h2><ul><li><a href="/services/sap-s4hana-implementation/">S/4HANA Implementation</a></li><li><a href="/services/rise-with-sap/">RISE with SAP</a></li><li><a href="/services/sap-s4hana-migration/">S/4HANA Migration &amp; Upgrades</a></li><li><a href="/services/sap-integration/">SAP Integration</a></li><li><a href="/services/sap-support-ams/">SAP Support &amp; AMS</a></li><li><a href="/services/sap-btp-development/">BTP &amp; Development</a></li><li><a href="/services/sap-staffing/">Staffing &amp; Augmentation</a></li></ul></div>
+    <div><h2 class="footer-h">Company</h2><ul>
+      <li><a href="/about/">About</a></li><li><a href="/industries/">Industries</a></li>
+      <li><a href="/blog/">Blog</a></li><li><a href="https://youronementor.com" target="_blank" rel="noopener">Training <span class="ext"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span><span class="sr">(opens in a new tab)</span></a></li>
+      <li><a href="/careers/">Careers</a></li><li><a href="/contact/">Contact</a></li>
+      <li><a href="/privacy-policy/">Privacy</a></li></ul></div>
+    <div><h2 class="footer-h">Get in touch</h2><ul class="footer-contact">
+      <li><a href="mailto:info@oddesyconsultingandservices.com"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6 8.5-6"/></svg>info@oddesyconsultingandservices.com</a></li>
+      <li><a href="tel:+000000000000"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z"/></svg>+00 0000 000000</a></li>
+      <li><span><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Your street address, City, State, Postal code, Country</span></li></ul></div>
+  </div>
+  <div class="container footer-bottom">
+    <p>&copy; 2026 Oddesy Consulting and Services</p>
+    <p>SAP, S/4HANA, SAP BTP, RISE with SAP and other SAP products are trademarks of SAP SE. Oddesy is an independent consultancy.</p>
+  </div>
+  <div class="wordmark" aria-hidden="true">ODDESY</div>
+</footer>
+<script>window.ODDESY = {"formEndpoint": "", "email": "info@oddesyconsultingandservices.com"};</script>
+<script src="/assets/js/site.js?v=9ad8ba4d" defer></script>
+</body>
+</html>

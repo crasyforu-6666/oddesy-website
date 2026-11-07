@@ -1,0 +1,73 @@
+title: SAP Clean Core Explained: Why It Matters for S/4HANA
+description: What does clean core mean in SAP S/4HANA? Learn the principles, the benefits for upgrades and cost, and practical steps to move towards a clean core.
+h1: SAP Clean Core Explained: What It Means and Why It Matters
+summary: Clean core is the principle behind upgrade-friendly SAP systems. Here's what it means in practice and how to move towards it, step by step.
+date: 2026-11-07
+updated: 2026-11-07
+category: Development & BTP
+keyword: sap clean core
+services: sap-btp-development, sap-s4hana-implementation
+faq: What is clean core in SAP? || Clean core means keeping the SAP system close to standard and building extensions on stable, released interfaces, either in-stack with ABAP Cloud or side by side on SAP BTP.
+faq: Why is clean core important? || It makes upgrades faster and cheaper, reduces maintenance cost and makes it easier to adopt new SAP innovations and move to the cloud.
+faq: Do I need clean core for S/4HANA Cloud public edition? || Yes. The public edition only allows extensions through released, upgrade-stable interfaces, so a clean-core approach is required.
+---
+<p>"Clean core" has become one of the most important ideas in SAP S/4HANA projects. It is SAP's recommended way to keep your ERP system stable, upgradeable and ready for innovation, while still meeting requirements that standard SAP does not cover.</p>
+
+<h2>What does clean core mean?</h2>
+<p>A clean core is an SAP system that stays as close to standard as possible. Instead of modifying SAP's own code or building tightly coupled custom objects inside the ERP, extensions are built on <strong>stable, released interfaces</strong>, either side by side on SAP Business Technology Platform (BTP) or in-stack using modern, upgrade-safe ABAP.</p>
+<p>Clean core is not only about code. It also covers:</p>
+<ul>
+  <li><strong>Processes:</strong> adopting SAP best practices where they fit.</li>
+  <li><strong>Data:</strong> good master data quality and governance.</li>
+  <li><strong>Integration:</strong> using released APIs and standard integration tools.</li>
+  <li><strong>Operations:</strong> keeping the system current and well documented.</li>
+</ul>
+
+<h2>Why it matters</h2>
+<ul>
+  <li><strong>Faster, cheaper upgrades.</strong> Fewer modifications means less testing and fewer surprises with each release.</li>
+  <li><strong>Access to innovation.</strong> New SAP features and AI capabilities are easier to adopt on a standard system.</li>
+  <li><strong>Lower total cost of ownership.</strong> Less custom code to maintain and support.</li>
+  <li><strong>Cloud readiness.</strong> S/4HANA Cloud, and especially the public edition, requires a clean-core approach.</li>
+</ul>
+
+<h2>Where should extensions live?</h2>
+<h3>Key user extensibility</h3>
+<p>Custom fields, simple logic and forms created with SAP's in-app tools. Ideal for small, business-driven changes.</p>
+<h3>Developer extensibility (ABAP Cloud)</h3>
+<p>In-stack development using the ABAP RESTful Application Programming Model and released APIs only. Suited to extensions that need to be close to SAP data and processes.</p>
+<h3>Side-by-side extensibility on SAP BTP</h3>
+<p>Separate applications, workflows and portals that connect to S/4HANA through APIs. Best for customer and supplier portals, mobile apps, complex workflows and anything that changes often.</p>
+
+<h2>How to move towards a clean core</h2>
+<ol>
+  <li><strong>Measure usage.</strong> Identify which custom objects are actually used. Unused code can often be retired.</li>
+  <li><strong>Classify what remains.</strong> Decide what can be replaced by standard functionality, rebuilt on released APIs, or moved to BTP.</li>
+  <li><strong>Set governance.</strong> Define development guidelines and a review process so new code follows clean-core rules.</li>
+  <li><strong>Improve step by step.</strong> Clean core is a journey: tackle the highest-value areas first, often during an S/4HANA move.</li>
+</ol>
+
+<h2>Clean core extensibility levels</h2>
+<p>SAP now describes extensions in terms of how upgrade-safe they are. In simple terms:</p>
+<ul>
+  <li><strong>Fully clean:</strong> extensions that use only released, stable APIs and extension points, such as ABAP Cloud development, key user tools and side-by-side BTP apps.</li>
+  <li><strong>Conditionally clean:</strong> classic extensions that use well-established but not formally released interfaces. These are acceptable in private edition but carry some upgrade risk.</li>
+  <li><strong>Not clean:</strong> modifications to SAP code and use of internal objects that SAP may change at any time. These should be reduced over time.</li>
+</ul>
+<p>Classifying your current custom code against these levels is a practical first step and shows where the biggest upgrade risks are.</p>
+
+<h2>Clean core and AI</h2>
+<p>SAP's AI capabilities, including the Joule assistant and embedded AI scenarios, work best on standard processes and well-governed data. Heavily modified systems make it harder to adopt these features because the AI depends on SAP's standard data model and business logic. A clean core is therefore not just about cheaper upgrades; it is also the foundation for using AI in day-to-day operations.</p>
+
+<h2>Measuring progress</h2>
+<ul>
+  <li><strong>ABAP Test Cockpit (ATC) checks</strong> configured for cloud readiness show which objects use non-released APIs.</li>
+  <li><strong>Usage data</strong> from your system shows which custom objects nobody uses any more.</li>
+  <li><strong>Modification counts</strong> and the number of changes needed at each upgrade are useful trend indicators.</li>
+  <li><strong>Upgrade effort</strong> itself: if each upgrade gets faster and needs less testing, your core is getting cleaner.</li>
+</ul>
+
+<h2>Common objections, answered</h2>
+<p><strong>"Our processes are unique, so we need custom code."</strong> Some are, and those deserve investment. Many are not, and standard functionality now covers far more than when the original code was written.</p>
+<p><strong>"BTP adds cost and complexity."</strong> It can, if used for everything. Use it where side-by-side makes sense, such as portals, mobile apps and fast-changing logic, and keep simple extensions in-stack with ABAP Cloud.</p>
+<p><strong>"We will clean up after the migration."</strong> In practice, the migration is the best moment, because custom code must be analysed and adapted anyway. Our <a href="/services/sap-btp-development/">BTP and development team</a> and <a href="/services/sap-s4hana-implementation/">implementation consultants</a> plan clean-core work as part of every S/4HANA project. For background on the move itself, see our <a href="/blog/sap-ecc-end-of-maintenance-2027/">ECC 2027 guide</a>.</p>

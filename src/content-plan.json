@@ -1,0 +1,593 @@
+{
+ "_about": "Topic backlog for the blog. Scheduled publishing sessions take the first 'todo' item, set status to 'published' with the slug and date, and add new researched topics when fewer than 25 'todo' items remain.",
+ "topics": [
+  {
+   "keyword": "sap ecc end of maintenance 2027",
+   "slug": "sap-ecc-end-of-maintenance-2027",
+   "category": "Migration",
+   "status": "published",
+   "published": "2026-11-07"
+  },
+  {
+   "keyword": "brownfield vs greenfield s/4hana",
+   "slug": "brownfield-vs-greenfield-s4hana-migration",
+   "category": "Migration",
+   "status": "published",
+   "published": "2026-11-07"
+  },
+  {
+   "keyword": "what is rise with sap",
+   "slug": "rise-with-sap-explained",
+   "category": "Cloud & RISE",
+   "status": "published",
+   "published": "2026-11-07"
+  },
+  {
+   "keyword": "sap clean core",
+   "slug": "sap-clean-core-explained",
+   "category": "Development & BTP",
+   "status": "published",
+   "published": "2026-11-07"
+  },
+  {
+   "keyword": "sap s/4hana migration checklist",
+   "working_title": "SAP S/4HANA Migration Checklist: 40 Steps from Assessment to Go-Live",
+   "category": "Migration",
+   "intent": "informational",
+   "services": "sap-s4hana-migration",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap mm interview questions",
+   "working_title": "SAP MM Interview Questions and Answers (with S/4HANA Changes)",
+   "category": "Careers & Skills",
+   "intent": "informational",
+   "services": "sap-staffing",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap ewm vs wm",
+   "working_title": "SAP EWM vs WM: Key Differences and How to Plan the Move",
+   "category": "Logistics & Supply Chain",
+   "intent": "informational",
+   "services": "sap-s4hana-migration",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap pi po end of maintenance",
+   "working_title": "SAP PI/PO End of Maintenance: Moving to SAP Integration Suite",
+   "category": "Integration",
+   "intent": "informational",
+   "services": "sap-integration",
+   "status": "todo"
+  },
+  {
+   "keyword": "s/4hana public vs private cloud",
+   "working_title": "S/4HANA Cloud Public vs Private Edition: How to Choose",
+   "category": "Cloud & RISE",
+   "intent": "commercial",
+   "services": "rise-with-sap, sap-s4hana-implementation",
+   "status": "todo"
+  },
+  {
+   "keyword": "what is sap joule",
+   "working_title": "What Is SAP Joule? Capabilities, Requirements and Use Cases",
+   "category": "AI & Innovation",
+   "intent": "informational",
+   "services": "sap-btp-development",
+   "status": "todo"
+  },
+  {
+   "keyword": "universal journal acdoca",
+   "working_title": "The Universal Journal (ACDOCA) in S/4HANA Explained",
+   "category": "Finance",
+   "intent": "informational",
+   "services": "sap-s4hana-implementation",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap ewm interview questions",
+   "working_title": "SAP EWM Interview Questions and Answers for 2026",
+   "category": "Careers & Skills",
+   "intent": "informational",
+   "services": "sap-staffing",
+   "status": "todo"
+  },
+  {
+   "keyword": "abap cloud vs classic abap",
+   "working_title": "ABAP Cloud vs Classic ABAP: What Changes for Developers",
+   "category": "Development & BTP",
+   "intent": "informational",
+   "services": "sap-btp-development",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap readiness check",
+   "working_title": "SAP Readiness Check for S/4HANA: How to Run and Read It",
+   "category": "Migration",
+   "intent": "informational",
+   "services": "sap-s4hana-migration",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap wm end of support stock room management",
+   "working_title": "SAP WM End of Support: Stock Room Management vs EWM",
+   "category": "Logistics & Supply Chain",
+   "intent": "informational",
+   "services": "sap-s4hana-migration",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap ams pricing models",
+   "working_title": "SAP AMS Pricing Models Compared: Retainer, Tickets or Outcomes",
+   "category": "Support & Operations",
+   "intent": "commercial",
+   "services": "sap-support-ams",
+   "status": "todo"
+  },
+  {
+   "keyword": "business partner cvi s/4hana",
+   "working_title": "Business Partner and CVI Conversion in S/4HANA: A Practical Guide",
+   "category": "Migration",
+   "intent": "informational",
+   "services": "sap-s4hana-migration",
+   "status": "todo"
+  },
+  {
+   "keyword": "how to become an sap consultant",
+   "working_title": "How to Become an SAP Consultant: A Realistic Career Roadmap",
+   "category": "Careers & Skills",
+   "intent": "informational",
+   "services": "sap-staffing",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap integration suite vs pi po",
+   "working_title": "SAP Integration Suite vs PI/PO: Features, Costs and Migration",
+   "category": "Integration",
+   "intent": "commercial",
+   "services": "sap-integration",
+   "status": "todo"
+  },
+  {
+   "keyword": "grow with sap",
+   "working_title": "GROW with SAP Explained: Who It's For and What's Included",
+   "category": "Cloud & RISE",
+   "intent": "informational",
+   "services": "rise-with-sap, sap-s4hana-implementation",
+   "status": "todo"
+  },
+  {
+   "keyword": "embedded ewm vs decentralized ewm",
+   "working_title": "Embedded EWM vs Decentralised EWM: Which Should You Choose?",
+   "category": "Logistics & Supply Chain",
+   "intent": "commercial",
+   "services": "sap-s4hana-implementation",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap rap restful application programming model",
+   "working_title": "SAP RAP: The ABAP RESTful Application Programming Model Explained",
+   "category": "Development & BTP",
+   "intent": "informational",
+   "services": "sap-btp-development",
+   "status": "todo"
+  },
+  {
+   "keyword": "ecc to s/4hana migration cost",
+   "working_title": "How Much Does an ECC to S/4HANA Migration Cost? Key Cost Drivers",
+   "category": "Migration",
+   "intent": "commercial",
+   "services": "sap-s4hana-migration",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap central finance",
+   "working_title": "SAP Central Finance Explained: Use Cases, Benefits and Pitfalls",
+   "category": "Finance",
+   "intent": "informational",
+   "services": "sap-s4hana-implementation",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap btp explained",
+   "working_title": "What Is SAP BTP? A Plain-English Guide for Business Leaders",
+   "category": "Development & BTP",
+   "intent": "informational",
+   "services": "sap-btp-development",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap mm procure to pay process",
+   "working_title": "SAP MM Procure-to-Pay Process: Step by Step in S/4HANA",
+   "category": "Logistics & Supply Chain",
+   "intent": "informational",
+   "services": "sap-s4hana-implementation",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap fico interview questions",
+   "working_title": "SAP FICO Interview Questions and Answers for S/4HANA",
+   "category": "Careers & Skills",
+   "intent": "informational",
+   "services": "sap-staffing",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap idoc explained",
+   "working_title": "SAP IDocs Explained: Structure, Monitoring and Troubleshooting",
+   "category": "Integration",
+   "intent": "informational",
+   "services": "sap-integration",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap fue licensing",
+   "working_title": "SAP FUE Licensing Explained: How Full Usage Equivalents Work",
+   "category": "Cloud & RISE",
+   "intent": "informational",
+   "services": "rise-with-sap",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap s/4hana data migration cockpit",
+   "working_title": "SAP S/4HANA Migration Cockpit: How to Migrate Your Data",
+   "category": "Migration",
+   "intent": "informational",
+   "services": "sap-s4hana-migration, sap-s4hana-implementation",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap business ai use cases",
+   "working_title": "SAP Business AI: Practical Use Cases That Deliver Value Today",
+   "category": "AI & Innovation",
+   "intent": "informational",
+   "services": "sap-btp-development",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap hypercare",
+   "working_title": "SAP Hypercare After Go-Live: What Good Looks Like",
+   "category": "Support & Operations",
+   "intent": "informational",
+   "services": "sap-support-ams",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap sd order to cash process",
+   "working_title": "SAP SD Order-to-Cash Process in S/4HANA, Step by Step",
+   "category": "Logistics & Supply Chain",
+   "intent": "informational",
+   "services": "sap-s4hana-implementation",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap for manufacturing",
+   "working_title": "SAP S/4HANA for Manufacturing: Processes, Benefits and Tips",
+   "category": "Industry",
+   "intent": "commercial",
+   "services": "sap-s4hana-implementation",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap s/4hana cutover plan",
+   "working_title": "How to Plan an SAP S/4HANA Cut-Over (with a Sample Timeline)",
+   "category": "Migration",
+   "intent": "informational",
+   "services": "sap-s4hana-migration",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap ewm basic vs advanced",
+   "working_title": "SAP EWM Basic vs Advanced: Features and Licensing Compared",
+   "category": "Logistics & Supply Chain",
+   "intent": "commercial",
+   "services": "sap-s4hana-implementation",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap certification guide",
+   "working_title": "SAP Certification Guide: Which Exam to Take and How to Prepare",
+   "category": "Careers & Skills",
+   "intent": "informational",
+   "services": "sap-staffing",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap cap vs rap",
+   "working_title": "SAP CAP vs RAP: Which Programming Model Should You Use?",
+   "category": "Development & BTP",
+   "intent": "informational",
+   "services": "sap-btp-development",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap edi integration",
+   "working_title": "SAP EDI Integration: How It Works and How to Get It Right",
+   "category": "Integration",
+   "intent": "informational",
+   "services": "sap-integration",
+   "status": "todo"
+  },
+  {
+   "keyword": "new asset accounting s/4hana",
+   "working_title": "New Asset Accounting in S/4HANA: What Changes and Why",
+   "category": "Finance",
+   "intent": "informational",
+   "services": "sap-s4hana-migration",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap cloud alm",
+   "working_title": "SAP Cloud ALM Explained: Implementation and Operations in One Tool",
+   "category": "Cloud & RISE",
+   "intent": "informational",
+   "services": "sap-support-ams, rise-with-sap",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap signavio process mining",
+   "working_title": "SAP Signavio and Process Mining: Finding Real Improvements",
+   "category": "AI & Innovation",
+   "intent": "informational",
+   "services": "sap-s4hana-implementation",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap security authorization concept",
+   "working_title": "Designing an SAP Authorisation Concept That Stays Secure",
+   "category": "Support & Operations",
+   "intent": "informational",
+   "services": "sap-support-ams",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap ecc vs s/4hana differences",
+   "working_title": "SAP ECC vs S/4HANA: The Differences That Matter to the Business",
+   "category": "Migration",
+   "intent": "informational",
+   "services": "sap-s4hana-migration",
+   "status": "todo"
+  },
+  {
+   "keyword": "functional vs technical sap consultant",
+   "working_title": "Functional vs Technical SAP Consultant: Roles, Skills and Paths",
+   "category": "Careers & Skills",
+   "intent": "informational",
+   "services": "sap-staffing",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap pp mrp live",
+   "working_title": "MRP Live in SAP S/4HANA: How It Differs from Classic MRP",
+   "category": "Logistics & Supply Chain",
+   "intent": "informational",
+   "services": "sap-s4hana-implementation",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap odata api",
+   "working_title": "SAP OData APIs Explained: How S/4HANA Connects to Other Apps",
+   "category": "Integration",
+   "intent": "informational",
+   "services": "sap-integration, sap-btp-development",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap margin analysis s/4hana",
+   "working_title": "Margin Analysis in S/4HANA: Moving from Costing-Based CO-PA",
+   "category": "Finance",
+   "intent": "informational",
+   "services": "sap-s4hana-migration",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap fiori elements",
+   "working_title": "SAP Fiori Elements: Building Enterprise Apps Faster",
+   "category": "Development & BTP",
+   "intent": "informational",
+   "services": "sap-btp-development",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap for automotive suppliers",
+   "working_title": "SAP for Automotive Suppliers: JIT, Scheduling Agreements and EDI",
+   "category": "Industry",
+   "intent": "commercial",
+   "services": "sap-s4hana-implementation, sap-integration",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap basis responsibilities",
+   "working_title": "What Does SAP Basis Do? Responsibilities in On-Premise and RISE",
+   "category": "Support & Operations",
+   "intent": "informational",
+   "services": "sap-support-ams",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap datasphere",
+   "working_title": "SAP Datasphere Explained: Business Data Fabric for SAP Customers",
+   "category": "AI & Innovation",
+   "intent": "informational",
+   "services": "sap-btp-development",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap simplification list",
+   "working_title": "The SAP Simplification List: How to Use It in Your Migration",
+   "category": "Migration",
+   "intent": "informational",
+   "services": "sap-s4hana-migration",
+   "status": "todo"
+  },
+  {
+   "keyword": "how to learn sap ewm",
+   "working_title": "How to Learn SAP EWM: A Structured Path for Beginners",
+   "category": "Careers & Skills",
+   "intent": "informational",
+   "services": "sap-staffing",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap ibp vs apo",
+   "working_title": "SAP IBP vs APO: Planning After APO End of Support",
+   "category": "Logistics & Supply Chain",
+   "intent": "commercial",
+   "services": "sap-s4hana-migration",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap e-invoicing document and reporting compliance",
+   "working_title": "SAP Document and Reporting Compliance for E-Invoicing",
+   "category": "Finance",
+   "intent": "informational",
+   "services": "sap-integration",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap build process automation",
+   "working_title": "SAP Build Process Automation: Use Cases and Getting Started",
+   "category": "Development & BTP",
+   "intent": "informational",
+   "services": "sap-btp-development",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap salesforce integration",
+   "working_title": "SAP and Salesforce Integration: Options and Best Practices",
+   "category": "Integration",
+   "intent": "commercial",
+   "services": "sap-integration",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap s/4hana cloud release cycle",
+   "working_title": "S/4HANA Cloud Release Cycles: How Updates Work and How to Prepare",
+   "category": "Cloud & RISE",
+   "intent": "informational",
+   "services": "rise-with-sap, sap-support-ams",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap performance tuning",
+   "working_title": "SAP Performance Tuning: Finding and Fixing Slow Transactions",
+   "category": "Support & Operations",
+   "intent": "informational",
+   "services": "sap-support-ams",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap for pharmaceutical batch management",
+   "working_title": "SAP for Pharma: Batch Management, GMP and Serialisation",
+   "category": "Industry",
+   "intent": "commercial",
+   "services": "sap-s4hana-implementation",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap material master views",
+   "working_title": "SAP Material Master Views Explained for MM Consultants",
+   "category": "Logistics & Supply Chain",
+   "intent": "informational",
+   "services": "sap-s4hana-implementation",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap consultant skills 2026",
+   "working_title": "The SAP Consultant Skills Employers Want in 2026",
+   "category": "Careers & Skills",
+   "intent": "informational",
+   "services": "sap-staffing",
+   "status": "todo"
+  },
+  {
+   "keyword": "downtime optimized conversion",
+   "working_title": "Downtime-Optimised Conversion: Minimising S/4HANA Go-Live Downtime",
+   "category": "Migration",
+   "intent": "informational",
+   "services": "sap-s4hana-migration",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap multi bank connectivity",
+   "working_title": "SAP Multi-Bank Connectivity: Automating Bank Integration",
+   "category": "Finance",
+   "intent": "informational",
+   "services": "sap-integration",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap s/4hana inventory management matdoc",
+   "working_title": "Inventory Management in S/4HANA: MATDOC and What Changed",
+   "category": "Logistics & Supply Chain",
+   "intent": "informational",
+   "services": "sap-s4hana-migration",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap on azure vs aws vs google cloud",
+   "working_title": "SAP on Azure vs AWS vs Google Cloud: How to Choose",
+   "category": "Cloud & RISE",
+   "intent": "commercial",
+   "services": "rise-with-sap",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap grc access control",
+   "working_title": "SAP GRC Access Control: Managing Segregation of Duties",
+   "category": "Support & Operations",
+   "intent": "informational",
+   "services": "sap-support-ams",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap project system for epc",
+   "working_title": "SAP Project System for EPC Companies: Planning to Billing",
+   "category": "Industry",
+   "intent": "commercial",
+   "services": "sap-s4hana-implementation",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap btp licensing cpea",
+   "working_title": "SAP BTP Licensing Models: CPEA, Pay-As-You-Go and Subscription",
+   "category": "Development & BTP",
+   "intent": "informational",
+   "services": "sap-btp-development",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap group reporting",
+   "working_title": "SAP S/4HANA Group Reporting: Consolidation Explained",
+   "category": "Finance",
+   "intent": "informational",
+   "services": "sap-s4hana-implementation",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap ewm warehouse process types",
+   "working_title": "SAP EWM Warehouse Process Types and Storage Control Basics",
+   "category": "Logistics & Supply Chain",
+   "intent": "informational",
+   "services": "sap-s4hana-implementation",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap retail and e-commerce integration",
+   "working_title": "Connecting SAP to E-Commerce: Shopify, Magento and Marketplaces",
+   "category": "Industry",
+   "intent": "commercial",
+   "services": "sap-integration",
+   "status": "todo"
+  },
+  {
+   "keyword": "sap test automation",
+   "working_title": "SAP Test Automation: Tools and Strategy for S/4HANA",
+   "category": "Support & Operations",
+   "intent": "informational",
+   "services": "sap-support-ams",
+   "status": "todo"
+  }
+ ]
+}

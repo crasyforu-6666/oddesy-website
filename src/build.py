@@ -14,7 +14,9 @@ from datetime import date
 from pathlib import Path
 
 from content import SITE, SERVICES, INDUSTRIES, TRAINING
-from articles import ARTICLES
+from posts import load as load_posts, CATEGORIES, slugify
+
+POSTS = load_posts()
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "src"
@@ -102,7 +104,7 @@ def nav_html(active):
             <a class="mega-all" href="/services/">All SAP services {icon("arrow")}</a></div>
         </li>
         <li><a href="/industries/"{cur("industries")}>Industries</a></li>
-        <li><a href="/insights/"{cur("insights")}>Insights</a></li>
+        <li><a href="/blog/"{cur("blog")}>Blog</a></li>
         <li>{TRAINING_LINK}</li>
         <li><a href="/careers/"{cur("careers")}>Careers</a></li>
         <li><a href="/contact/"{cur("contact")}>Contact</a></li>
@@ -147,7 +149,7 @@ def footer_html():
     <div><h2 class="footer-h">Services</h2><ul>{svc}</ul></div>
     <div><h2 class="footer-h">Company</h2><ul>
       <li><a href="/about/">About</a></li><li><a href="/industries/">Industries</a></li>
-      <li><a href="/insights/">Insights</a></li><li>{TRAINING_LINK}</li>
+      <li><a href="/blog/">Blog</a></li><li>{TRAINING_LINK}</li>
       <li><a href="/careers/">Careers</a></li><li><a href="/contact/">Contact</a></li>
       <li><a href="/privacy-policy/">Privacy</a></li></ul></div>
     <div><h2 class="footer-h">Get in touch</h2><ul class="footer-contact">
@@ -225,6 +227,7 @@ def page(path, title, description, body, active="", schemas=(), cta=True, og_typ
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/assets/img/logo-mark.svg" type="image/svg+xml">
+<link rel="alternate" type="application/rss+xml" title="{e(SITE["name"])} Blog" href="/blog/feed.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
@@ -374,77 +377,173 @@ def fmt_date(iso):
     return date.fromisoformat(iso).strftime("%-d %b %Y")
 
 
+PER_PAGE = 12
+
+
 def article_card(a, h="h3"):
-    return f'''<a class="post-card spot reveal" href="/insights/{a["slug"]}/">
-  <div class="post-meta"><span class="tag">{e(a["tag"])}</span><span>{a["minutes"]} min read</span></div>
+    return f"""<a class="post-card spot reveal" href="/blog/{a["slug"]}/">
+  <div class="post-meta"><span class="tag">{e(a["category"])}</span><span>{a["minutes"]} min read</span></div>
   <{h}>{e(a["h1"])}</{h}><p>{e(a["summary"])}</p>
-  <span class="more">Read article {icon("arrow")}</span></a>'''
+  <span class="post-foot"><time datetime="{a["date"]}">{fmt_date(a["date"])}</time><span class="more">Read {icon("arrow")}</span></span></a>"""
 
 
-def insights_teaser(articles=None, title="Insights for SAP decision-makers", accent="SAP decision-makers"):
-    arts = articles or ARTICLES[:3]
+def insights_teaser(articles=None, title="Latest from the blog", accent="the blog"):
+    arts = (articles if articles is not None else POSTS)[:3]
+    if not arts:
+        return ""
     cards = "".join(article_card(a) for a in arts)
-    return f'''<section class="section"><div class="container">
-  {section_head("Insights", title, "Practical guides on S/4HANA, RISE with SAP and running SAP well.", accent=accent)}
+    return f"""<section class="section"><div class="container">
+  {section_head("Blog", title, "Practical guides on S/4HANA, RISE with SAP and running SAP well.", accent=accent)}
   <div class="post-grid">{cards}</div>
-  <p class="center-x mt"><a href="/insights/" class="btn btn-dark">All insights {icon("arrow-ur")}</a></p>
-</div></section>'''
+  <p class="center-x mt"><a href="/blog/" class="btn btn-dark">Read the blog {icon("arrow-ur")}</a></p>
+</div></section>"""
 
 
-def build_insights():
-    crumbs, crumbs_ld = breadcrumbs([("Insights", "/insights/")])
-    cards = "".join(article_card(a, "h2") for a in ARTICLES)
-    body = page_hero(crumbs, "Insights", "SAP Insights & Guides",
-                     "Practical, vendor-neutral guidance on S/4HANA migration, RISE with SAP, clean core and running SAP well.",
-                     cta=False, accent="Insights") + f'''
-<section class="section"><div class="container"><div class="post-grid">{cards}</div></div></section>'''
-    blog_ld = {"@context": "https://schema.org", "@type": "Blog", "name": f"{SITE['name']} Insights",
-               "url": BASE + "/insights/", "publisher": {"@id": BASE + "/#organization"},
-               "blogPost": [{"@type": "BlogPosting", "headline": a["h1"], "url": f"{BASE}/insights/{a['slug']}/",
-                             "datePublished": a["date"]} for a in ARTICLES]}
-    page("/insights/", "SAP Insights: S/4HANA, RISE & Clean Core Guides | Oddesy",
-         "Practical guides on SAP ECC end of maintenance, S/4HANA migration approaches, RISE with SAP and clean core, from senior SAP consultants.",
-         body, "insights", [crumbs_ld, blog_ld])
-    for a in ARTICLES:
+def cat_nav(active_slug=None):
+    used = [c for c in CATEGORIES if any(p["category"] == c for p in POSTS)]
+    cur_all = " aria-current=page" if active_slug is None else ""
+    links = [f'<a href="/blog/"{cur_all}>All</a>']
+    for c in used:
+        sl = slugify(c)
+        cur = " aria-current=page" if sl == active_slug else ""
+        links.append(f'<a href="/blog/category/{sl}/"{cur}>{e(c)}</a>')
+    return f'<nav class="cat-nav reveal" aria-label="Blog categories">{"".join(links)}</nav>'
+
+
+def pager(base, n, total):
+    if total <= 1:
+        return ""
+
+    def href(i):
+        return base if i == 1 else f"{base}page/{i}/"
+    items = []
+    if n > 1:
+        items.append(f'<a href="{href(n - 1)}" rel="prev">&larr; Newer</a>')
+    items.append(f"<span>Page {n} of {total}</span>")
+    if n < total:
+        items.append(f'<a href="{href(n + 1)}" rel="next">Older &rarr;</a>')
+    return f'<nav class="pager" aria-label="Pagination">{"".join(items)}</nav>'
+
+
+def build_listing(base, posts, title, h1, desc, lead, crumbs_trail, active_slug=None, accent=None):
+    total = max(1, -(-len(posts) // PER_PAGE))
+    for n in range(1, total + 1):
+        chunk = posts[(n - 1) * PER_PAGE: n * PER_PAGE]
+        path = base if n == 1 else f"{base}page/{n}/"
+        trail = crumbs_trail + ([(f"Page {n}", path)] if n > 1 else [])
+        crumbs, crumbs_ld = breadcrumbs(trail)
+        cards = "".join(article_card(a, "h2") for a in chunk)
+        h = h1 if n == 1 else f"{h1} (page {n})"
+        body = page_hero(crumbs, "Blog", h, lead, cta=False, accent=accent) + (
+            f'<section class="section"><div class="container">{cat_nav(active_slug)}'
+            f'<div class="post-grid">{cards}</div>{pager(base, n, total)}</div></section>')
+        blog_ld = {"@context": "https://schema.org", "@type": "Blog", "name": f"{SITE['name']} Blog",
+                   "url": BASE + "/blog/", "publisher": {"@id": BASE + "/#organization"},
+                   "blogPost": [{"@type": "BlogPosting", "headline": a["h1"], "url": f"{BASE}/blog/{a['slug']}/",
+                                 "datePublished": a["date"]} for a in chunk]}
+        t = title if n == 1 else f"{title.split(' | ')[0]} - Page {n} | Oddesy"
+        d = desc if n == 1 else f"Page {n}: {desc}"[:160]
+        page(path, t, d, body, "blog", [crumbs_ld, blog_ld])
+
+
+def build_blog():
+    build_listing("/blog/", POSTS, "SAP Blog: S/4HANA, RISE, BTP & Careers | Oddesy", "SAP Blog",
+                  "Practical SAP guides from senior consultants: S/4HANA migration, RISE with SAP, clean core, BTP, finance, logistics and SAP careers.",
+                  "Practical, vendor-neutral guidance on S/4HANA, RISE with SAP, clean core and running SAP well.",
+                  [("Blog", "/blog/")], accent="Blog")
+    for c in CATEGORIES:
+        posts = [p for p in POSTS if p["category"] == c]
+        if not posts:
+            continue
+        sl = slugify(c)
+        build_listing(f"/blog/category/{sl}/", posts, f"{c} Articles | SAP Blog | Oddesy", c,
+                      f"SAP {c} articles and guides from Oddesy Consulting and Services: practical advice from senior SAP consultants."[:160],
+                      f"Guides and insights on SAP {c}.",
+                      [("Blog", "/blog/"), (c, f"/blog/category/{sl}/")], active_slug=sl)
+    for a in POSTS:
         build_article(a)
+    build_feed()
+    # Redirect stubs for the old /insights/ URLs
+    for old, new in [("/insights/", "/blog/")] + [(f"/insights/{a['slug']}/", f"/blog/{a['slug']}/") for a in POSTS]:
+        t = OUT / old.strip("/") / "index.html"
+        t.parent.mkdir(parents=True, exist_ok=True)
+        t.write_text(f'<!doctype html><meta charset="utf-8"><title>Moved</title><meta name="robots" content="noindex">'
+                     f'<link rel="canonical" href="{BASE}{new}"><meta http-equiv="refresh" content="0; url={new}">'
+                     f'<p>This page has moved to <a href="{new}">{BASE}{new}</a>.</p>', encoding="utf-8")
 
 
 def build_article(a):
-    url = f"/insights/{a['slug']}/"
-    crumbs, crumbs_ld = breadcrumbs([("Insights", "/insights/"), (a["tag"] + " guide", url)])
+    url = f"/blog/{a['slug']}/"
+    short = a["h1"] if len(a["h1"]) <= 42 else a["h1"][:40].rstrip() + "…"
+    crumbs, crumbs_ld = breadcrumbs([("Blog", "/blog/"), (a["category"], f"/blog/category/{a['cat_slug']}/"), (short, url)])
     svc = [x for x in SERVICES if x["slug"] in a["services"]]
-    related = [x for x in ARTICLES if x is not a][:2]
-    faq = "".join(f'<details><summary>{e(q)}<span class="plus">{icon("plus")}</span></summary><p>{e(ans)}</p></details>' for q, ans in a["faq"])
+    same = [x for x in POSTS if x is not a and x["category"] == a["category"]]
+    other = [x for x in POSTS if x is not a and x["category"] != a["category"]]
+    related = (same + other)[:3]
+    faq_block = ""
+    if a["faq"]:
+        faq = "".join(f'<details><summary>{e(q)}<span class="plus">{icon("plus")}</span></summary><p>{e(ans)}</p></details>'
+                      for q, ans in a["faq"])
+        faq_block = f'<h2>Frequently asked questions</h2><div class="faq inline-faq">{faq}</div>'
     svc_links = "".join(f'<li><a href="/services/{x["slug"]}/">{icon(x["icon"])}{e(x["name"])}</a></li>' for x in svc)
-    body = f'''<section class="page-hero dark article-hero">{AURORA}<div class="container hero-inner narrow">
+    svc_box = f'<div class="side-box"><h2 class="side-h">Related services</h2><ul class="side-nav">{svc_links}</ul></div>' if svc_links else ""
+    training = ""
+    if a["category"] in ("Careers & Skills", "Logistics & Supply Chain"):
+        training = (f'<div class="side-box side-train"><h2 class="side-h">Learn SAP MM &amp; EWM</h2>'
+                    f'<p>Live batches, self-paced courses and 1-on-1 mentorship.</p>'
+                    f'<a href="{TRAINING["url"]}" target="_blank" rel="noopener" class="btn btn-dark btn-block">Explore training {icon("arrow-ur")}'
+                    f'<span class="sr">(opens in a new tab)</span></a></div>')
+    upd = ""
+    if a["updated"] != a["date"]:
+        upd = f' &middot; Updated <time datetime="{a["updated"]}">{fmt_date(a["updated"])}</time>'
+    related_html = ""
+    if related:
+        related_html = (f'<section class="section soft"><div class="container">'
+                        f'{section_head("Keep reading", "More from the blog", accent="the blog")}'
+                        f'<div class="post-grid">{"".join(article_card(x) for x in related)}</div></div></section>')
+    body = f"""<section class="page-hero dark article-hero">{AURORA}<div class="container hero-inner narrow">
   {crumbs}
-  <p class="pill"><span class="dot"></span>{e(a["tag"])} &middot; {a["minutes"]} min read</p>
+  <p class="pill"><span class="dot"></span>{e(a["category"])} &middot; {a["minutes"]} min read</p>
   <h1>{e(a["h1"])}</h1>
   <p class="lead">{e(a["summary"])}</p>
-  <p class="byline">By the {e(SITE["name"])} team &middot; <time datetime="{a["date"]}">{fmt_date(a["date"])}</time>{f' &middot; Updated <time datetime="{a["updated"]}">{fmt_date(a["updated"])}</time>' if a["updated"] != a["date"] else ""}</p>
+  <p class="byline">By the {e(SITE["name"])} team &middot; <time datetime="{a["date"]}">{fmt_date(a["date"])}</time>{upd}</p>
 </div></section>
 <section class="section article-sec"><div class="container article-grid">
   <article class="prose article-body">{a["body"]}
-    <h2>Frequently asked questions</h2>
-    <div class="faq inline-faq">{faq}</div>
+    {faq_block}
   </article>
   <aside class="sidebar">
-    <div class="side-box"><h2 class="side-h">Related services</h2><ul class="side-nav">{svc_links}</ul></div>
+    {svc_box}
+    {training}
     <div class="side-box side-cta">{AURORA}<div class="rel"><h2 class="side-h">Talk to an expert</h2>
       <p>Get a free 30-minute review of your SAP roadmap.</p>
       <a href="/contact/" class="btn btn-light btn-block">Book a call {icon("arrow-ur")}</a></div></div>
   </aside>
 </div></section>
-<section class="section soft"><div class="container">
-  {section_head("Keep reading", "More SAP insights", accent="insights")}
-  <div class="post-grid two">{"".join(article_card(x) for x in related)}</div>
-</div></section>'''
+{related_html}"""
     post_ld = {"@context": "https://schema.org", "@type": "BlogPosting", "headline": a["h1"],
                "description": a["description"], "datePublished": a["date"], "dateModified": a["updated"],
                "url": BASE + url, "mainEntityOfPage": BASE + url, "image": BASE + "/assets/img/og-image.png",
                "author": {"@type": "Organization", "name": SITE["name"], "url": BASE + "/"},
-               "publisher": {"@id": BASE + "/#organization"}, "articleSection": a["tag"]}
-    page(url, a["title"], a["description"], body, "insights", [crumbs_ld, post_ld, faq_schema(a["faq"])], og_type="article")
+               "publisher": {"@id": BASE + "/#organization"}, "articleSection": a["category"],
+               "keywords": a["keyword"], "wordCount": a["words"]}
+    schemas = [crumbs_ld, post_ld] + ([faq_schema(a["faq"])] if a["faq"] else [])
+    page(url, a["title"], a["description"], body, "blog", schemas, og_type="article")
+
+
+def build_feed():
+    from email.utils import format_datetime
+    from datetime import datetime, timezone
+    items = "".join(
+        f"<item><title>{e(a['h1'])}</title><link>{BASE}/blog/{a['slug']}/</link><guid>{BASE}/blog/{a['slug']}/</guid>"
+        f"<pubDate>{format_datetime(datetime.fromisoformat(a['date']).replace(tzinfo=timezone.utc))}</pubDate>"
+        f"<category>{e(a['category'])}</category><description>{e(a['summary'])}</description></item>"
+        for a in POSTS[:30])
+    (OUT / "blog").mkdir(parents=True, exist_ok=True)
+    (OUT / "blog" / "feed.xml").write_text(
+        f'<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>{e(SITE["name"])} Blog</title>'
+        f'<link>{BASE}/blog/</link><description>SAP guides and insights</description>{items}</channel></rss>',
+        encoding="utf-8")
 
 
 def training_html():
@@ -663,7 +762,7 @@ def build_service(s):
 </div></section>
 {process_html() if s["slug"] in ("sap-s4hana-implementation", "rise-with-sap", "sap-s4hana-migration") else why_html("Why choose Oddesy")}
 {faq_html(s["faq"])}
-{insights_teaser([a for a in ARTICLES if s["slug"] in a["services"]] , "Related reading", "reading") if any(s["slug"] in a["services"] for a in ARTICLES) else ""}
+{insights_teaser([a for a in POSTS if s["slug"] in a["services"]], "Related reading", "reading")}
 <section class="section soft"><div class="container">
   {section_head("Related", "Explore related services", accent="related")}
   <div class="bento three">{rel}</div>
@@ -788,8 +887,9 @@ def build_404():
 
 
 def build_meta_files():
-    prio = {"/": "1.0", "/services/": "0.9", "/insights/": "0.8"}
-    urls = "".join(f"  <url><loc>{BASE}{p}</loc><lastmod>{TODAY}</lastmod>"
+    prio = {"/": "1.0", "/services/": "0.9", "/blog/": "0.8"}
+    post_mod = {f"/blog/{a['slug']}/": a["updated"] for a in POSTS}
+    urls = "".join(f"  <url><loc>{BASE}{p}</loc><lastmod>{post_mod.get(p, TODAY)}</lastmod>"
                    f"<priority>{prio.get(p, '0.8' if p.startswith('/services/') else '0.6')}</priority></url>\n"
                    for p in PAGES)
     (OUT / "sitemap.xml").write_text(
@@ -807,7 +907,7 @@ def main():
     build_home(); build_about(); build_services_hub()
     for s in SERVICES:
         build_service(s)
-    build_insights()
+    build_blog()
     build_industries(); build_careers(); build_contact(); build_privacy(); build_404()
     build_meta_files()
     print(f"Built {len(PAGES)} pages into {OUT}")

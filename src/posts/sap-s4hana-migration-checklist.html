@@ -1,0 +1,158 @@
+title: SAP S/4HANA Migration Checklist: Every Step in Order
+description: A practical SAP S/4HANA migration checklist: readiness checks, Business Partner, custom code, SUM, testing and cutover, in the order SAP recommends.
+h1: SAP S/4HANA Migration Checklist: From Assessment to Go-Live, Step by Step
+summary: A phase-by-phase checklist for moving from SAP ECC to S/4HANA, built on SAP's own conversion guide, with the tools, reports and SAP Notes you need at each step.
+date: 2026-11-11
+updated: 2026-11-11
+category: Migration
+keyword: sap s/4hana migration checklist
+services: sap-s4hana-migration, sap-s4hana-implementation
+faq: What is the first step in an SAP S/4HANA migration? || Run SAP Readiness Check for SAP S/4HANA on a copy of your production data. It shows the relevant simplification items, add-on and business function compatibility, custom code impact, sizing and Business Partner status, which together give you a realistic scope before you commit to a plan.
+faq: Is Customer Vendor Integration mandatory before converting to S/4HANA? || Yes, for a system conversion. All customers, vendors and contact persons must be synchronised with Business Partners in the ECC system before the conversion. It is usually a project in its own right, because it exposes duplicate and incomplete master data.
+faq: Is SAP Readiness Check mandatory? || No. SAP describes it as not mandatory but highly recommended. The Simplification Item Check (report /SDF/RC_START_CHECK) is mandatory, because the Software Update Manager runs it again during the conversion and stops if serious inconsistencies remain.
+faq: How long does an S/4HANA migration take? || It depends on scope, data volume, custom code and the approach you choose, so there is no reliable standard figure. Run SAP Readiness Check and at least one test conversion before committing to a date; its Planned Downtime Calculator also gives a first view of technical downtime.
+---
+<p>An SAP S/4HANA migration succeeds or fails on preparation. The technical conversion itself is run by one tool, the Software Update Manager (SUM), but it will only run cleanly once your Business Partners, add-ons, business functions, custom code and data are ready for it. This checklist puts every step in the order SAP recommends, so you can see what has to happen, which tool does it, and where projects usually lose time.</p>
+
+<p>It is written mainly for a <strong>system conversion</strong> (brownfield), because that is where the sequence is strictest. If you are planning a new implementation or a selective data transition, most of the assessment, data and testing items still apply; we point out where the path differs. If you have not yet chosen an approach, read our comparison of <a href="/blog/brownfield-vs-greenfield-s4hana-migration/">brownfield, greenfield and selective data transition</a> first.</p>
+
+<h2>The checklist at a glance</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>Phase</th><th>Key outcome</th><th>Main tools</th></tr></thead>
+  <tbody>
+    <tr><td>1. Decide and plan</td><td>Approach, target release, timeline and budget agreed</td><td>SAP Roadmap Viewer, SAP Readiness Check</td></tr>
+    <tr><td>2. Assess the system</td><td>Known list of simplification items, blockers and effort drivers</td><td>SAP Readiness Check, Simplification Item Catalog</td></tr>
+    <tr><td>3. Prepare ECC</td><td>Business Partners in place, data cleaned, blockers removed</td><td>CVI, Maintenance Planner, SI-Check, Data Volume Management</td></tr>
+    <tr><td>4. Prepare custom code</td><td>Unused code removed, impact of simplifications understood</td><td>Custom Code Migration app, ABAP Test Cockpit</td></tr>
+    <tr><td>5. Test conversions</td><td>Repeatable conversion, transports collected, runtimes measured</td><td>SUM (with DMO if not yet on SAP HANA)</td></tr>
+    <tr><td>6. Follow-on and testing</td><td>Finance migrated, code adapted, roles and Fiori set up, business tested</td><td>SPDD/SPAU, ATC, Data Transition Validation</td></tr>
+    <tr><td>7. Cutover and hypercare</td><td>Production converted, validated and stable</td><td>SUM, SDM_MON, cutover plan</td></tr>
+  </tbody>
+</table></div>
+
+<h2>Phase 1: Decide and plan</h2>
+<p>Before any technical work, the business needs to agree why it is moving and how. These decisions shape every later step.</p>
+<ul>
+  <li><strong>Confirm the deadline you are actually working to.</strong> SAP's mainstream maintenance for the core applications of SAP Business Suite 7, including ECC 6.0, runs until the end of 2027, with optional extended maintenance until the end of 2030 at a premium of two percentage points on the existing maintenance basis (<a href="https://news.sap.com/2020/02/sap-s4hana-maintenance-2040-clarity-choice-sap-business-suite-7/">SAP press release</a>). Our guide to <a href="/blog/sap-ecc-end-of-maintenance-2027/">ECC end of maintenance in 2027</a> covers the options in more detail.</li>
+  <li><strong>Choose the approach:</strong> system conversion, new implementation or selective data transition. This is a business decision about how much process change you want, not only a technical one.</li>
+  <li><strong>Choose the deployment model</strong>: on-premise, SAP S/4HANA Cloud Private Edition (often through <a href="/services/rise-with-sap/">RISE with SAP</a>) or public cloud. Some downtime options, for example the downtime-optimized conversion to Private Edition, require specifically trained SAP experts.</li>
+  <li><strong>Pick a target release</strong> and read its Release Information Note and Restriction Note. For SAP S/4HANA 2025 these are SAP Notes 3493301 and 3549655; the Restriction Note also defines the minimum start release for a one-step conversion.</li>
+  <li><strong>Set up governance:</strong> a steering group, a named owner for every workstream (Basis, finance, logistics, development, data, testing, change) and a decision log.</li>
+  <li><strong>Walk through the SAP Roadmap Viewer</strong>, which SAP recommends to familiarise the team with the project steps of a transition to S/4HANA.</li>
+</ul>
+
+<h2>Phase 2: Assess the current system</h2>
+<p>The aim of this phase is to replace assumptions with facts about your system. SAP's <a href="https://help.sap.com/doc/2b87656c4eee4284a5eb8976c0fe88fc/2025/en-US/CONV_OP2025.pdf">Conversion Guide for SAP S/4HANA 2025</a> calls SAP Readiness Check "not mandatory, but highly recommended". In practice, we would not plan a conversion without it.</p>
+<h3>Run SAP Readiness Check for SAP S/4HANA</h3>
+<p>SAP Readiness Check is available to customers with an active SAP maintenance agreement through SAP for Me (me.sap.com/readinesscheck), and to SAP Cloud ALM customers inside Cloud ALM. Run it on production, or on a recent copy of production, because its results are based on real configuration, data and usage. According to SAP's <a href="https://help.sap.com/doc/bb0e7ba5158c424ab7ce010228bf1de1/latest/en-US/Key%20Feature%20Overview%20SAP%20Readiness%20Check.pdf">SAP Readiness Check feature overview</a>, the S/4HANA scenario covers, among other things:</p>
+<ul>
+  <li><strong>Simplification items</strong> relevant to your system, with an effort ranking and the related activities marked as mandatory, conditional or optional.</li>
+  <li><strong>Add-on compatibility</strong>: incompatible add-ons block the conversion when SUM runs.</li>
+  <li><strong>Active business functions</strong>: an active business function that is incompatible with the target release also blocks the conversion.</li>
+  <li><strong>Custom code analysis</strong>, based on the results you upload from the custom code tools.</li>
+  <li><strong>Customer Vendor Integration analysis</strong>: how many customers, vendors and contact persons are already Business Partners, and the data quality issues found.</li>
+  <li><strong>Integration</strong>: an inventory of IDocs, RFCs/BAPIs, web services, OData services, BW extractors, flat-file interfaces and SLT replication, with likely impact.</li>
+  <li><strong>Financial data quality</strong> for the general ledger, asset accounting and material ledger.</li>
+  <li><strong>Sizing</strong> and data volume management potential, and a <strong>Planned Downtime Calculator</strong>.</li>
+</ul>
+<p>If you use SAP Cloud ALM, you can turn Readiness Check findings into tasks in your Cloud ALM project, which makes the results a working backlog rather than a report that is read once.</p>
+<h3>Read the simplification items properly</h3>
+<p>Each simplification item is documented as an SAP Note. Readiness Check filters the full Simplification Item Catalog down to the items that apply to you; go through each one with the responsible functional lead and record whether it needs action before, during or after the conversion.</p>
+<h3>Turn findings into a scope and estimate</h3>
+<p>Group the findings into workstreams, flag blockers (incompatible add-ons, incompatible business functions, unconverted Business Partners), and only then commit to a timeline. This is also the point to decide what you will archive rather than convert.</p>
+
+<h2>Phase 3: Prepare the ECC system</h2>
+<p>These are the items that most often delay a conversion because they need business input, not just technical effort.</p>
+<h3>Business Partner and Customer Vendor Integration (CVI)</h3>
+<p>In S/4HANA the Business Partner is the single master data object for customers and suppliers. SAP's Readiness Check documentation states that all customers, vendors and contact persons must be synchronised with Business Partners <em>before</em> converting. An <a href="https://news.sap.com/africa/2025/10/the-sap-migration-mistake-most-companies-make/">article on SAP News Center</a> calls CVI perhaps the most common "gotcha" in S/4HANA migrations, because teams assume it happens automatically during the conversion. It does not.</p>
+<ul>
+  <li>Audit customer and vendor records for duplicates, missing data and inconsistent account groups.</li>
+  <li>Design the Business Partner set-up: roles, groupings and number ranges, mapped from your account groups.</li>
+  <li>Plan for custom fields: if you have custom fields on customer or vendor tables, the Business Partner user interface needs to be enhanced to keep using them.</li>
+  <li>Run the synchronisation in ECC, fix errors and repeat until every record is converted.</li>
+</ul>
+<h3>Maintenance Planner and system prerequisites</h3>
+<ul>
+  <li><strong>Unicode and ABAP-only:</strong> the system must be Unicode and an AS ABAP-only system. Dual-stack systems must be split first.</li>
+  <li><strong>Maintenance Planner is mandatory.</strong> It checks add-ons, active business functions and industry solutions, and blocks the conversion where there is no valid path. It produces the stack configuration file (stack.xml) that SUM needs. You can run the checks without an S/4HANA licence, but you need one to generate the stack.xml.</li>
+  <li><strong>Cross-application housekeeping</strong> from SAP's guide: check SPAM/SAINT is at patch 71 or higher, remove client 066 (SAP Note 1749142), and uninstall locally installed Fiori apps that are not released for SAP_UI 7.50.</li>
+</ul>
+<h3>Simplification Item Check (SI-Check)</h3>
+<p>The SI-Check is mandatory. Implement it with SAP Notes 2399707 and 2502552, then run report <code>/SDF/RC_START_CHECK</code> in transaction <code>SA38</code>, choose the target release and use "Check Consistency for All". Run it early and repeatedly. SUM runs it again at the start of the process and just before downtime, and stops if it finds messages with return code 8 or higher at that point. Do not ignore the yellow (return code 4) messages either: SAP's guide notes that, by default, custom table appends are not retained during the conversion, so the data in those fields is lost.</p>
+<h3>Reduce data volume and clean finance data</h3>
+<ul>
+  <li>Archive what you do not need to convert. Less data means shorter conversion runtimes and lower SAP HANA sizing.</li>
+  <li>Resolve inconsistencies in the general ledger, asset accounting and material ledger before the conversion; Readiness Check's financial data quality check shows where they are.</li>
+  <li>Close or clear what you can: open items, old purchase orders, parked documents.</li>
+</ul>
+
+<h2>Phase 4: Prepare custom code</h2>
+<p>SAP's guide calls custom code checks "the most important preparation" for your ABAP code. The checks do not catch everything, but they give you a sound basis for planning.</p>
+<ol>
+  <li><strong>Find out what is really used.</strong> Collect usage data in production over a meaningful period, including month-end and year-end.</li>
+  <li><strong>Decommission unused code.</strong> Code that is not used should be deleted, not migrated. The Custom Code Migration app can mark it out of scope.</li>
+  <li><strong>Check the remaining code</strong> against the S/4HANA simplifications with the Custom Code Migration app or the ABAP Test Cockpit (ATC), and upload the results to Readiness Check.</li>
+  <li><strong>Estimate the fixes</strong> by category, and note where ATC offers quick fixes for automated refactoring.</li>
+  <li><strong>Review modifications and enhancements</strong>, especially in areas with changed data models such as inventory management, SD pricing and finance.</li>
+</ol>
+<p>This is also a good moment to apply a clean core mindset to new development. Our article on <a href="/blog/sap-clean-core-explained/">SAP clean core</a> explains how to keep extensions out of the core going forward.</p>
+
+<h2>Phase 5: Run test conversions</h2>
+<p>SAP recommends doing the conversion in a dedicated system first, typically a copy of your development system and then of production. Each run teaches you something about the next one.</p>
+<ul>
+  <li><strong>Sandbox conversion</strong> on a copy of production: proves the path and gives you real runtimes and errors.</li>
+  <li><strong>Development conversion</strong>: collect all required changes in transport requests, including those that can only be made after the conversion, such as finance Customizing. SUM applies these transports during the production conversion.</li>
+  <li><strong>Database migration:</strong> if you are not yet on SAP HANA, use the Database Migration Option (DMO) of SUM, which combines database migration, software update and data conversion in one procedure.</li>
+  <li><strong>Downtime:</strong> measure business downtime on a production-sized copy. If it is too long, review SAP Note 2351294 on reducing technical downtime and evaluate the downtime-optimized conversion option.</li>
+  <li><strong>Mock cutovers:</strong> plan at least one full dress rehearsal that follows the real cutover plan, with timings.</li>
+</ul>
+
+<h2>Phase 6: Follow-on activities and testing</h2>
+<p>After SUM finishes, the system is technically on S/4HANA, but the work is not done.</p>
+<h3>Technical and functional follow-on</h3>
+<ul>
+  <li><strong>Finance data migration:</strong> migrate the finance Customizing and the general ledger, asset accounting, controlling and material ledger data to the new structures (see SAP Note 2332030).</li>
+  <li><strong>Custom code adaptation:</strong> adjust modifications with <code>SPDD</code>, <code>SPAU</code> and <code>SPAU_ENH</code>, then run ATC with check variant <code>S4HANA_READINESS</code> in the converted system. Use ABAP Development Tools for Eclipse, because SE80 does not support all objects, such as CDS views.</li>
+  <li><strong>Silent data migrations:</strong> some application data is migrated after the conversion while users work. Check transaction <code>SDM_MON</code> and make sure every silent data migration finishes in every client.</li>
+  <li><strong>Roles and Fiori:</strong> adjust business roles for changed transactions and map them to Fiori catalogs and launchpad roles.</li>
+  <li><strong>Output management and interfaces:</strong> test every interface flagged in the integration analysis. Our <a href="/services/sap-integration/">SAP integration</a> team often finds that interfaces are the least documented part of a landscape.</li>
+</ul>
+<h3>Testing</h3>
+<ul>
+  <li><strong>Unit and integration testing</strong> of end-to-end processes, not individual transactions: order to cash, procure to pay, record to report, plan to produce.</li>
+  <li><strong>Data validation:</strong> SAP's Data Transition Validation tool compares business reports before and after the conversion. Agree the reports with the business and your auditors in advance.</li>
+  <li><strong>Regression and performance testing</strong>, especially for custom reports and heavy batch jobs.</li>
+  <li><strong>User acceptance testing</strong> with formal sign-off by process owners.</li>
+  <li><strong>Training</strong> for changed processes and new Fiori apps.</li>
+</ul>
+
+<h2>Phase 7: Cutover, go-live and hypercare</h2>
+<ul>
+  <li><strong>Freeze changes</strong> in the old system and agree the exact downtime window with the business.</li>
+  <li><strong>Final pre-checks:</strong> rerun the SI-Check and resolve any new inconsistencies; confirm backups and the fall-back plan.</li>
+  <li><strong>Run the production conversion</strong> following the rehearsed cutover plan, step by step, with sign-offs.</li>
+  <li><strong>Validate before releasing users:</strong> balances, stock values, open items and the agreed validation reports.</li>
+  <li><strong>Go/no-go decision</strong> by the steering group, based on evidence, not the clock.</li>
+  <li><strong>Hypercare:</strong> a defined period with extended support cover, daily issue reviews and a clear handover to your support organisation.</li>
+  <li><strong>Clean up</strong> obsolete data after the conversion, as SAP's guide describes, once you are sure it is no longer needed.</li>
+</ul>
+
+<h2>Common mistakes to avoid</h2>
+<ul>
+  <li><strong>Starting CVI late.</strong> It is a business data project and needs months, not days.</li>
+  <li><strong>Treating Readiness Check as a one-off.</strong> Rerun it as you fix items and use it to track progress.</li>
+  <li><strong>Migrating unused custom code.</strong> Every object you delete is one you do not have to fix and test.</li>
+  <li><strong>Skipping a full-size test conversion.</strong> Runtimes and data errors on a small copy do not predict production.</li>
+  <li><strong>Ignoring yellow SI-Check messages.</strong> They do not block SUM, but they can mean lost data or changed behaviour.</li>
+  <li><strong>Underestimating interfaces and testing.</strong> Most go-live issues show up at the edges of the system.</li>
+</ul>
+
+<h2>Key takeaways</h2>
+<ul>
+  <li>Follow SAP's sequence: plan, assess, prepare, test conversions, follow-on work, then cutover.</li>
+  <li>Readiness Check is optional but in practice essential; the SI-Check and Maintenance Planner are mandatory.</li>
+  <li>Business Partner conversion must be finished in ECC before the conversion can run.</li>
+  <li>Reduce data and custom code before converting; it shortens every later phase.</li>
+  <li>Check every SAP Note and release-specific detail against the guides for your target release, because SAP updates them regularly.</li>
+</ul>
+<p>If you would like an experienced team to review your Readiness Check results or plan your conversion, see our <a href="/services/sap-s4hana-migration/">SAP S/4HANA migration services</a> or <a href="/contact/">get in touch</a>.</p>

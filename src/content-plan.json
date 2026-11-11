@@ -35,7 +35,9 @@
    "category": "Migration",
    "intent": "informational",
    "services": "sap-s4hana-migration",
-   "status": "todo"
+   "status": "published",
+   "slug": "sap-s4hana-migration-checklist",
+   "published": "2026-11-11"
   },
   {
    "keyword": "sap mm interview questions",

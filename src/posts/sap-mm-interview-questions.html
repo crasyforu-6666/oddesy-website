@@ -1,0 +1,142 @@
+title: SAP MM Interview Questions: Answers Plus S/4HANA Changes
+description: SAP MM interview questions with clear answers, from procure-to-pay and account determination to the S/4HANA changes interviewers now expect you to know.
+h1: SAP MM Interview Questions and Answers, Including What Changed in S/4HANA
+summary: The SAP MM questions that come up again and again in interviews, with concise answers, plus the S/4HANA changes such as MATDOC, Business Partner and MRP Live that separate strong candidates.
+date: 2026-11-13
+updated: 2026-11-13
+category: Careers & Skills
+keyword: sap mm interview questions
+services: sap-staffing
+faq: What are the most common SAP MM interview questions? || Most interviews cover the procure-to-pay cycle, the material master, movement types, automatic account determination (OBYC), release strategies, invoice verification and special procurement such as consignment and subcontracting. Experienced candidates are also asked about S/4HANA changes and real project scenarios.
+faq: What S/4HANA changes should an SAP MM consultant know? || The key ones are the MATDOC table replacing MKPF and MSEG, Business Partner replacing vendor master transactions, mandatory Material Ledger, the 40-character material number, MRP Live (MD01N) and the removal of old transactions such as MB1A and ME21.
+faq: Is MB1A available in SAP S/4HANA? || No. MB1A and the other classic MB transactions still exist as codes, but calling them raises an error. Goods movements are posted with MIGO or the BAPI BAPI_GOODSMVT_CREATE.
+faq: How should I prepare for an SAP MM interview? || Be able to walk through procure-to-pay with the transactions and accounting entries at each step, explain one or two configuration areas in depth, and prepare short stories from real projects. If you are moving into S/4HANA work, learn the simplification items for MM.
+---
+<p>SAP MM interviews follow a predictable pattern. Interviewers start with the procure-to-pay cycle, move into master data, inventory and account determination, then test configuration knowledge and real project experience. For any role touching SAP S/4HANA, they now also expect you to explain what changed from ECC. This guide gives you the questions that come up most often, with answers you can adapt in your own words.</p>
+
+<p>We have grouped the questions by topic and level. The S/4HANA section is where many candidates fall short, so we have checked those answers against SAP's own <a href="https://help.sap.com/doc/c34b5ef72430484cb4d8895d5edd12af/latest/">Simplification List for SAP S/4HANA</a>.</p>
+
+<h2>Core concepts: procure-to-pay</h2>
+
+<h3>1. Walk me through the procure-to-pay cycle in SAP MM.</h3>
+<p>A typical flow is: purchase requisition (ME51N), source determination, request for quotation and quotation if needed, purchase order (ME21N), goods receipt (MIGO, movement type 101), invoice verification (MIRO) and payment in FI. A strong answer names the document created at each step and the accounting impact: no FI posting at requisition or PO; at goods receipt the stock account is debited and the GR/IR clearing account credited; at invoice the GR/IR account is debited and the supplier account credited.</p>
+
+<h3>2. What is the difference between a purchase requisition and a purchase order?</h3>
+<p>A purchase requisition is an internal request asking purchasing to procure a material or service. It has no legal effect outside the company. A purchase order is the formal, external commitment to a supplier, with agreed price, quantity and delivery date.</p>
+
+<h3>3. What is three-way matching?</h3>
+<p>During invoice verification the system compares the invoice with the purchase order and the goods receipt. If quantity or price differences exceed the configured tolerances, the invoice is blocked for payment. Blocked invoices can be released with transaction MRBR.</p>
+
+<h3>4. What is the GR/IR clearing account, and why does it carry a balance?</h3>
+<p>It is an interim account that links goods receipt and invoice receipt. A balance means goods have been received but not invoiced, or invoiced but not received. Persistent old balances are usually cleared with MR11 after investigation. Interviewers like this question because it shows whether you understand the FI integration.</p>
+
+<h2>Master data questions</h2>
+
+<h3>5. Which views of the material master matter most to MM?</h3>
+<p>Basic data, purchasing, MRP, plant data and storage, and accounting. The accounting view holds the valuation class and price control, which drive valuation and account determination.</p>
+
+<h3>6. What is the difference between standard price (S) and moving average price (V)?</h3>
+<p>With standard price, the material is always valued at a fixed price and any difference at goods receipt or invoice is posted to a price difference account. With moving average price, the value is recalculated with each receipt, so the price follows actual purchase costs. Standard price is common for manufactured materials; moving average for purchased materials, although company policy varies.</p>
+
+<h3>7. What is a purchasing info record?</h3>
+<p>It stores the relationship between a material and a supplier at purchasing organisation or plant level: price, conditions, planned delivery time and tolerances. It is maintained with ME11 to ME13 and is used as a default when creating purchase orders.</p>
+
+<h3>8. How is supplier master data maintained in S/4HANA?</h3>
+<p>Through the Business Partner, transaction BP. SAP's Simplification List states that Business Partner is the "leading object and single entry point" for customer and supplier master data, and that transactions such as XK01, XK02, XK03 and MK01 to MK03 redirect to BP. In a conversion, SAP's <a href="https://help.sap.com/doc/bb0e7ba5158c424ab7ce010228bf1de1/latest/en-US/Key%20Feature%20Overview%20SAP%20Readiness%20Check.pdf">Readiness Check documentation</a> states that all customers, vendors and contact persons must be synchronised with Business Partners, through Customer Vendor Integration (CVI), before converting. Our <a href="/blog/sap-s4hana-migration-checklist/">S/4HANA migration checklist</a> explains why CVI is so often on the critical path.</p>
+
+<h2>Inventory management questions</h2>
+
+<h3>9. Name common movement types and their purpose.</h3>
+<div class="table-wrap"><table>
+  <thead><tr><th>Movement type</th><th>Purpose</th></tr></thead>
+  <tbody>
+    <tr><td>101</td><td>Goods receipt for purchase order or production order</td></tr>
+    <tr><td>102</td><td>Reversal of 101</td></tr>
+    <tr><td>122</td><td>Return delivery to supplier</td></tr>
+    <tr><td>201</td><td>Goods issue to a cost centre</td></tr>
+    <tr><td>261</td><td>Goods issue to a production or maintenance order</td></tr>
+    <tr><td>301</td><td>Plant-to-plant transfer in one step</td></tr>
+    <tr><td>311</td><td>Storage location to storage location transfer in one step</td></tr>
+    <tr><td>541</td><td>Transfer of components to a subcontractor</td></tr>
+    <tr><td>551</td><td>Scrapping from unrestricted stock</td></tr>
+    <tr><td>561</td><td>Initial entry of stock balances</td></tr>
+  </tbody>
+</table></div>
+<p>Expect a follow-up: "How would you find the movement type configuration?" The answer is OMJJ, where you can see fields such as the reversal movement type and the account modifier.</p>
+
+<h3>10. What stock types exist in SAP?</h3>
+<p>Unrestricted-use, quality inspection and blocked stock are the main ones. There are also special stocks, identified by a special stock indicator, for example K for supplier consignment, O for material provided to a subcontractor, E for sales order stock and Q for project stock.</p>
+
+<h3>11. How does consignment work in MM?</h3>
+<p>The supplier's material is stored at your site but remains the supplier's property until you withdraw it. You receive it into consignment stock (special stock K) with no value posting. When you consume it or transfer it to own stock, a liability to the supplier is created, which is settled with transaction MRKO.</p>
+
+<h3>12. Explain subcontracting.</h3>
+<p>You send components to a supplier, who assembles them into a finished product. The purchase order uses item category L, the components are transferred with movement type 541, and at goods receipt of the finished product the components are consumed automatically. The subcontractor charges only for the service.</p>
+
+<h2>Configuration questions</h2>
+
+<h3>13. How does automatic account determination work?</h3>
+<p>Postings are determined by the valuation class of the material, the transaction key and the account modifier, configured in OBYC. Key transaction keys to know are BSX (inventory posting), WRX (GR/IR clearing), PRD (price differences), GBB (offsetting entry for inventory postings, for example consumption) and KON (consignment liabilities). Be ready to explain how the valuation class links to the material type through the account category reference.</p>
+
+<h3>14. How do you set up a release strategy for purchase orders?</h3>
+<p>Classic release strategies with classification use characteristics based on the communication structure CEKKO for purchase orders (CEBAN for requisitions), grouped in a class of class type 032. You then define release groups, release codes, release indicators and the strategies with their conditions, such as total order value. In S/4HANA, SAP also offers flexible workflow for purchasing documents, activated per document type, so check which approach the project uses.</p>
+
+<h3>15. What is split valuation?</h3>
+<p>It allows one material to be valued differently according to a valuation type, such as origin, batch or condition (new versus refurbished). Each valuation type has its own price and can post to different accounts.</p>
+
+<h3>16. How does MRP create procurement proposals for MM?</h3>
+<p>The MRP run compares requirements with available stock and receipts, then creates purchase requisitions or planned orders for shortages. Reorder point planning (for example MRP type VB) and forecast-based planning are the consumption-based options often handled by MM consultants.</p>
+
+<h2>S/4HANA questions: what changed from ECC</h2>
+<p>These questions separate candidates with real S/4HANA exposure. All answers below are drawn from SAP's Simplification List.</p>
+
+<h3>17. What replaced tables MKPF and MSEG?</h3>
+<p>The new table MATDOC holds the header and item data of material documents. Material document data is stored only in MATDOC, not in MKPF and MSEG, and actual stock quantities are no longer stored in aggregate tables such as MARD or MCHB but calculated on the fly from MATDOC. The old tables still exist, and read access is redirected to compatibility CDS views, so custom code that reads them still works. Code that writes to them must be changed, and custom fields appended to MKPF or MSEG must be added to MATDOC during the conversion or their data is lost.</p>
+
+<h3>18. Can you still use MB1A or MB01?</h3>
+<p>No. The classic MB transactions, including MB01, MB1A, MB1B, MB1C and MB31, have been replaced by MIGO, or by BAPI_GOODSMVT_CREATE in code. The codes still exist, but calling them raises an error. MMBE_OLD has been replaced by MMBE. SAP also warns that the old transactions use the old lock concept, so parallel postings could create stock inconsistencies (SAP Note 2210569).</p>
+
+<h3>19. Are ME21 and ME51 still supported?</h3>
+<p>No. Classic purchasing transactions such as ME21, ME22, ME23, ME51, ME52, ME53 and ME59, and MR01 for invoices, are no longer supported. Their Enjoy successors, such as ME21N, ME51N and MIRO, are used instead, and BAPI_PO_CREATE is replaced by its successor BAPIs.</p>
+
+<h3>20. Is Material Ledger optional in S/4HANA?</h3>
+<p>No. Material Ledger is mandatory for material valuation in all S/4HANA systems, and it must be migrated after the technical conversion, even if you already used it in ECC. Actual costing remains optional. A good answer makes this distinction clearly, because many candidates confuse the two.</p>
+
+<h3>21. What is MRP Live?</h3>
+<p>MRP Live (transaction MD01N) is the MRP run optimised for SAP HANA. It reads receipts and requirements, calculates shortages and creates planned orders and purchase requisitions in one database procedure. Differences from classic MRP include: it does not write MRP lists, there is no creation indicator for purchase requisitions (it always creates requisitions for externally procured materials), and planning happens at plant and MRP area level. Planning at storage location level has been replaced by MRP areas. Classic MRP remains available, but MRP lists are part of the compatibility scope, with limited usage rights (SAP Note 2269324).</p>
+
+<h3>22. What changed in the material number?</h3>
+<p>The material number field was extended from 18 to 40 characters. Whether the extended length is switched on is a business decision, and it can affect interfaces and other systems in the landscape.</p>
+
+<h3>23. What about purchase order output?</h3>
+<p>S/4HANA introduces a new output management approach based on BRF+ and Adobe Forms. For purchase orders, NAST-based output is still supported, so a project chooses which approach to use.</p>
+
+<h2>Scenario questions for experienced candidates</h2>
+<p>Senior interviews move from definitions to judgement. Prepare a short, specific answer for each of these from your own experience:</p>
+<ul>
+  <li>An invoice is blocked for a price difference. How do you analyse and resolve it?</li>
+  <li>The GR/IR account has a growing balance at month end. What do you check first?</li>
+  <li>A goods receipt fails with an account determination error. Where do you look?</li>
+  <li>The business wants approvals by value and by plant. How would you design it?</li>
+  <li>During an S/4HANA conversion, a custom report on MSEG runs slowly. Why, and what would you do?</li>
+  <li>How did you handle supplier data during a Business Partner conversion?</li>
+</ul>
+<p>Use a simple structure: the situation, what you checked, what you changed and the result. Interviewers value precise transactions and table names over general statements.</p>
+
+<h2>How to prepare</h2>
+<ol>
+  <li><strong>Practise procure-to-pay end to end</strong> in a system, noting the documents and accounting entries at each step.</li>
+  <li><strong>Learn one configuration area deeply</strong>, such as account determination or release strategy, so you can talk through it without notes.</li>
+  <li><strong>Read the MM simplification items</strong> for S/4HANA. They are the most reliable source for "what changed" questions.</li>
+  <li><strong>Understand the integration</strong> with FI, SD, PP and warehouse management. Most senior questions sit at these boundaries.</li>
+  <li><strong>Prepare three project stories</strong> with concrete problems you solved.</li>
+</ol>
+<p>If you want structured, hands-on preparation, <a href="https://youronementor.com">youronementor.com</a> offers SAP MM and EWM training. If you are looking for your next SAP role, see our <a href="/careers/">careers page</a> or our <a href="/services/sap-staffing/">SAP staffing services</a>, where we place MM consultants on S/4HANA projects.</p>
+
+<h2>Key takeaways</h2>
+<ul>
+  <li>Procure-to-pay, movement types, OBYC and release strategy remain the core of every MM interview.</li>
+  <li>For S/4HANA roles, know MATDOC, Business Partner, mandatory Material Ledger, MRP Live, the 40-character material number and the retired transactions.</li>
+  <li>Answer with specific transactions, tables and examples from real projects.</li>
+  <li>Check release-specific details against SAP's Simplification Item Catalog, because SAP updates it with each release.</li>
+</ul>

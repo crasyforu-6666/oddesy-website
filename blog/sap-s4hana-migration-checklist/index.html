@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script>document.documentElement.classList.add("js")</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAP S/4HANA Migration Checklist: Every Step in Order</title>
+<meta name="description" content="A practical SAP S/4HANA migration checklist: readiness checks, Business Partner, custom code, SUM, testing and cutover, in the order SAP recommends.">
+<link rel="canonical" href="https://oddesyconsultingandservices.com/blog/sap-s4hana-migration-checklist/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#070a14">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Oddesy Consulting and Services">
+<meta property="og:title" content="SAP S/4HANA Migration Checklist: Every Step in Order">
+<meta property="og:description" content="A practical SAP S/4HANA migration checklist: readiness checks, Business Partner, custom code, SUM, testing and cutover, in the order SAP recommends.">
+<meta property="og:url" content="https://oddesyconsultingandservices.com/blog/sap-s4hana-migration-checklist/">
+<meta property="og:image" content="https://oddesyconsultingandservices.com/assets/img/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/img/logo-mark.svg" type="image/svg+xml">
+<link rel="alternate" type="application/rss+xml" title="Oddesy Consulting and Services Blog" href="/blog/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css?v=b01d1ddf">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "@id": "https://oddesyconsultingandservices.com/#organization", "name": "Oddesy Consulting and Services", "url": "https://oddesyconsultingandservices.com/", "logo": "https://oddesyconsultingandservices.com/assets/img/logo-mark.svg", "image": "https://oddesyconsultingandservices.com/assets/img/og-image.png", "email": "info@oddesyconsultingandservices.com", "telephone": "+00 0000 000000", "address": {"@type": "PostalAddress", "streetAddress": "Your street address, City, State, Postal code, Country", "addressLocality": "Your City", "addressCountry": "Your Country"}, "sameAs": ["https://www.linkedin.com/"], "knowsAbout": ["SAP S/4HANA", "RISE with SAP", "SAP BTP", "SAP Integration Suite", "SAP AMS"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://oddesyconsultingandservices.com/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://oddesyconsultingandservices.com/blog/"}, {"@type": "ListItem", "position": 3, "name": "Migration", "item": "https://oddesyconsultingandservices.com/blog/category/migration/"}, {"@type": "ListItem", "position": 4, "name": "SAP S/4HANA Migration Checklist: From As…", "item": "https://oddesyconsultingandservices.com/blog/sap-s4hana-migration-checklist/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "SAP S/4HANA Migration Checklist: From Assessment to Go-Live, Step by Step", "description": "A practical SAP S/4HANA migration checklist: readiness checks, Business Partner, custom code, SUM, testing and cutover, in the order SAP recommends.", "datePublished": "2026-11-11", "dateModified": "2026-11-11", "url": "https://oddesyconsultingandservices.com/blog/sap-s4hana-migration-checklist/", "mainEntityOfPage": "https://oddesyconsultingandservices.com/blog/sap-s4hana-migration-checklist/", "image": "https://oddesyconsultingandservices.com/assets/img/og-image.png", "author": {"@type": "Organization", "name": "Oddesy Consulting and Services", "url": "https://oddesyconsultingandservices.com/"}, "publisher": {"@id": "https://oddesyconsultingandservices.com/#organization"}, "articleSection": "Migration", "keywords": "sap s/4hana migration checklist", "wordCount": 2234}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the first step in an SAP S/4HANA migration?", "acceptedAnswer": {"@type": "Answer", "text": "Run SAP Readiness Check for SAP S/4HANA on a copy of your production data. It shows the relevant simplification items, add-on and business function compatibility, custom code impact, sizing and Business Partner status, which together give you a realistic scope before you commit to a plan."}}, {"@type": "Question", "name": "Is Customer Vendor Integration mandatory before converting to S/4HANA?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, for a system conversion. All customers, vendors and contact persons must be synchronised with Business Partners in the ECC system before the conversion. It is usually a project in its own right, because it exposes duplicate and incomplete master data."}}, {"@type": "Question", "name": "Is SAP Readiness Check mandatory?", "acceptedAnswer": {"@type": "Answer", "text": "No. SAP describes it as not mandatory but highly recommended. The Simplification Item Check (report /SDF/RC_START_CHECK) is mandatory, because the Software Update Manager runs it again during the conversion and stops if serious inconsistencies remain."}}, {"@type": "Question", "name": "How long does an S/4HANA migration take?", "acceptedAnswer": {"@type": "Answer", "text": "It depends on scope, data volume, custom code and the approach you choose, so there is no reliable standard figure. Run SAP Readiness Check and at least one test conversion before committing to a date; its Planned Downtime Calculator also gives a first view of technical downtime."}}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="nav-shell">
+    <a href="/" class="brand" aria-label="Oddesy Consulting and Services home">
+      <img src="/assets/img/logo-mark.svg" alt="" width="34" height="34">
+      <span class="brand-text">Oddesy<span>Consulting &amp; Services</span></span>
+    </a>
+    <nav id="primary-nav" class="primary-nav" aria-label="Main">
+      <ul class="menu">
+        <li><a href="/about/">About</a></li>
+        <li class="has-sub">
+          <a href="/services/" class="sub-trigger" aria-haspopup="true">Services <span class="caret" aria-hidden="true"></span></a>
+          <div class="mega"><ul><li><a href="/services/sap-s4hana-implementation/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 15c-1.5 1.5-2 5-2 5s3.5-.5 5-2"/><path d="M9 15l-3-3c1-4 4-9 13-9 0 9-5 12-9 13z"/><circle cx="15" cy="9" r="1.6"/></svg></span><span><strong>S/4HANA Implementation</strong><small>Greenfield S/4HANA deployments in public or private cloud, designed fit-to-standard and delivered on SAP Activate.</small></span></a></li><li><a href="/services/rise-with-sap/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18h10a4 4 0 0 0 .6-7.96A6 6 0 0 0 6.1 10.5 3.75 3.75 0 0 0 7 18z"/></svg></span><span><strong>RISE with SAP</strong><small>Business case, scoping and transition support for the RISE with SAP subscription.</small></span></a></li><li><a href="/services/sap-s4hana-migration/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h12l-3-3"/><path d="M20 17H8l3 3"/></svg></span><span><strong>S/4HANA Migration &amp; Upgrades</strong><small>ECC to S/4HANA conversion, selective data transition and S/4HANA release upgrades.</small></span></a></li><li><a href="/services/sap-integration/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1"/><path d="M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"/></svg></span><span><strong>SAP Integration</strong><small>SAP Integration Suite, APIs and EDI connecting SAP to CRM, e-commerce, banks and machines.</small></span></a></li><li><a href="/services/sap-support-ams/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/></svg></span><span><strong>SAP Support &amp; AMS</strong><small>SLA-based functional, technical and Basis support for SAP ECC and S/4HANA.</small></span></a></li><li><a href="/services/sap-btp-development/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8l-4 4 4 4"/><path d="M16 8l4 4-4 4"/><path d="M13.5 5l-3 14"/></svg></span><span><strong>BTP &amp; Development</strong><small>Fiori/UI5 apps, ABAP, workflows and self-service portals built on SAP BTP.</small></span></a></li><li><a href="/services/sap-staffing/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2c2.9.4 5 2.8 5 5.8"/></svg></span><span><strong>Staffing &amp; Augmentation</strong><small>Pre-screened SAP consultants on contract, contract-to-hire or permanent terms.</small></span></a></li></ul>
+            <a class="mega-all" href="/services/">All SAP services <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a></div>
+        </li>
+        <li><a href="/industries/">Industries</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youronementor.com" target="_blank" rel="noopener">Training <span class="ext"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span><span class="sr">(opens in a new tab)</span></a></li>
+        <li><a href="/careers/">Careers</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+      <a href="/contact/" class="btn btn-glow btn-sm nav-cta">Book a call <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
+    </nav>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu"><span></span><span></span></button>
+  </div>
+</header>
+<main id="main">
+<section class="page-hero dark article-hero"><div class="aurora" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div><div class="grid-overlay" aria-hidden="true"></div><div class="container hero-inner narrow">
+  <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/blog/">Blog</a></li><li><a href="/blog/category/migration/">Migration</a></li><li aria-current="page">SAP S/4HANA Migration Checklist: From As…</li></ol></nav>
+  <p class="pill"><span class="dot"></span>Migration &middot; 10 min read</p>
+  <h1>SAP S/4HANA Migration Checklist: From Assessment to Go-Live, Step by Step</h1>
+  <p class="lead">A phase-by-phase checklist for moving from SAP ECC to S/4HANA, built on SAP&#x27;s own conversion guide, with the tools, reports and SAP Notes you need at each step.</p>
+  <p class="byline">By the Oddesy Consulting and Services team &middot; <time datetime="2026-11-11">11 Nov 2026</time></p>
+</div></section>
+<section class="section article-sec"><div class="container article-grid">
+  <article class="prose article-body"><p>An SAP S/4HANA migration succeeds or fails on preparation. The technical conversion itself is run by one tool, the Software Update Manager (SUM), but it will only run cleanly once your Business Partners, add-ons, business functions, custom code and data are ready for it. This checklist puts every step in the order SAP recommends, so you can see what has to happen, which tool does it, and where projects usually lose time.</p>
+
+<p>It is written mainly for a <strong>system conversion</strong> (brownfield), because that is where the sequence is strictest. If you are planning a new implementation or a selective data transition, most of the assessment, data and testing items still apply; we point out where the path differs. If you have not yet chosen an approach, read our comparison of <a href="/blog/brownfield-vs-greenfield-s4hana-migration/">brownfield, greenfield and selective data transition</a> first.</p>
+
+<h2>The checklist at a glance</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>Phase</th><th>Key outcome</th><th>Main tools</th></tr></thead>
+  <tbody>
+    <tr><td>1. Decide and plan</td><td>Approach, target release, timeline and budget agreed</td><td>SAP Roadmap Viewer, SAP Readiness Check</td></tr>
+    <tr><td>2. Assess the system</td><td>Known list of simplification items, blockers and effort drivers</td><td>SAP Readiness Check, Simplification Item Catalog</td></tr>
+    <tr><td>3. Prepare ECC</td><td>Business Partners in place, data cleaned, blockers removed</td><td>CVI, Maintenance Planner, SI-Check, Data Volume Management</td></tr>
+    <tr><td>4. Prepare custom code</td><td>Unused code removed, impact of simplifications understood</td><td>Custom Code Migration app, ABAP Test Cockpit</td></tr>
+    <tr><td>5. Test conversions</td><td>Repeatable conversion, transports collected, runtimes measured</td><td>SUM (with DMO if not yet on SAP HANA)</td></tr>
+    <tr><td>6. Follow-on and testing</td><td>Finance migrated, code adapted, roles and Fiori set up, business tested</td><td>SPDD/SPAU, ATC, Data Transition Validation</td></tr>
+    <tr><td>7. Cutover and hypercare</td><td>Production converted, validated and stable</td><td>SUM, SDM_MON, cutover plan</td></tr>
+  </tbody>
+</table></div>
+
+<h2>Phase 1: Decide and plan</h2>
+<p>Before any technical work, the business needs to agree why it is moving and how. These decisions shape every later step.</p>
+<ul>
+  <li><strong>Confirm the deadline you are actually working to.</strong> SAP's mainstream maintenance for the core applications of SAP Business Suite 7, including ECC 6.0, runs until the end of 2027, with optional extended maintenance until the end of 2030 at a premium of two percentage points on the existing maintenance basis (<a href="https://news.sap.com/2020/02/sap-s4hana-maintenance-2040-clarity-choice-sap-business-suite-7/">SAP press release</a>). Our guide to <a href="/blog/sap-ecc-end-of-maintenance-2027/">ECC end of maintenance in 2027</a> covers the options in more detail.</li>
+  <li><strong>Choose the approach:</strong> system conversion, new implementation or selective data transition. This is a business decision about how much process change you want, not only a technical one.</li>
+  <li><strong>Choose the deployment model</strong>: on-premise, SAP S/4HANA Cloud Private Edition (often through <a href="/services/rise-with-sap/">RISE with SAP</a>) or public cloud. Some downtime options, for example the downtime-optimized conversion to Private Edition, require specifically trained SAP experts.</li>
+  <li><strong>Pick a target release</strong> and read its Release Information Note and Restriction Note. For SAP S/4HANA 2025 these are SAP Notes 3493301 and 3549655; the Restriction Note also defines the minimum start release for a one-step conversion.</li>
+  <li><strong>Set up governance:</strong> a steering group, a named owner for every workstream (Basis, finance, logistics, development, data, testing, change) and a decision log.</li>
+  <li><strong>Walk through the SAP Roadmap Viewer</strong>, which SAP recommends to familiarise the team with the project steps of a transition to S/4HANA.</li>
+</ul>
+
+<h2>Phase 2: Assess the current system</h2>
+<p>The aim of this phase is to replace assumptions with facts about your system. SAP's <a href="https://help.sap.com/doc/2b87656c4eee4284a5eb8976c0fe88fc/2025/en-US/CONV_OP2025.pdf">Conversion Guide for SAP S/4HANA 2025</a> calls SAP Readiness Check "not mandatory, but highly recommended". In practice, we would not plan a conversion without it.</p>
+<h3>Run SAP Readiness Check for SAP S/4HANA</h3>
+<p>SAP Readiness Check is available to customers with an active SAP maintenance agreement through SAP for Me (me.sap.com/readinesscheck), and to SAP Cloud ALM customers inside Cloud ALM. Run it on production, or on a recent copy of production, because its results are based on real configuration, data and usage. According to SAP's <a href="https://help.sap.com/doc/bb0e7ba5158c424ab7ce010228bf1de1/latest/en-US/Key%20Feature%20Overview%20SAP%20Readiness%20Check.pdf">SAP Readiness Check feature overview</a>, the S/4HANA scenario covers, among other things:</p>
+<ul>
+  <li><strong>Simplification items</strong> relevant to your system, with an effort ranking and the related activities marked as mandatory, conditional or optional.</li>
+  <li><strong>Add-on compatibility</strong>: incompatible add-ons block the conversion when SUM runs.</li>
+  <li><strong>Active business functions</strong>: an active business function that is incompatible with the target release also blocks the conversion.</li>
+  <li><strong>Custom code analysis</strong>, based on the results you upload from the custom code tools.</li>
+  <li><strong>Customer Vendor Integration analysis</strong>: how many customers, vendors and contact persons are already Business Partners, and the data quality issues found.</li>
+  <li><strong>Integration</strong>: an inventory of IDocs, RFCs/BAPIs, web services, OData services, BW extractors, flat-file interfaces and SLT replication, with likely impact.</li>
+  <li><strong>Financial data quality</strong> for the general ledger, asset accounting and material ledger.</li>
+  <li><strong>Sizing</strong> and data volume management potential, and a <strong>Planned Downtime Calculator</strong>.</li>
+</ul>
+<p>If you use SAP Cloud ALM, you can turn Readiness Check findings into tasks in your Cloud ALM project, which makes the results a working backlog rather than a report that is read once.</p>
+<h3>Read the simplification items properly</h3>
+<p>Each simplification item is documented as an SAP Note. Readiness Check filters the full Simplification Item Catalog down to the items that apply to you; go through each one with the responsible functional lead and record whether it needs action before, during or after the conversion.</p>
+<h3>Turn findings into a scope and estimate</h3>
+<p>Group the findings into workstreams, flag blockers (incompatible add-ons, incompatible business functions, unconverted Business Partners), and only then commit to a timeline. This is also the point to decide what you will archive rather than convert.</p>
+
+<h2>Phase 3: Prepare the ECC system</h2>
+<p>These are the items that most often delay a conversion because they need business input, not just technical effort.</p>
+<h3>Business Partner and Customer Vendor Integration (CVI)</h3>
+<p>In S/4HANA the Business Partner is the single master data object for customers and suppliers. SAP's Readiness Check documentation states that all customers, vendors and contact persons must be synchronised with Business Partners <em>before</em> converting. An <a href="https://news.sap.com/africa/2025/10/the-sap-migration-mistake-most-companies-make/">article on SAP News Center</a> calls CVI perhaps the most common "gotcha" in S/4HANA migrations, because teams assume it happens automatically during the conversion. It does not.</p>
+<ul>
+  <li>Audit customer and vendor records for duplicates, missing data and inconsistent account groups.</li>
+  <li>Design the Business Partner set-up: roles, groupings and number ranges, mapped from your account groups.</li>
+  <li>Plan for custom fields: if you have custom fields on customer or vendor tables, the Business Partner user interface needs to be enhanced to keep using them.</li>
+  <li>Run the synchronisation in ECC, fix errors and repeat until every record is converted.</li>
+</ul>
+<h3>Maintenance Planner and system prerequisites</h3>
+<ul>
+  <li><strong>Unicode and ABAP-only:</strong> the system must be Unicode and an AS ABAP-only system. Dual-stack systems must be split first.</li>
+  <li><strong>Maintenance Planner is mandatory.</strong> It checks add-ons, active business functions and industry solutions, and blocks the conversion where there is no valid path. It produces the stack configuration file (stack.xml) that SUM needs. You can run the checks without an S/4HANA licence, but you need one to generate the stack.xml.</li>
+  <li><strong>Cross-application housekeeping</strong> from SAP's guide: check SPAM/SAINT is at patch 71 or higher, remove client 066 (SAP Note 1749142), and uninstall locally installed Fiori apps that are not released for SAP_UI 7.50.</li>
+</ul>
+<h3>Simplification Item Check (SI-Check)</h3>
+<p>The SI-Check is mandatory. Implement it with SAP Notes 2399707 and 2502552, then run report <code>/SDF/RC_START_CHECK</code> in transaction <code>SA38</code>, choose the target release and use "Check Consistency for All". Run it early and repeatedly. SUM runs it again at the start of the process and just before downtime, and stops if it finds messages with return code 8 or higher at that point. Do not ignore the yellow (return code 4) messages either: SAP's guide notes that, by default, custom table appends are not retained during the conversion, so the data in those fields is lost.</p>
+<h3>Reduce data volume and clean finance data</h3>
+<ul>
+  <li>Archive what you do not need to convert. Less data means shorter conversion runtimes and lower SAP HANA sizing.</li>
+  <li>Resolve inconsistencies in the general ledger, asset accounting and material ledger before the conversion; Readiness Check's financial data quality check shows where they are.</li>
+  <li>Close or clear what you can: open items, old purchase orders, parked documents.</li>
+</ul>
+
+<h2>Phase 4: Prepare custom code</h2>
+<p>SAP's guide calls custom code checks "the most important preparation" for your ABAP code. The checks do not catch everything, but they give you a sound basis for planning.</p>
+<ol>
+  <li><strong>Find out what is really used.</strong> Collect usage data in production over a meaningful period, including month-end and year-end.</li>
+  <li><strong>Decommission unused code.</strong> Code that is not used should be deleted, not migrated. The Custom Code Migration app can mark it out of scope.</li>
+  <li><strong>Check the remaining code</strong> against the S/4HANA simplifications with the Custom Code Migration app or the ABAP Test Cockpit (ATC), and upload the results to Readiness Check.</li>
+  <li><strong>Estimate the fixes</strong> by category, and note where ATC offers quick fixes for automated refactoring.</li>
+  <li><strong>Review modifications and enhancements</strong>, especially in areas with changed data models such as inventory management, SD pricing and finance.</li>
+</ol>
+<p>This is also a good moment to apply a clean core mindset to new development. Our article on <a href="/blog/sap-clean-core-explained/">SAP clean core</a> explains how to keep extensions out of the core going forward.</p>
+
+<h2>Phase 5: Run test conversions</h2>
+<p>SAP recommends doing the conversion in a dedicated system first, typically a copy of your development system and then of production. Each run teaches you something about the next one.</p>
+<ul>
+  <li><strong>Sandbox conversion</strong> on a copy of production: proves the path and gives you real runtimes and errors.</li>
+  <li><strong>Development conversion</strong>: collect all required changes in transport requests, including those that can only be made after the conversion, such as finance Customizing. SUM applies these transports during the production conversion.</li>
+  <li><strong>Database migration:</strong> if you are not yet on SAP HANA, use the Database Migration Option (DMO) of SUM, which combines database migration, software update and data conversion in one procedure.</li>
+  <li><strong>Downtime:</strong> measure business downtime on a production-sized copy. If it is too long, review SAP Note 2351294 on reducing technical downtime and evaluate the downtime-optimized conversion option.</li>
+  <li><strong>Mock cutovers:</strong> plan at least one full dress rehearsal that follows the real cutover plan, with timings.</li>
+</ul>
+
+<h2>Phase 6: Follow-on activities and testing</h2>
+<p>After SUM finishes, the system is technically on S/4HANA, but the work is not done.</p>
+<h3>Technical and functional follow-on</h3>
+<ul>
+  <li><strong>Finance data migration:</strong> migrate the finance Customizing and the general ledger, asset accounting, controlling and material ledger data to the new structures (see SAP Note 2332030).</li>
+  <li><strong>Custom code adaptation:</strong> adjust modifications with <code>SPDD</code>, <code>SPAU</code> and <code>SPAU_ENH</code>, then run ATC with check variant <code>S4HANA_READINESS</code> in the converted system. Use ABAP Development Tools for Eclipse, because SE80 does not support all objects, such as CDS views.</li>
+  <li><strong>Silent data migrations:</strong> some application data is migrated after the conversion while users work. Check transaction <code>SDM_MON</code> and make sure every silent data migration finishes in every client.</li>
+  <li><strong>Roles and Fiori:</strong> adjust business roles for changed transactions and map them to Fiori catalogs and launchpad roles.</li>
+  <li><strong>Output management and interfaces:</strong> test every interface flagged in the integration analysis. Our <a href="/services/sap-integration/">SAP integration</a> team often finds that interfaces are the least documented part of a landscape.</li>
+</ul>
+<h3>Testing</h3>
+<ul>
+  <li><strong>Unit and integration testing</strong> of end-to-end processes, not individual transactions: order to cash, procure to pay, record to report, plan to produce.</li>
+  <li><strong>Data validation:</strong> SAP's Data Transition Validation tool compares business reports before and after the conversion. Agree the reports with the business and your auditors in advance.</li>
+  <li><strong>Regression and performance testing</strong>, especially for custom reports and heavy batch jobs.</li>
+  <li><strong>User acceptance testing</strong> with formal sign-off by process owners.</li>
+  <li><strong>Training</strong> for changed processes and new Fiori apps. For purchasing and inventory, our <a href="/blog/sap-mm-interview-questions/">SAP MM interview questions</a> article summarises what changed from ECC.</li>
+</ul>
+
+<h2>Phase 7: Cutover, go-live and hypercare</h2>
+<ul>
+  <li><strong>Freeze changes</strong> in the old system and agree the exact downtime window with the business.</li>
+  <li><strong>Final pre-checks:</strong> rerun the SI-Check and resolve any new inconsistencies; confirm backups and the fall-back plan.</li>
+  <li><strong>Run the production conversion</strong> following the rehearsed cutover plan, step by step, with sign-offs.</li>
+  <li><strong>Validate before releasing users:</strong> balances, stock values, open items and the agreed validation reports.</li>
+  <li><strong>Go/no-go decision</strong> by the steering group, based on evidence, not the clock.</li>
+  <li><strong>Hypercare:</strong> a defined period with extended support cover, daily issue reviews and a clear handover to your support organisation.</li>
+  <li><strong>Clean up</strong> obsolete data after the conversion, as SAP's guide describes, once you are sure it is no longer needed.</li>
+</ul>
+
+<h2>Common mistakes to avoid</h2>
+<ul>
+  <li><strong>Starting CVI late.</strong> It is a business data project and needs months, not days.</li>
+  <li><strong>Treating Readiness Check as a one-off.</strong> Rerun it as you fix items and use it to track progress.</li>
+  <li><strong>Migrating unused custom code.</strong> Every object you delete is one you do not have to fix and test.</li>
+  <li><strong>Skipping a full-size test conversion.</strong> Runtimes and data errors on a small copy do not predict production.</li>
+  <li><strong>Ignoring yellow SI-Check messages.</strong> They do not block SUM, but they can mean lost data or changed behaviour.</li>
+  <li><strong>Underestimating interfaces and testing.</strong> Most go-live issues show up at the edges of the system.</li>
+</ul>
+
+<h2>Key takeaways</h2>
+<ul>
+  <li>Follow SAP's sequence: plan, assess, prepare, test conversions, follow-on work, then cutover.</li>
+  <li>Readiness Check is optional but in practice essential; the SI-Check and Maintenance Planner are mandatory.</li>
+  <li>Business Partner conversion must be finished in ECC before the conversion can run.</li>
+  <li>Reduce data and custom code before converting; it shortens every later phase.</li>
+  <li>Check every SAP Note and release-specific detail against the guides for your target release, because SAP updates them regularly.</li>
+</ul>
+<p>If you would like an experienced team to review your Readiness Check results or plan your conversion, see our <a href="/services/sap-s4hana-migration/">SAP S/4HANA migration services</a> or <a href="/contact/">get in touch</a>.</p>
+    <h2>Frequently asked questions</h2><div class="faq inline-faq"><details><summary>What is the first step in an SAP S/4HANA migration?<span class="plus"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>Run SAP Readiness Check for SAP S/4HANA on a copy of your production data. It shows the relevant simplification items, add-on and business function compatibility, custom code impact, sizing and Business Partner status, which together give you a realistic scope before you commit to a plan.</p></details><details><summary>Is Customer Vendor Integration mandatory before converting to S/4HANA?<span class="plus"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>Yes, for a system conversion. All customers, vendors and contact persons must be synchronised with Business Partners in the ECC system before the conversion. It is usually a project in its own right, because it exposes duplicate and incomplete master data.</p></details><details><summary>Is SAP Readiness Check mandatory?<span class="plus"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>No. SAP describes it as not mandatory but highly recommended. The Simplification Item Check (report /SDF/RC_START_CHECK) is mandatory, because the Software Update Manager runs it again during the conversion and stops if serious inconsistencies remain.</p></details><details><summary>How long does an S/4HANA migration take?<span class="plus"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>It depends on scope, data volume, custom code and the approach you choose, so there is no reliable standard figure. Run SAP Readiness Check and at least one test conversion before committing to a date; its Planned Downtime Calculator also gives a first view of technical downtime.</p></details></div>
+  </article>
+  <aside class="sidebar">
+    <div class="side-box"><h2 class="side-h">Related services</h2><ul class="side-nav"><li><a href="/services/sap-s4hana-implementation/"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 15c-1.5 1.5-2 5-2 5s3.5-.5 5-2"/><path d="M9 15l-3-3c1-4 4-9 13-9 0 9-5 12-9 13z"/><circle cx="15" cy="9" r="1.6"/></svg>SAP S/4HANA Implementation</a></li><li><a href="/services/sap-s4hana-migration/"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h12l-3-3"/><path d="M20 17H8l3 3"/></svg>SAP S/4HANA Migration &amp; Upgrades</a></li></ul></div>
+    
+    <div class="side-box side-cta"><div class="aurora" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div><div class="grid-overlay" aria-hidden="true"></div><div class="rel"><h2 class="side-h">Talk to an expert</h2>
+      <p>Get a free 30-minute review of your SAP roadmap.</p>
+      <a href="/contact/" class="btn btn-light btn-block">Book a call <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a></div></div>
+  </aside>
+</div></section>
+<section class="section soft"><div class="container"><div class="section-head center reveal"><p class="eyebrow">Keep reading</p><h2>More from <em>the blog</em></h2></div><div class="post-grid"><a class="post-card spot reveal" href="/blog/sap-ecc-end-of-maintenance-2027/">
+  <div class="post-meta"><span class="tag">Migration</span><span>4 min read</span></div>
+  <h3>SAP ECC End of Maintenance in 2027: What It Means and What to Do Next</h3><p>Mainstream maintenance for SAP ECC ends on 31 December 2027. Here is what changes, what your options are and how to plan a move that does not rush your business.</p>
+  <span class="post-foot"><time datetime="2026-11-07">7 Nov 2026</time><span class="more">Read <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></span></a><a class="post-card spot reveal" href="/blog/brownfield-vs-greenfield-s4hana-migration/">
+  <div class="post-meta"><span class="tag">Migration</span><span>4 min read</span></div>
+  <h3>Brownfield vs Greenfield vs Selective Data Transition: Choosing Your S/4HANA Approach</h3><p>The three ways to get to S/4HANA compared side by side, with the questions that decide which one is right for you.</p>
+  <span class="post-foot"><time datetime="2026-11-07">7 Nov 2026</time><span class="more">Read <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></span></a><a class="post-card spot reveal" href="/blog/sap-mm-interview-questions/">
+  <div class="post-meta"><span class="tag">Careers &amp; Skills</span><span>9 min read</span></div>
+  <h3>SAP MM Interview Questions and Answers, Including What Changed in S/4HANA</h3><p>The SAP MM questions that come up again and again in interviews, with concise answers, plus the S/4HANA changes such as MATDOC, Business Partner and MRP Live that separate strong candidates.</p>
+  <span class="post-foot"><time datetime="2026-11-13">13 Nov 2026</time><span class="more">Read <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></span></a></div></div></section>
+
+<section class="section cta-section"><div class="container">
+  <div class="cta-card reveal">
+    <div class="aurora" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div><div class="grid-overlay" aria-hidden="true"></div>
+    <div class="cta-content">
+      <p class="pill pill-dark"><span class="dot"></span>Free 30-minute consultation</p>
+      <h2>Let's map your next <em>SAP move</em>.</h2>
+      <p>Talk to a senior consultant about your landscape, timeline and options. Practical advice, no sales pitch.</p>
+      <div class="hero-actions center-x">
+        <a href="/contact/" class="btn btn-light">Book your consultation <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
+        <a href="mailto:info@oddesyconsultingandservices.com" class="btn btn-ghost"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6 8.5-6"/></svg>info@oddesyconsultingandservices.com</a>
+      </div>
+    </div>
+  </div>
+</div></section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-about">
+      <a href="/" class="brand"><img src="/assets/img/logo-mark.svg" alt="" width="34" height="34">
+      <span class="brand-text">Oddesy<span>Consulting &amp; Services</span></span></a>
+      <p>Independent SAP consultancy for implementation, migration, integration and support.</p>
+      <a class="social" href="https://www.linkedin.com/" rel="noopener" aria-label="LinkedIn"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg></a>
+    </div>
+    <div><h2 class="footer-h">Services</h2><ul><li><a href="/services/sap-s4hana-implementation/">S/4HANA Implementation</a></li><li><a href="/services/rise-with-sap/">RISE with SAP</a></li><li><a href="/services/sap-s4hana-migration/">S/4HANA Migration &amp; Upgrades</a></li><li><a href="/services/sap-integration/">SAP Integration</a></li><li><a href="/services/sap-support-ams/">SAP Support &amp; AMS</a></li><li><a href="/services/sap-btp-development/">BTP &amp; Development</a></li><li><a href="/services/sap-staffing/">Staffing &amp; Augmentation</a></li></ul></div>
+    <div><h2 class="footer-h">Company</h2><ul>
+      <li><a href="/about/">About</a></li><li><a href="/industries/">Industries</a></li>
+      <li><a href="/blog/">Blog</a></li><li><a href="https://youronementor.com" target="_blank" rel="noopener">Training <span class="ext"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span><span class="sr">(opens in a new tab)</span></a></li>
+      <li><a href="/careers/">Careers</a></li><li><a href="/contact/">Contact</a></li>
+      <li><a href="/privacy-policy/">Privacy</a></li></ul></div>
+    <div><h2 class="footer-h">Get in touch</h2><ul class="footer-contact">
+      <li><a href="mailto:info@oddesyconsultingandservices.com"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6 8.5-6"/></svg>info@oddesyconsultingandservices.com</a></li>
+      <li><a href="tel:+000000000000"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z"/></svg>+00 0000 000000</a></li>
+      <li><span><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Your street address, City, State, Postal code, Country</span></li></ul></div>
+  </div>
+  <div class="container footer-bottom">
+    <p>&copy; 2026 Oddesy Consulting and Services</p>
+    <p>SAP, S/4HANA, SAP BTP, RISE with SAP and other SAP products are trademarks of SAP SE. Oddesy is an independent consultancy.</p>
+  </div>
+  <div class="wordmark" aria-hidden="true">ODDESY</div>
+</footer>
+<script>window.ODDESY = {"formEndpoint": "", "email": "info@oddesyconsultingandservices.com"};</script>
+<script src="/assets/js/site.js?v=9ad8ba4d" defer></script>
+</body>
+</html>

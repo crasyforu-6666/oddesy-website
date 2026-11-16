@@ -1,0 +1,120 @@
+title: SAP EWM vs WM: Differences and What to Do Now
+description: SAP EWM vs WM explained: how LE-WM, Stock Room Management and embedded EWM differ in S/4HANA, what the deadlines mean, and how to choose your path.
+h1: SAP EWM vs WM: Key Differences and How to Plan the Move in S/4HANA
+summary: LE-WM is no longer the target for warehouse management in S/4HANA. This guide compares WM, Stock Room Management and basic and advanced EWM, and shows how to decide where your warehouses should go.
+date: 2026-11-16
+updated: 2026-11-16
+category: Logistics & Supply Chain
+keyword: sap ewm vs wm
+services: sap-s4hana-migration, sap-s4hana-implementation
+faq: Is SAP WM available in S/4HANA? || Classic Warehouse Management (LE-WM) is only available in S/4HANA as part of the compatibility packs, which give time-limited usage rights. For on-premise contracts, SAP ended those rights for most packs at the end of May 2026. Its core functions continue as Stock Room Management.
+faq: What is the difference between SAP WM and EWM? || WM (LE-WM) manages stock at bin level with transfer orders and is part of SAP ERP. EWM is SAP's strategic warehouse solution, with a wider scope such as slotting, wave management, labour management, yard management, cross-docking and automation control. In S/4HANA it can run embedded or as a separate decentralised system.
+faq: What is Stock Room Management? || Stock Room Management is part of SAP S/4HANA for small or low-complexity warehouses. It reuses major parts of LE-WM, but excludes Task and Resource Management, the warehouse control unit interface, value-added services, yard management, cross-docking, wave management and decentral WM.
+faq: Do I need a separate licence for EWM? || SAP's feature scope description places basic warehouse management within SAP S/4HANA Enterprise Management, while extended (advanced) warehouse management sits in the Enhanced LoB Functions, for which SAP says you might need a separate licence. Confirm your position with your SAP account executive.
+---
+<p>If your warehouses run on SAP Warehouse Management (LE-WM) in ECC, the move to SAP S/4HANA forces a decision. LE-WM is not the target architecture in S/4HANA. You have three realistic destinations: <strong>Stock Room Management</strong>, which keeps most of WM's core for simple warehouses, <strong>basic warehouse management in embedded EWM</strong>, or <strong>advanced EWM</strong>, embedded or decentralised. This guide explains the differences, the deadlines that apply and how to choose.</p>
+
+<h2>WM and EWM in one minute</h2>
+<p><strong>SAP Warehouse Management (WM)</strong> has been part of SAP ERP since the R/3 days. It manages stock at storage bin level and controls movements with transfer orders. <strong>SAP Extended Warehouse Management (EWM)</strong> was released in 2005 as part of SAP's service parts solution, and has since become SAP's strategic warehouse application. According to <a href="https://learning.sap.com/courses/processes-in-sap-s-4hana-ewm/differentiating-the-sap-solutions-for-warehouse-management">SAP Learning</a>, embedded EWM has been included in S/4HANA since release 1610, so no separate installation is needed.</p>
+<p>EWM was designed as a decentralised warehouse system. Even when embedded, it is technically decoupled: inbound and outbound deliveries are passed from the ERP side to the EWM side of the same system, although some processes can now work without deliveries, depending on the release.</p>
+
+<h2>Your options in SAP S/4HANA</h2>
+<p>In S/4HANA, the warehouse solution is decided per warehouse number, which you assign to combinations of plant and storage location. That means you can run different solutions in parallel, for example Stock Room Management in a small spare-parts store and advanced EWM in your distribution centre.</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Option</th><th>What it is</th><th>Best for</th><th>Licensing position (per SAP's feature scope description)</th></tr></thead>
+  <tbody>
+    <tr><td>Inventory management only</td><td>Stock by plant and storage location, no bins</td><td>Sites that only need quantities, not locations</td><td>Part of S/4HANA</td></tr>
+    <tr><td>LE-WM (compatibility pack)</td><td>Classic WM running in S/4HANA</td><td>Temporary bridge only</td><td>Time-limited compatibility pack rights</td></tr>
+    <tr><td>Stock Room Management</td><td>Successor that reuses major parts of LE-WM</td><td>Small, low-complexity warehouses</td><td>SAP S/4HANA Enterprise Management</td></tr>
+    <tr><td>Embedded EWM, basic</td><td>EWM engine with basic warehouse management scope</td><td>Standard warehouses that want a future-proof platform</td><td>SAP S/4HANA Enterprise Management</td></tr>
+    <tr><td>Embedded EWM, advanced</td><td>Full EWM scope in the S/4HANA system</td><td>Complex, high-volume or automated warehouses</td><td>Enhanced LoB Functions: may need a separate licence</td></tr>
+    <tr><td>Decentralised EWM</td><td>EWM in its own S/4HANA-based system</td><td>Very high volumes, 24/7 operations, multiple ERP systems</td><td>Check with SAP</td></tr>
+  </tbody>
+</table></div>
+<p>The licensing column reflects where each capability sits in the <a href="https://help.sap.com/doc/e2048712f0ab45e791e6d15ba5e20c68/2025/en-US/FSD_OP2025_latest.pdf">SAP S/4HANA 2025 Feature Scope Description</a>. SAP notes that features in the Enhanced LoB Functions chapter might need a separate licence; your contract and your SAP account executive have the final word.</p>
+
+<h2>What happens to LE-WM: the deadlines</h2>
+<ul>
+  <li><strong>In ECC:</strong> WM is part of SAP ERP 6.0, so it follows the Business Suite 7 timeline: mainstream maintenance until the end of 2027, with optional extended maintenance to the end of 2030.</li>
+  <li><strong>In S/4HANA on-premise:</strong> LE-WM is available only through the compatibility packs. For most packs, usage rights ended on 31 December 2025, and SAP then announced a <a href="https://news.sap.com/2025/12/sap-announced-final-transition-period-for-compatibility-packs-for-sap-s-4hana-on-premise/">final transition period to the end of May 2026</a>. If you are still using LE-WM in an S/4HANA on-premise system, raise it with SAP now. The governing document is SAP Note 2269324.</li>
+  <li><strong>SCM-based EWM 9.5:</strong> if you already run EWM on the older SCM platform, SAP Learning states that its mainstream maintenance was planned to end on 31 December 2025. Its successor is EWM based on S/4HANA.</li>
+</ul>
+<p>Other contract models can have different dates, so check SAP Note 2269324 against your own agreement rather than relying on general articles.</p>
+
+<h2>Stock Room Management: WM's successor for simple warehouses</h2>
+<p>Stock Room Management reuses major parts of LE-WM and can be used beyond the compatibility pack deadline. For a team that knows WM, it will feel familiar: it still works with transfer orders. SAP's feature scope description lists its main capabilities as:</p>
+<ul>
+  <li>Stock by storage bin, storage unit, batch, stock status and stock attributes.</li>
+  <li>Putaway and picking transfer orders with putaway and removal strategies.</li>
+  <li>Inbound from suppliers, production, other company sites and customer returns; outbound to customers, production, cost centres and supplier returns.</li>
+  <li>RF transactions for mobile execution, internal movements and replenishment.</li>
+  <li>Annual, continuous and cycle-count physical inventory, plus standard reporting.</li>
+</ul>
+<p>What it does <strong>not</strong> include matters more. According to SAP Learning, the following LE-WM components are not part of Stock Room Management:</p>
+<ul>
+  <li>Task and Resource Management (TRM)</li>
+  <li>Warehouse control unit interface (WM-LSR), used for automation via IDocs</li>
+  <li>Value-added services</li>
+  <li>Yard management</li>
+  <li>Cross-docking</li>
+  <li>Wave management</li>
+  <li>Decentral WM</li>
+</ul>
+<p>For each of these, SAP's Simplification List names EWM as the functional equivalent. So if your WM set-up uses any of them, Stock Room Management is not a like-for-like move.</p>
+
+<h2>EWM: basic versus advanced</h2>
+<h3>Basic warehouse management</h3>
+<p>Basic warehouse management uses the EWM engine and data model, with warehouse tasks rather than transfer orders. According to SAP's feature scope description, it already covers a lot:</p>
+<ul>
+  <li>Bin-level stock, including stock in intermediate locations, on resources and in nested handling units.</li>
+  <li>Batches, serial numbers and catch weight products; consignment, project and customer order stock.</li>
+  <li>Multi-step putaway (unloading, quality inspection, deconsolidation, final putaway) and putaway and removal strategies.</li>
+  <li>Outbound processing for customers, production supply, Kanban, maintenance and service orders.</li>
+  <li>RF-based mobile execution, the warehouse management monitor, and several physical inventory methods.</li>
+  <li>Interfaces to external warehouse control systems for warehouse tasks and confirmations.</li>
+</ul>
+<h3>Advanced (extended) warehouse management</h3>
+<p>Advanced EWM adds the capabilities that complex sites need. SAP's feature scope description lists, among others:</p>
+<ul>
+  <li><strong>Slotting</strong> to assign the best bin type based on product characteristics.</li>
+  <li><strong>Wave management</strong> and pick path optimisation.</li>
+  <li><strong>Material flow control</strong>: direct communication with programmable logic controllers for automated equipment.</li>
+  <li><strong>Labour management</strong> with engineered labour standards.</li>
+  <li><strong>Yard management</strong>, <strong>dock appointment scheduling</strong> and shipping and receiving.</li>
+  <li><strong>Value-added services</strong> and <strong>kitting</strong>, <strong>cross-docking</strong> and <strong>cartonization planning</strong>.</li>
+  <li><strong>Warehouse billing</strong> for logistics service providers.</li>
+</ul>
+
+<h2>Embedded or decentralised EWM?</h2>
+<p>Embedded EWM runs in the same S/4HANA system as finance, sales and procurement. That removes a separate system and its interfaces, and gives real-time integration. Decentralised EWM runs in its own S/4HANA-based system, with only EWM active, connected to an enterprise management system.</p>
+<p>SAP Learning gives the traditional reasons for decentralising: very high throughput needing fast response times, and warehouses that must run 24 hours a day regardless of whether other systems are available. A decentralised EWM based on S/4HANA can connect to SAP ERP 6.0 from enhancement package 3, or to S/4HANA. That makes it an option for moving warehouses ahead of the ERP. SAP Note 1606493 covers deployment best practices, and the release information notes for your release list the differences between embedded and decentralised EWM.</p>
+<p>If you run LE-WM as a decentral WM system today, the Simplification List is explicit: that system must not be converted to S/4HANA. You either keep it on ECC (within ECC's maintenance timeline) or move to EWM.</p>
+
+<h2>How to choose: a practical decision path</h2>
+<ol>
+  <li><strong>Inventory each warehouse.</strong> List which WM functions it really uses: TRM, wave management, cross-docking, yard management, value-added services, IDoc links to automation, decentral WM.</li>
+  <li><strong>If it uses none of them</strong> and the operation is simple and manual, Stock Room Management is the smallest change. Weigh that against the long-term value of moving straight to EWM.</li>
+  <li><strong>If it uses any of them</strong>, plan for EWM. Basic scope may be enough; check each requirement against the feature scope description for your release.</li>
+  <li><strong>If it is automated, very high volume or must survive ERP downtime</strong>, evaluate advanced EWM and the decentralised option.</li>
+  <li><strong>Clarify licensing early</strong> with SAP, especially for advanced features.</li>
+  <li><strong>Plan the custom code.</strong> SAP requires you to remove usages of the replaced WM components from custom code once you migrate, or at the latest when the compatibility rights expire. The S/4HANA custom code checks in the ABAP Test Cockpit show where they are.</li>
+  <li><strong>Plan the data and the people.</strong> Moving to EWM means new master data, a new warehouse structure and different terminology, such as warehouse tasks instead of transfer orders. SAP provides tools to support moving data from LE-WM to EWM; confirm their current scope for your release with SAP. Budget for process design, testing and RF and user training.</li>
+</ol>
+<p>The warehouse decision is part of the wider S/4HANA plan. Our <a href="/blog/sap-s4hana-migration-checklist/">S/4HANA migration checklist</a> shows where it fits, and our guide to <a href="/blog/sap-ecc-end-of-maintenance-2027/">ECC end of maintenance</a> covers the ECC timeline.</p>
+
+<h2>Common mistakes</h2>
+<ul>
+  <li><strong>Assuming Stock Room Management is WM under a new name.</strong> It is a subset; check the excluded components first.</li>
+  <li><strong>Leaving the warehouse until after the core conversion</strong> while relying on compatibility pack rights that have a fixed end.</li>
+  <li><strong>Treating EWM as a technical migration.</strong> It changes how the warehouse works and needs warehouse supervisors in the design.</li>
+  <li><strong>Ignoring automation interfaces.</strong> IDoc-based WCU links do not carry over to Stock Room Management.</li>
+</ul>
+
+<h2>Key takeaways</h2>
+<ul>
+  <li>LE-WM is not the target in S/4HANA; on-premise compatibility rights for most packs ended in May 2026.</li>
+  <li>Stock Room Management suits simple warehouses and reuses much of WM, but leaves out TRM, waves, cross-docking, yard, VAS, WCU and decentral WM.</li>
+  <li>EWM is SAP's strategic warehouse solution, available as basic or advanced, embedded or decentralised.</li>
+  <li>Decide per warehouse, based on the functions it really uses, and confirm licensing with SAP.</li>
+</ul>
+<p>Need help assessing your warehouses or planning the move? See our <a href="/services/sap-s4hana-migration/">S/4HANA migration services</a> or <a href="/contact/">contact us</a>. If your team needs to build EWM skills, <a href="https://youronementor.com">youronementor.com</a> offers SAP MM and EWM training.</p>

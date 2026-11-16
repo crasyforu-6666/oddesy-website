@@ -55,7 +55,9 @@
    "category": "Logistics & Supply Chain",
    "intent": "informational",
    "services": "sap-s4hana-migration",
-   "status": "todo"
+   "status": "published",
+   "slug": "sap-ewm-vs-wm",
+   "published": "2026-11-16"
   },
   {
    "keyword": "sap pi po end of maintenance",

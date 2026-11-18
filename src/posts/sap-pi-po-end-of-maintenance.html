@@ -1,0 +1,103 @@
+title: SAP PI/PO End of Maintenance: 2027, 2030 and Next Steps
+description: SAP PI/PO end of maintenance explained: what the 2027 and 2030 dates mean, how SAP's migration tools work, and a practical plan to move to Integration Suite.
+h1: SAP PI/PO End of Maintenance: What 2027 and 2030 Mean and How to Move to SAP Integration Suite
+summary: Mainstream maintenance for SAP Process Orchestration 7.5 ends in 2027. Here is what that means, what SAP's assessment and migration tools can and cannot do, and how to plan the move.
+date: 2026-11-18
+updated: 2026-11-18
+category: Integration
+keyword: sap pi po end of maintenance
+services: sap-integration, sap-btp-development
+faq: When does SAP PI/PO maintenance end? || SAP PI and PO 7.5 follow SAP NetWeaver 7.5: mainstream maintenance until the end of 2027, with the option of extended maintenance until the end of 2030. Confirm the details for your contract in SAP Note 1648480 and with SAP.
+faq: Will SAP PO stop working after 2027? || No. The software does not switch off when mainstream maintenance ends, but standard support changes unless you take extended maintenance. The risk is running a critical integration platform with shrinking support.
+faq: What replaces SAP PI/PO? || SAP positions SAP Integration Suite, on SAP Business Technology Platform, as the successor. For scenarios that must run inside your own network, Integration Suite offers Edge Integration Cell, a runtime you deploy in your private landscape while design and monitoring stay in the cloud.
+faq: Can SAP PO interfaces be migrated automatically? || Partly. SAP's Migration Assessment estimates effort per integrated configuration object, and the Migration Tooling in Cloud Integration can generate integration flows from supported ICOs. Unsupported adapters and steps, many Java mappings and some ABAP proxy features still need manual work.
+---
+<p>If your company runs SAP Process Integration (PI) or SAP Process Orchestration (PO), the key date is <strong>the end of 2027</strong>. That is when mainstream maintenance for SAP NetWeaver 7.5, and therefore for PI and PO 7.5, ends. Extended maintenance is available until the end of 2030. The software will not stop working on 1 January 2028, but every year you stay on it, you run your interfaces on a platform SAP is winding down. SAP's successor is <strong>SAP Integration Suite</strong>, and SAP provides tools to assess and partly automate the move.</p>
+
+<h2>The dates, and what they actually mean</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>Date</th><th>What happens</th><th>What it means for you</th></tr></thead>
+  <tbody>
+    <tr><td>Until end of 2027</td><td>Mainstream maintenance for SAP NetWeaver 7.5, including PI and PO 7.5</td><td>Normal support, fixes and updates under your existing contract</td></tr>
+    <tr><td>2028 to end of 2030</td><td>Optional extended maintenance</td><td>Support continues if you buy it; plan to finish migrating in this window at the latest</td></tr>
+    <tr><td>After 2030</td><td>Extended maintenance ends</td><td>Treat 2030 as the hard planning limit and confirm any remaining options with SAP</td></tr>
+  </tbody>
+</table></div>
+<p>SAP's training material for the migration states the reason plainly: SAP NetWeaver 7.5 is supported in mainstream maintenance until the end of 2027, with the option of extended maintenance until the end of 2030 (<a href="https://learning.sap.com/courses/sap-process-orchestration-to-sap-integration-suite-migration/understanding-the-rationale-for-a-migration">SAP Learning</a>). The same 2027/2030 pattern applies to SAP ECC, which we cover in our guide to <a href="/blog/sap-ecc-end-of-maintenance-2027/">ECC end of maintenance</a>. Maintenance terms are contract-specific, so check SAP Note 1648480 and speak to SAP before committing to a timeline.</p>
+<p>Older releases, such as PI 7.31 and 7.40, have their own maintenance dates. If you still run one of them, check its status in the SAP Product Availability Matrix now.</p>
+
+<h2>Why waiting is risky</h2>
+<ul>
+  <li><strong>Interfaces are business-critical.</strong> Orders, invoices, bank files and warehouse messages often all pass through PO. An unsupported integration layer is a risk to the whole business, not only to IT.</li>
+  <li><strong>Migration takes longer than expected.</strong> Every interface has to be assessed, rebuilt or migrated, tested end to end with partners, and cut over. Large landscapes take many months.</li>
+  <li><strong>It interacts with S/4HANA.</strong> Many companies are converting ERP at the same time, so integration work competes for the same people and test windows. Our <a href="/blog/sap-s4hana-migration-checklist/">S/4HANA migration checklist</a> shows where interfaces fit.</li>
+</ul>
+
+<h2>Your target options</h2>
+<h3>SAP Integration Suite (cloud)</h3>
+<p>Integration Suite runs on SAP Business Technology Platform. Besides Cloud Integration (the successor to PO's message processing), it includes API management, event-driven integration, B2B trading partner management and pre-built integration content for SAP and non-SAP applications. For most companies this is the main target.</p>
+<h3>Edge Integration Cell (hybrid)</h3>
+<p>Some interfaces must stay inside the company network, for security, compliance or because both ends are on premise. <strong>Edge Integration Cell</strong> lets you design and monitor integrations in Integration Suite while deploying and running them in your private landscape. SAP explicitly positions it as a migration path for PI customers with ground-to-ground scenarios. It does not yet match Cloud Integration feature for feature: SAP lists restrictions, including B2B scenarios and monitoring, the partner directory, the RFC receiver adapter and custom or partner adapters. Check SAP Note 3391207 for the current list before you design around it.</p>
+<h3>Third-party integration platforms</h3>
+<p>Some organisations use the deadline to review their integration platform more widely. That is a valid choice, but weigh it against the SAP-specific content, adapters and tools you would give up.</p>
+
+<h2>How SAP's migration tools work</h2>
+<p>SAP provides two capabilities in Integration Suite, which should be used in this order.</p>
+<h3>1. Migration Assessment</h3>
+<p>Migration Assessment connects to the Enterprise Services Repository and Integration Directory of your PO system and extracts your design-time objects. According to <a href="https://learning.sap.com/courses/sap-process-orchestration-to-sap-integration-suite-migration/using-migration-assessment-tools">SAP Learning</a>, it then:</p>
+<ul>
+  <li>evaluates each scenario for migration status, showstoppers and possible workarounds;</li>
+  <li>estimates the effort for each integrated configuration object (ICO) as a T-shirt size;</li>
+  <li>supports PO 7.31 SP28 and above, 7.40 SP23 and above, and 7.50 SP06 and above.</li>
+</ul>
+<p>It must be activated in the SAP BTP cockpit, and users need the right authorisations. Connectivity to the on-premise PO system goes through SAP Cloud Connector.</p>
+<h3>2. Migration Tooling</h3>
+<p>Migration Tooling is a pattern-based feature in Cloud Integration that generates integration flows from your PO objects using templates. SAP describes it as semi-automated: where a scenario matches a supported pattern, much of the work is automated, but manual changes may still be needed. According to SAP Learning, the current scope is:</p>
+<ul>
+  <li><strong>Objects:</strong> integrated configuration objects (ICOs).</li>
+  <li><strong>Channels:</strong> HTTP, REST, SOAP, IDoc, FTP, XI and SFTP.</li>
+  <li><strong>Flow steps:</strong> message mapping, Java mapping, XSLT mapping, function libraries, imported archives, XML/JSON converters and routing.</li>
+  <li><strong>Events:</strong> timer.</li>
+</ul>
+<p>Anything outside that list, such as other adapters or classic configuration scenarios that are not ICOs, needs more manual effort. Check the current scope in SAP's <a href="https://help.sap.com/docs/integration-suite/sap-integration-suite/migration-tooling">Migration Tooling documentation</a>, because SAP extends it over time.</p>
+
+<h2>Technical topics that need special attention</h2>
+<h3>ABAP proxies</h3>
+<p>ABAP proxy interfaces can be migrated using the XI adapter in Integration Suite and continue to run. SAP lists limitations, however: proxy generation with SPROXY against Cloud Integration is not supported, acknowledgements are not supported, and Exactly Once In Order (EOIO) is not supported without a custom solution. Plan where you will maintain proxy definitions once the Enterprise Services Repository is gone.</p>
+<h3>Java mappings</h3>
+<p>Small Java mappings can be rewritten as Groovy scripts; more complex ones can sometimes be reused through a Groovy script wrapper. SAP warns that some use cases may not work with the wrapper, including binary attachments, Microsoft Office documents, encryption and decryption, mapping lookups, file system operations, message signing and dynamic headers. Retest every migrated mapping.</p>
+<h3>Asynchronous processing</h3>
+<p>Cloud Integration offers a pipeline concept that mimics PO's processing pipelines for asynchronous scenarios, which helps when you migrate many similar interfaces.</p>
+<h3>Custom adapters</h3>
+<p>Custom or partner adapters built for PO do not move across automatically. Each one needs a replacement plan.</p>
+
+<h2>A practical migration plan</h2>
+<ol>
+  <li><strong>Inventory the landscape.</strong> List every interface with its sender, receiver, adapter, volume, business owner and criticality. Mark the ones that are no longer used.</li>
+  <li><strong>Run Migration Assessment</strong> to classify each ICO and size the effort.</li>
+  <li><strong>Decide the target per interface:</strong> Cloud Integration, Edge Integration Cell, SAP pre-built content, or retire. SAP notes that pre-built content for S/4HANA can remove the need to migrate some scenarios at all.</li>
+  <li><strong>Stop building on PO.</strong> SAP recommends that new integrations, even with ECC, be built on Integration Suite to avoid adding to the migration backlog.</li>
+  <li><strong>Choose an approach:</strong> move interfaces as they are (brownfield), redesign them (greenfield), or combine the two. Most landscapes end up mixed.</li>
+  <li><strong>Migrate in waves</strong>, starting with simple, high-volume patterns that the Migration Tooling supports, to build skills and templates.</li>
+  <li><strong>Test end to end</strong>, including partners, error handling, monitoring and alerting, not only message mapping.</li>
+  <li><strong>Run in parallel</strong> during the transition. SAP expects many customers to run PO and Integration Suite side by side until migration is complete.</li>
+  <li><strong>Decommission PO</strong> once the last interface has moved and the support model for Integration Suite is in place.</li>
+</ol>
+
+<h2>Common mistakes</h2>
+<ul>
+  <li><strong>Treating it as a technical lift and shift.</strong> Many interfaces can be simplified or replaced by standard APIs.</li>
+  <li><strong>Skipping the inventory.</strong> Unused and undocumented interfaces inflate the scope and the test effort.</li>
+  <li><strong>Assuming the tools migrate everything.</strong> They speed up supported patterns; the rest is project work.</li>
+  <li><strong>Forgetting operations.</strong> Monitoring, alerting, certificate handling and transports work differently on Integration Suite, so plan the support model early.</li>
+  <li><strong>Leaving it until 2030.</strong> Extended maintenance buys time at extra cost; it is not a plan.</li>
+</ul>
+
+<h2>Key takeaways</h2>
+<ul>
+  <li>PI/PO 7.5 mainstream maintenance ends at the end of 2027; extended maintenance runs to the end of 2030.</li>
+  <li>SAP Integration Suite is the successor; Edge Integration Cell covers scenarios that must run on premise, with some restrictions.</li>
+  <li>Migration Assessment sizes the work; Migration Tooling automates supported ICO patterns. Proxies, Java mappings and custom adapters need attention.</li>
+  <li>Start with an inventory, build new interfaces on Integration Suite now, and migrate in waves.</li>
+</ul>
+<p>If you want an experienced team to assess your PO landscape or run the migration, see our <a href="/services/sap-integration/">SAP integration services</a> and <a href="/services/sap-btp-development/">SAP BTP development</a>, or <a href="/contact/">contact us</a>.</p>

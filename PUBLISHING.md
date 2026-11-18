@@ -102,6 +102,10 @@ Fix every reported problem and re-run until it passes. Then:
 scripts/publish.sh deploy
 ```
 
+**Auto-approve (owner's standing instruction, 18 November 2026):** deploy each post as soon as it
+passes the checks, without waiting for the owner's approval. Do not hold a passing post on a review
+branch. If a post cannot meet this standard, still publish nothing and report why.
+
 If the check cannot be made to pass, do **not** deploy. Revert your changes and report the problem.
 
 ## 7. Replenishing the topic plan

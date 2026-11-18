@@ -115,7 +115,7 @@ faq: How long does an S/4HANA migration take? || It depends on scope, data volum
   <li><strong>Custom code adaptation:</strong> adjust modifications with <code>SPDD</code>, <code>SPAU</code> and <code>SPAU_ENH</code>, then run ATC with check variant <code>S4HANA_READINESS</code> in the converted system. Use ABAP Development Tools for Eclipse, because SE80 does not support all objects, such as CDS views.</li>
   <li><strong>Silent data migrations:</strong> some application data is migrated after the conversion while users work. Check transaction <code>SDM_MON</code> and make sure every silent data migration finishes in every client.</li>
   <li><strong>Roles and Fiori:</strong> adjust business roles for changed transactions and map them to Fiori catalogs and launchpad roles.</li>
-  <li><strong>Output management and interfaces:</strong> test every interface flagged in the integration analysis. Our <a href="/services/sap-integration/">SAP integration</a> team often finds that interfaces are the least documented part of a landscape.</li>
+  <li><strong>Output management and interfaces:</strong> test every interface flagged in the integration analysis. Our <a href="/services/sap-integration/">SAP integration</a> team often finds that interfaces are the least documented part of a landscape. If you still run SAP PI/PO, read our guide to <a href="/blog/sap-pi-po-end-of-maintenance/">SAP PI/PO end of maintenance</a>.</li>
 </ul>
 <h3>Testing</h3>
 <ul>

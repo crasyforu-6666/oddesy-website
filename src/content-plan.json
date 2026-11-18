@@ -65,7 +65,9 @@
    "category": "Integration",
    "intent": "informational",
    "services": "sap-integration",
-   "status": "todo"
+   "status": "published",
+   "slug": "sap-pi-po-end-of-maintenance",
+   "published": "2026-11-18"
   },
   {
    "keyword": "s/4hana public vs private cloud",

@@ -1,0 +1,102 @@
+title: S/4HANA Public vs Private Cloud: How to Choose
+description: S/4HANA public vs private cloud compared: upgrades, extensibility, migration paths and fit, with a practical checklist for choosing the right edition.
+h1: SAP S/4HANA Cloud Public Edition vs Private Edition: How to Choose
+summary: Public Edition is standard SaaS with half-yearly upgrades; Private Edition is S/4HANA in SAP's private cloud with room to convert and customise. Here is how they really differ and how to decide.
+date: 2026-11-20
+updated: 2026-11-20
+category: Cloud & RISE
+keyword: s/4hana public vs private cloud
+services: rise-with-sap, sap-s4hana-implementation
+faq: What is the main difference between S/4HANA Cloud Public and Private Edition? || Public Edition is a ready-to-run cloud ERP with preconfigured best-practice processes and automatic upgrades that SAP installs on a fixed schedule. Private Edition is the S/4HANA software hosted in SAP's private cloud, with more room for customisation and the option to convert an existing ERP system.
+faq: Can I convert my ECC system to S/4HANA Cloud Public Edition? || No. A system conversion of an existing SAP ERP system is a Private Edition path. Public Edition is implemented as a new system, adopting SAP's standard processes, with selected data migrated in.
+faq: How often is S/4HANA Cloud Public Edition upgraded? || SAP delivers major releases in February and August and installs them according to its release schedule. Customers prepare with tools such as the Release Assessment and Scope Dependency tool and automated tests.
+faq: How often must S/4HANA Cloud Private Edition be upgraded? || Private Edition follows the on-premise release cycle, with a new release every other year. According to SAP Learning, it must be upgraded at least once every seven years to stay within mainstream maintenance.
+---
+<p>The short answer: <strong>choose Public Edition</strong> if you are starting fresh, can adopt SAP's standard processes and want SAP to handle upgrades on a fixed schedule. <strong>Choose Private Edition</strong> if you need to convert an existing SAP ERP system, have significant industry-specific or custom requirements, or need to control your upgrade timing. Many groups use both, with Private Edition at headquarters and Public Edition in subsidiaries.</p>
+
+<h2>The two editions at a glance</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th></th><th>Public Edition</th><th>Private Edition</th></tr></thead>
+  <tbody>
+    <tr><th>What it is</th><td>Ready-to-run SaaS cloud ERP with preconfigured best-practice processes</td><td>The S/4HANA software hosted in SAP's private cloud (SAP HANA Enterprise Cloud)</td></tr>
+    <tr><th>Typical fit</th><td>New customers with limited customisation needs who will adopt standard processes</td><td>Mid-size to large organisations with industry-specific needs or many customisation requirements</td></tr>
+    <tr><th>Getting there</th><td>New implementation</td><td>System conversion of an existing SAP ERP or S/4HANA system, or a new implementation</td></tr>
+    <tr><th>Releases</th><td>Major releases in February and August, installed by SAP on schedule</td><td>Same cycle as on-premise, a release every other year; upgrade at least every seven years</td></tr>
+    <tr><th>Extensibility</th><td>Key user and developer (ABAP Cloud) extensibility in the system, plus side-by-side extensions; no classic modifications</td><td>Key user and developer extensibility, side-by-side extensions, and classic ABAP still available</td></tr>
+    <tr><th>Configuration</th><td>SAP Central Business Configuration</td><td>Configured as in on-premise S/4HANA</td></tr>
+    <tr><th>Commercial offering</th><td>GROW with SAP for new, typically mid-size customers</td><td>RISE with SAP, including the SAP Cloud ERP Private package</td></tr>
+  </tbody>
+</table></div>
+<p>The descriptions above are based on SAP Learning's lessons on the characteristics of <a href="https://learning.sap.com/courses/implementing-sap-s-4hana-cloud-public-edition/identifying-characteristics-of-sap-s-4hana-cloud-public-edition_ab4b443b-b58f-4fca-a898-cfd73c8f1ff3">Public Edition</a> and <a href="https://learning.sap.com/courses/implementing-sap-s-4hana-cloud-private-edition/identifying-characteristics-of-sap-s-4hana-cloud-private-edition_acb947e5-5ff5-4786-9706-06cc7944ac1f">Private Edition</a>.</p>
+
+<h2>Upgrades: who controls the timing</h2>
+<p>This is the difference that affects your operating model most.</p>
+<h3>Public Edition</h3>
+<p>SAP ships major releases in February and August and installs them according to its release schedule. You do not decide whether to upgrade; you prepare for it. SAP provides tools for this:</p>
+<ul>
+  <li>The <strong>Release Assessment and Scope Dependency (RASD)</strong> tool shows which release changes affect the scope you use.</li>
+  <li>The <strong>Test Automation Tool</strong> provides preconfigured automated tests and lets you build your own.</li>
+  <li><strong>Upgrade roadmaps in SAP Cloud ALM</strong> list the tasks to complete before and after each upgrade.</li>
+</ul>
+<p>In practice, Public Edition customers need a standing team that reviews each release, runs regression tests and adjusts roles and extensions twice a year.</p>
+<h3>Private Edition</h3>
+<p>Private Edition follows the on-premise release cycle, with a new release every other year. You choose when to upgrade, within a rule: according to SAP Learning, Private Edition must be upgraded at least once every seven years to stay within mainstream maintenance, and SAP supports the technical upgrade activities. That flexibility suits organisations with complex processes and long testing cycles, but it also makes it easier to fall behind.</p>
+
+<h2>Extensibility and clean core</h2>
+<p>Both editions follow the same principle: keep extensions separate from SAP's core so upgrades do not break them. Our article on <a href="/blog/sap-clean-core-explained/">SAP clean core</a> explains the idea in more detail.</p>
+<h3>What both editions offer</h3>
+<ul>
+  <li><strong>Key user extensibility:</strong> SAP Fiori apps for adding fields, logic, forms and reports without code.</li>
+  <li><strong>Developer extensibility:</strong> upgrade-stable ABAP Cloud development using only released SAP objects.</li>
+  <li><strong>Side-by-side extensibility:</strong> applications built on SAP's extension platform and integrated with S/4HANA, for example with SAP Build or SAP Business Application Studio.</li>
+</ul>
+<h3>Where they differ</h3>
+<ul>
+  <li><strong>Public Edition</strong> has no classic ABAP modifications. Developer extensibility is only available in a three-system landscape, so check your landscape before relying on it.</li>
+  <li><strong>Private Edition</strong> still allows classic extensibility, where developers can change any SAP object. SAP's three-tier model treats this classic code as Tier 3, to be modernised over time, with Tier 1 (key user and ABAP Cloud) as the default for anything new. This is what makes system conversions possible: you can bring your existing custom code and clean it up gradually.</li>
+</ul>
+
+<h2>Migration paths</h2>
+<h3>Coming from SAP ECC</h3>
+<p>If you want to keep your history, configuration and custom code, a <strong>system conversion</strong> into Private Edition is the route. SAP describes Private Edition as supporting a system conversion of an existing SAP ERP or S/4HANA on-premise system on a compatible release, as well as a new implementation. Public Edition is always a new implementation: you adopt SAP's standard processes and migrate selected data. Our comparison of <a href="/blog/brownfield-vs-greenfield-s4hana-migration/">brownfield, greenfield and selective data transition</a> covers the trade-offs, and our <a href="/blog/sap-s4hana-migration-checklist/">S/4HANA migration checklist</a> lists the steps.</p>
+<h3>New to SAP</h3>
+<p>For first-time SAP customers, especially mid-sized companies, Public Edition is often the natural fit. SAP launched <a href="https://news.sap.com/2023/03/grow-with-sap-proven-cloud-erp-midsize-customers/">GROW with SAP</a> for this group: Public Edition combined with adoption services, a community of experts, learning resources and SAP Business Technology Platform, including SAP Build.</p>
+<h3>Two-tier ERP</h3>
+<p>SAP positions both editions for two-tier landscapes. A common pattern is Private Edition (or on-premise S/4HANA) for the parent company and complex operations, with Public Edition for smaller subsidiaries that can run standard processes.</p>
+
+<h2>Implementation differences you will notice</h2>
+<ul>
+  <li><strong>Configuration:</strong> Public Edition uses SAP Central Business Configuration to activate and configure business processes. Private Edition is configured much like on-premise S/4HANA.</li>
+  <li><strong>Landscape:</strong> a Public Edition project typically uses a starter system for fit-to-standard workshops, a development system with separate customising and development tenants, a test system and production, plus an optional sandbox.</li>
+  <li><strong>Methodology:</strong> both use SAP Activate and SAP Cloud ALM. For Private Edition, SAP has added the RISE with SAP Methodology, with Clean Core quality gates at the end of each phase.</li>
+  <li><strong>Localisation:</strong> Public Edition ships standard local versions for many countries and regions, and lets customers create more through Localization as a Self-Service. Check that each country you operate in is covered before you decide.</li>
+</ul>
+
+<h2>How to choose: a practical checklist</h2>
+<ol>
+  <li><strong>Do you need to keep your ECC system, history and custom code?</strong> If yes, Private Edition.</li>
+  <li><strong>Can the business adopt SAP's standard processes</strong> for most areas after fit-to-standard workshops? If yes, Public Edition is a real option.</li>
+  <li><strong>Do you rely on industry solutions or functions</strong> that may not be in Public Edition's scope? Check the scope for your release.</li>
+  <li><strong>Are all your countries and languages covered</strong> by standard local versions, or can you add them through self-service?</li>
+  <li><strong>Can you resource two upgrade cycles a year</strong>, including regression testing? If not, Public Edition will be hard to run well.</li>
+  <li><strong>How much custom code and how many modifications</strong> does the business truly need? Classic modifications rule out Public Edition.</li>
+  <li><strong>What does the group structure look like?</strong> A two-tier model may give you the best of both.</li>
+</ol>
+<p>Licensing and commercial terms for both editions are negotiated with SAP. We do not quote prices here; ask SAP or your partner for a proposal based on your scope.</p>
+
+<h2>Common mistakes</h2>
+<ul>
+  <li><strong>Choosing Public Edition, then trying to recreate ECC.</strong> If the business will not accept standard processes, the project will fight the product.</li>
+  <li><strong>Choosing Private Edition and treating it as hosting.</strong> Without clean core governance, you carry the same technical debt into the cloud.</li>
+  <li><strong>Underestimating upgrade work.</strong> Public Edition upgrades are automatic, but testing and adaptation are your responsibility.</li>
+  <li><strong>Ignoring integration and extensions.</strong> Side-by-side extensions and interfaces need their own design and support model.</li>
+</ul>
+
+<h2>Key takeaways</h2>
+<ul>
+  <li>Public Edition is standard SaaS with half-yearly upgrades installed by SAP; Private Edition is S/4HANA in SAP's private cloud with upgrades on your timeline, within limits.</li>
+  <li>Converting an existing ECC system is a Private Edition path; Public Edition is always a new implementation.</li>
+  <li>Both editions follow clean core extensibility, but only Private Edition still allows classic ABAP.</li>
+  <li>Decide on business fit, scope, countries, upgrade capacity and custom code, not on the label "cloud".</li>
+</ul>
+<p>To compare the editions against your own processes, see our <a href="/services/rise-with-sap/">RISE with SAP services</a> and <a href="/services/sap-s4hana-implementation/">S/4HANA implementation services</a>, or <a href="/contact/">talk to us</a>. For background on the commercial bundle, read <a href="/blog/rise-with-sap-explained/">RISE with SAP explained</a>.</p>

@@ -75,7 +75,9 @@
    "category": "Cloud & RISE",
    "intent": "commercial",
    "services": "rise-with-sap, sap-s4hana-implementation",
-   "status": "todo"
+   "status": "published",
+   "slug": "s4hana-public-vs-private-cloud",
+   "published": "2026-11-20"
   },
   {
    "keyword": "what is sap joule",

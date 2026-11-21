@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script>document.documentElement.classList.add("js")</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>S/4HANA Public vs Private Cloud: How to Choose</title>
+<meta name="description" content="S/4HANA public vs private cloud compared: upgrades, extensibility, migration paths and fit, with a practical checklist for choosing the right edition.">
+<link rel="canonical" href="https://oddesyconsultingandservices.com/blog/s4hana-public-vs-private-cloud/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#070a14">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Oddesy Consulting and Services">
+<meta property="og:title" content="S/4HANA Public vs Private Cloud: How to Choose">
+<meta property="og:description" content="S/4HANA public vs private cloud compared: upgrades, extensibility, migration paths and fit, with a practical checklist for choosing the right edition.">
+<meta property="og:url" content="https://oddesyconsultingandservices.com/blog/s4hana-public-vs-private-cloud/">
+<meta property="og:image" content="https://oddesyconsultingandservices.com/assets/img/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/img/logo-mark.svg" type="image/svg+xml">
+<link rel="alternate" type="application/rss+xml" title="Oddesy Consulting and Services Blog" href="/blog/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css?v=b01d1ddf">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "@id": "https://oddesyconsultingandservices.com/#organization", "name": "Oddesy Consulting and Services", "url": "https://oddesyconsultingandservices.com/", "logo": "https://oddesyconsultingandservices.com/assets/img/logo-mark.svg", "image": "https://oddesyconsultingandservices.com/assets/img/og-image.png", "email": "info@oddesyconsultingandservices.com", "telephone": "+00 0000 000000", "address": {"@type": "PostalAddress", "streetAddress": "Your street address, City, State, Postal code, Country", "addressLocality": "Your City", "addressCountry": "Your Country"}, "sameAs": ["https://www.linkedin.com/"], "knowsAbout": ["SAP S/4HANA", "RISE with SAP", "SAP BTP", "SAP Integration Suite", "SAP AMS"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://oddesyconsultingandservices.com/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://oddesyconsultingandservices.com/blog/"}, {"@type": "ListItem", "position": 3, "name": "Cloud & RISE", "item": "https://oddesyconsultingandservices.com/blog/category/cloud-rise/"}, {"@type": "ListItem", "position": 4, "name": "SAP S/4HANA Cloud Public Edition vs Priv…", "item": "https://oddesyconsultingandservices.com/blog/s4hana-public-vs-private-cloud/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "SAP S/4HANA Cloud Public Edition vs Private Edition: How to Choose", "description": "S/4HANA public vs private cloud compared: upgrades, extensibility, migration paths and fit, with a practical checklist for choosing the right edition.", "datePublished": "2026-11-20", "dateModified": "2026-11-20", "url": "https://oddesyconsultingandservices.com/blog/s4hana-public-vs-private-cloud/", "mainEntityOfPage": "https://oddesyconsultingandservices.com/blog/s4hana-public-vs-private-cloud/", "image": "https://oddesyconsultingandservices.com/assets/img/og-image.png", "author": {"@type": "Organization", "name": "Oddesy Consulting and Services", "url": "https://oddesyconsultingandservices.com/"}, "publisher": {"@id": "https://oddesyconsultingandservices.com/#organization"}, "articleSection": "Cloud & RISE", "keywords": "s/4hana public vs private cloud", "wordCount": 1261}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the main difference between S/4HANA Cloud Public and Private Edition?", "acceptedAnswer": {"@type": "Answer", "text": "Public Edition is a ready-to-run cloud ERP with preconfigured best-practice processes and automatic upgrades that SAP installs on a fixed schedule. Private Edition is the S/4HANA software hosted in SAP's private cloud, with more room for customisation and the option to convert an existing ERP system."}}, {"@type": "Question", "name": "Can I convert my ECC system to S/4HANA Cloud Public Edition?", "acceptedAnswer": {"@type": "Answer", "text": "No. A system conversion of an existing SAP ERP system is a Private Edition path. Public Edition is implemented as a new system, adopting SAP's standard processes, with selected data migrated in."}}, {"@type": "Question", "name": "How often is S/4HANA Cloud Public Edition upgraded?", "acceptedAnswer": {"@type": "Answer", "text": "SAP delivers major releases in February and August and installs them according to its release schedule. Customers prepare with tools such as the Release Assessment and Scope Dependency tool and automated tests."}}, {"@type": "Question", "name": "How often must S/4HANA Cloud Private Edition be upgraded?", "acceptedAnswer": {"@type": "Answer", "text": "Private Edition follows the on-premise release cycle, with a new release every other year. According to SAP Learning, it must be upgraded at least once every seven years to stay within mainstream maintenance."}}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="nav-shell">
+    <a href="/" class="brand" aria-label="Oddesy Consulting and Services home">
+      <img src="/assets/img/logo-mark.svg" alt="" width="34" height="34">
+      <span class="brand-text">Oddesy<span>Consulting &amp; Services</span></span>
+    </a>
+    <nav id="primary-nav" class="primary-nav" aria-label="Main">
+      <ul class="menu">
+        <li><a href="/about/">About</a></li>
+        <li class="has-sub">
+          <a href="/services/" class="sub-trigger" aria-haspopup="true">Services <span class="caret" aria-hidden="true"></span></a>
+          <div class="mega"><ul><li><a href="/services/sap-s4hana-implementation/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 15c-1.5 1.5-2 5-2 5s3.5-.5 5-2"/><path d="M9 15l-3-3c1-4 4-9 13-9 0 9-5 12-9 13z"/><circle cx="15" cy="9" r="1.6"/></svg></span><span><strong>S/4HANA Implementation</strong><small>Greenfield S/4HANA deployments in public or private cloud, designed fit-to-standard and delivered on SAP Activate.</small></span></a></li><li><a href="/services/rise-with-sap/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18h10a4 4 0 0 0 .6-7.96A6 6 0 0 0 6.1 10.5 3.75 3.75 0 0 0 7 18z"/></svg></span><span><strong>RISE with SAP</strong><small>Business case, scoping and transition support for the RISE with SAP subscription.</small></span></a></li><li><a href="/services/sap-s4hana-migration/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h12l-3-3"/><path d="M20 17H8l3 3"/></svg></span><span><strong>S/4HANA Migration &amp; Upgrades</strong><small>ECC to S/4HANA conversion, selective data transition and S/4HANA release upgrades.</small></span></a></li><li><a href="/services/sap-integration/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1"/><path d="M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"/></svg></span><span><strong>SAP Integration</strong><small>SAP Integration Suite, APIs and EDI connecting SAP to CRM, e-commerce, banks and machines.</small></span></a></li><li><a href="/services/sap-support-ams/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/></svg></span><span><strong>SAP Support &amp; AMS</strong><small>SLA-based functional, technical and Basis support for SAP ECC and S/4HANA.</small></span></a></li><li><a href="/services/sap-btp-development/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8l-4 4 4 4"/><path d="M16 8l4 4-4 4"/><path d="M13.5 5l-3 14"/></svg></span><span><strong>BTP &amp; Development</strong><small>Fiori/UI5 apps, ABAP, workflows and self-service portals built on SAP BTP.</small></span></a></li><li><a href="/services/sap-staffing/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2c2.9.4 5 2.8 5 5.8"/></svg></span><span><strong>Staffing &amp; Augmentation</strong><small>Pre-screened SAP consultants on contract, contract-to-hire or permanent terms.</small></span></a></li></ul>
+            <a class="mega-all" href="/services/">All SAP services <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a></div>
+        </li>
+        <li><a href="/industries/">Industries</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youronementor.com" target="_blank" rel="noopener">Training <span class="ext"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span><span class="sr">(opens in a new tab)</span></a></li>
+        <li><a href="/careers/">Careers</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+      <a href="/contact/" class="btn btn-glow btn-sm nav-cta">Book a call <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
+    </nav>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu"><span></span><span></span></button>
+  </div>
+</header>
+<main id="main">
+<section class="page-hero dark article-hero"><div class="aurora" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div><div class="grid-overlay" aria-hidden="true"></div><div class="container hero-inner narrow">
+  <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/blog/">Blog</a></li><li><a href="/blog/category/cloud-rise/">Cloud &amp; RISE</a></li><li aria-current="page">SAP S/4HANA Cloud Public Edition vs Priv…</li></ol></nav>
+  <p class="pill"><span class="dot"></span>Cloud &amp; RISE &middot; 6 min read</p>
+  <h1>SAP S/4HANA Cloud Public Edition vs Private Edition: How to Choose</h1>
+  <p class="lead">Public Edition is standard SaaS with half-yearly upgrades; Private Edition is S/4HANA in SAP&#x27;s private cloud with room to convert and customise. Here is how they really differ and how to decide.</p>
+  <p class="byline">By the Oddesy Consulting and Services team &middot; <time datetime="2026-11-20">20 Nov 2026</time></p>
+</div></section>
+<section class="section article-sec"><div class="container article-grid">
+  <article class="prose article-body"><p>The short answer: <strong>choose Public Edition</strong> if you are starting fresh, can adopt SAP's standard processes and want SAP to handle upgrades on a fixed schedule. <strong>Choose Private Edition</strong> if you need to convert an existing SAP ERP system, have significant industry-specific or custom requirements, or need to control your upgrade timing. Many groups use both, with Private Edition at headquarters and Public Edition in subsidiaries.</p>
+
+<h2>The two editions at a glance</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th></th><th>Public Edition</th><th>Private Edition</th></tr></thead>
+  <tbody>
+    <tr><th>What it is</th><td>Ready-to-run SaaS cloud ERP with preconfigured best-practice processes</td><td>The S/4HANA software hosted in SAP's private cloud (SAP HANA Enterprise Cloud)</td></tr>
+    <tr><th>Typical fit</th><td>New customers with limited customisation needs who will adopt standard processes</td><td>Mid-size to large organisations with industry-specific needs or many customisation requirements</td></tr>
+    <tr><th>Getting there</th><td>New implementation</td><td>System conversion of an existing SAP ERP or S/4HANA system, or a new implementation</td></tr>
+    <tr><th>Releases</th><td>Major releases in February and August, installed by SAP on schedule</td><td>Same cycle as on-premise, a release every other year; upgrade at least every seven years</td></tr>
+    <tr><th>Extensibility</th><td>Key user and developer (ABAP Cloud) extensibility in the system, plus side-by-side extensions; no classic modifications</td><td>Key user and developer extensibility, side-by-side extensions, and classic ABAP still available</td></tr>
+    <tr><th>Configuration</th><td>SAP Central Business Configuration</td><td>Configured as in on-premise S/4HANA</td></tr>
+    <tr><th>Commercial offering</th><td>GROW with SAP for new, typically mid-size customers</td><td>RISE with SAP, including the SAP Cloud ERP Private package</td></tr>
+  </tbody>
+</table></div>
+<p>The descriptions above are based on SAP Learning's lessons on the characteristics of <a href="https://learning.sap.com/courses/implementing-sap-s-4hana-cloud-public-edition/identifying-characteristics-of-sap-s-4hana-cloud-public-edition_ab4b443b-b58f-4fca-a898-cfd73c8f1ff3">Public Edition</a> and <a href="https://learning.sap.com/courses/implementing-sap-s-4hana-cloud-private-edition/identifying-characteristics-of-sap-s-4hana-cloud-private-edition_acb947e5-5ff5-4786-9706-06cc7944ac1f">Private Edition</a>.</p>
+
+<h2>Upgrades: who controls the timing</h2>
+<p>This is the difference that affects your operating model most.</p>
+<h3>Public Edition</h3>
+<p>SAP ships major releases in February and August and installs them according to its release schedule. You do not decide whether to upgrade; you prepare for it. SAP provides tools for this:</p>
+<ul>
+  <li>The <strong>Release Assessment and Scope Dependency (RASD)</strong> tool shows which release changes affect the scope you use.</li>
+  <li>The <strong>Test Automation Tool</strong> provides preconfigured automated tests and lets you build your own.</li>
+  <li><strong>Upgrade roadmaps in SAP Cloud ALM</strong> list the tasks to complete before and after each upgrade.</li>
+</ul>
+<p>In practice, Public Edition customers need a standing team that reviews each release, runs regression tests and adjusts roles and extensions twice a year.</p>
+<h3>Private Edition</h3>
+<p>Private Edition follows the on-premise release cycle, with a new release every other year. You choose when to upgrade, within a rule: according to SAP Learning, Private Edition must be upgraded at least once every seven years to stay within mainstream maintenance, and SAP supports the technical upgrade activities. That flexibility suits organisations with complex processes and long testing cycles, but it also makes it easier to fall behind.</p>
+
+<h2>Extensibility and clean core</h2>
+<p>Both editions follow the same principle: keep extensions separate from SAP's core so upgrades do not break them. Our article on <a href="/blog/sap-clean-core-explained/">SAP clean core</a> explains the idea in more detail.</p>
+<h3>What both editions offer</h3>
+<ul>
+  <li><strong>Key user extensibility:</strong> SAP Fiori apps for adding fields, logic, forms and reports without code.</li>
+  <li><strong>Developer extensibility:</strong> upgrade-stable ABAP Cloud development using only released SAP objects.</li>
+  <li><strong>Side-by-side extensibility:</strong> applications built on SAP's extension platform and integrated with S/4HANA, for example with SAP Build or SAP Business Application Studio.</li>
+</ul>
+<h3>Where they differ</h3>
+<ul>
+  <li><strong>Public Edition</strong> has no classic ABAP modifications. Developer extensibility is only available in a three-system landscape, so check your landscape before relying on it.</li>
+  <li><strong>Private Edition</strong> still allows classic extensibility, where developers can change any SAP object. SAP's three-tier model treats this classic code as Tier 3, to be modernised over time, with Tier 1 (key user and ABAP Cloud) as the default for anything new. This is what makes system conversions possible: you can bring your existing custom code and clean it up gradually.</li>
+</ul>
+
+<h2>Migration paths</h2>
+<h3>Coming from SAP ECC</h3>
+<p>If you want to keep your history, configuration and custom code, a <strong>system conversion</strong> into Private Edition is the route. SAP describes Private Edition as supporting a system conversion of an existing SAP ERP or S/4HANA on-premise system on a compatible release, as well as a new implementation. Public Edition is always a new implementation: you adopt SAP's standard processes and migrate selected data. Our comparison of <a href="/blog/brownfield-vs-greenfield-s4hana-migration/">brownfield, greenfield and selective data transition</a> covers the trade-offs, and our <a href="/blog/sap-s4hana-migration-checklist/">S/4HANA migration checklist</a> lists the steps.</p>
+<h3>New to SAP</h3>
+<p>For first-time SAP customers, especially mid-sized companies, Public Edition is often the natural fit. SAP launched <a href="https://news.sap.com/2023/03/grow-with-sap-proven-cloud-erp-midsize-customers/">GROW with SAP</a> for this group: Public Edition combined with adoption services, a community of experts, learning resources and SAP Business Technology Platform, including SAP Build.</p>
+<h3>Two-tier ERP</h3>
+<p>SAP positions both editions for two-tier landscapes. A common pattern is Private Edition (or on-premise S/4HANA) for the parent company and complex operations, with Public Edition for smaller subsidiaries that can run standard processes.</p>
+
+<h2>Implementation differences you will notice</h2>
+<ul>
+  <li><strong>Configuration:</strong> Public Edition uses SAP Central Business Configuration to activate and configure business processes. Private Edition is configured much like on-premise S/4HANA.</li>
+  <li><strong>Landscape:</strong> a Public Edition project typically uses a starter system for fit-to-standard workshops, a development system with separate customising and development tenants, a test system and production, plus an optional sandbox.</li>
+  <li><strong>Methodology:</strong> both use SAP Activate and SAP Cloud ALM. For Private Edition, SAP has added the RISE with SAP Methodology, with Clean Core quality gates at the end of each phase.</li>
+  <li><strong>Localisation:</strong> Public Edition ships standard local versions for many countries and regions, and lets customers create more through Localization as a Self-Service. Check that each country you operate in is covered before you decide.</li>
+</ul>
+
+<h2>How to choose: a practical checklist</h2>
+<ol>
+  <li><strong>Do you need to keep your ECC system, history and custom code?</strong> If yes, Private Edition.</li>
+  <li><strong>Can the business adopt SAP's standard processes</strong> for most areas after fit-to-standard workshops? If yes, Public Edition is a real option.</li>
+  <li><strong>Do you rely on industry solutions or functions</strong> that may not be in Public Edition's scope? Check the scope for your release.</li>
+  <li><strong>Are all your countries and languages covered</strong> by standard local versions, or can you add them through self-service?</li>
+  <li><strong>Can you resource two upgrade cycles a year</strong>, including regression testing? If not, Public Edition will be hard to run well.</li>
+  <li><strong>How much custom code and how many modifications</strong> does the business truly need? Classic modifications rule out Public Edition.</li>
+  <li><strong>What does the group structure look like?</strong> A two-tier model may give you the best of both.</li>
+</ol>
+<p>Licensing and commercial terms for both editions are negotiated with SAP. We do not quote prices here; ask SAP or your partner for a proposal based on your scope.</p>
+
+<h2>Common mistakes</h2>
+<ul>
+  <li><strong>Choosing Public Edition, then trying to recreate ECC.</strong> If the business will not accept standard processes, the project will fight the product.</li>
+  <li><strong>Choosing Private Edition and treating it as hosting.</strong> Without clean core governance, you carry the same technical debt into the cloud.</li>
+  <li><strong>Underestimating upgrade work.</strong> Public Edition upgrades are automatic, but testing and adaptation are your responsibility.</li>
+  <li><strong>Ignoring integration and extensions.</strong> Side-by-side extensions and interfaces need their own design and support model.</li>
+</ul>
+
+<h2>Key takeaways</h2>
+<ul>
+  <li>Public Edition is standard SaaS with half-yearly upgrades installed by SAP; Private Edition is S/4HANA in SAP's private cloud with upgrades on your timeline, within limits.</li>
+  <li>Converting an existing ECC system is a Private Edition path; Public Edition is always a new implementation.</li>
+  <li>Both editions follow clean core extensibility, but only Private Edition still allows classic ABAP.</li>
+  <li>Decide on business fit, scope, countries, upgrade capacity and custom code, not on the label "cloud".</li>
+</ul>
+<p>To compare the editions against your own processes, see our <a href="/services/rise-with-sap/">RISE with SAP services</a> and <a href="/services/sap-s4hana-implementation/">S/4HANA implementation services</a>, or <a href="/contact/">talk to us</a>. For background on the commercial bundle, read <a href="/blog/rise-with-sap-explained/">RISE with SAP explained</a>.</p>
+    <h2>Frequently asked questions</h2><div class="faq inline-faq"><details><summary>What is the main difference between S/4HANA Cloud Public and Private Edition?<span class="plus"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>Public Edition is a ready-to-run cloud ERP with preconfigured best-practice processes and automatic upgrades that SAP installs on a fixed schedule. Private Edition is the S/4HANA software hosted in SAP&#x27;s private cloud, with more room for customisation and the option to convert an existing ERP system.</p></details><details><summary>Can I convert my ECC system to S/4HANA Cloud Public Edition?<span class="plus"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>No. A system conversion of an existing SAP ERP system is a Private Edition path. Public Edition is implemented as a new system, adopting SAP&#x27;s standard processes, with selected data migrated in.</p></details><details><summary>How often is S/4HANA Cloud Public Edition upgraded?<span class="plus"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>SAP delivers major releases in February and August and installs them according to its release schedule. Customers prepare with tools such as the Release Assessment and Scope Dependency tool and automated tests.</p></details><details><summary>How often must S/4HANA Cloud Private Edition be upgraded?<span class="plus"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>Private Edition follows the on-premise release cycle, with a new release every other year. According to SAP Learning, it must be upgraded at least once every seven years to stay within mainstream maintenance.</p></details></div>
+  </article>
+  <aside class="sidebar">
+    <div class="side-box"><h2 class="side-h">Related services</h2><ul class="side-nav"><li><a href="/services/sap-s4hana-implementation/"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 15c-1.5 1.5-2 5-2 5s3.5-.5 5-2"/><path d="M9 15l-3-3c1-4 4-9 13-9 0 9-5 12-9 13z"/><circle cx="15" cy="9" r="1.6"/></svg>SAP S/4HANA Implementation</a></li><li><a href="/services/rise-with-sap/"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18h10a4 4 0 0 0 .6-7.96A6 6 0 0 0 6.1 10.5 3.75 3.75 0 0 0 7 18z"/></svg>RISE with SAP</a></li></ul></div>
+    
+    <div class="side-box side-cta"><div class="aurora" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div><div class="grid-overlay" aria-hidden="true"></div><div class="rel"><h2 class="side-h">Talk to an expert</h2>
+      <p>Get a free 30-minute review of your SAP roadmap.</p>
+      <a href="/contact/" class="btn btn-light btn-block">Book a call <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a></div></div>
+  </aside>
+</div></section>
+<section class="section soft"><div class="container"><div class="section-head center reveal"><p class="eyebrow">Keep reading</p><h2>More from <em>the blog</em></h2></div><div class="post-grid"><a class="post-card spot reveal" href="/blog/rise-with-sap-explained/">
+  <div class="post-meta"><span class="tag">Cloud &amp; RISE</span><span>3 min read</span></div>
+  <h3>RISE with SAP Explained: What&#x27;s Included and What to Ask Before You Sign</h3><p>A plain-English guide to the RISE with SAP subscription, what it covers, what it doesn&#x27;t, and the questions that protect you in negotiation.</p>
+  <span class="post-foot"><time datetime="2026-11-07">7 Nov 2026</time><span class="more">Read <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></span></a><a class="post-card spot reveal" href="/blog/sap-pi-po-end-of-maintenance/">
+  <div class="post-meta"><span class="tag">Integration</span><span>6 min read</span></div>
+  <h3>SAP PI/PO End of Maintenance: What 2027 and 2030 Mean and How to Move to SAP Integration Suite</h3><p>Mainstream maintenance for SAP Process Orchestration 7.5 ends in 2027. Here is what that means, what SAP&#x27;s assessment and migration tools can and cannot do, and how to plan the move.</p>
+  <span class="post-foot"><time datetime="2026-11-18">18 Nov 2026</time><span class="more">Read <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></span></a><a class="post-card spot reveal" href="/blog/sap-ewm-vs-wm/">
+  <div class="post-meta"><span class="tag">Logistics &amp; Supply Chain</span><span>7 min read</span></div>
+  <h3>SAP EWM vs WM: Key Differences and How to Plan the Move in S/4HANA</h3><p>LE-WM is no longer the target for warehouse management in S/4HANA. This guide compares WM, Stock Room Management and basic and advanced EWM, and shows how to decide where your warehouses should go.</p>
+  <span class="post-foot"><time datetime="2026-11-16">16 Nov 2026</time><span class="more">Read <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></span></a></div></div></section>
+
+<section class="section cta-section"><div class="container">
+  <div class="cta-card reveal">
+    <div class="aurora" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div><div class="grid-overlay" aria-hidden="true"></div>
+    <div class="cta-content">
+      <p class="pill pill-dark"><span class="dot"></span>Free 30-minute consultation</p>
+      <h2>Let's map your next <em>SAP move</em>.</h2>
+      <p>Talk to a senior consultant about your landscape, timeline and options. Practical advice, no sales pitch.</p>
+      <div class="hero-actions center-x">
+        <a href="/contact/" class="btn btn-light">Book your consultation <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
+        <a href="mailto:info@oddesyconsultingandservices.com" class="btn btn-ghost"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6 8.5-6"/></svg>info@oddesyconsultingandservices.com</a>
+      </div>
+    </div>
+  </div>
+</div></section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-about">
+      <a href="/" class="brand"><img src="/assets/img/logo-mark.svg" alt="" width="34" height="34">
+      <span class="brand-text">Oddesy<span>Consulting &amp; Services</span></span></a>
+      <p>Independent SAP consultancy for implementation, migration, integration and support.</p>
+      <a class="social" href="https://www.linkedin.com/" rel="noopener" aria-label="LinkedIn"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg></a>
+    </div>
+    <div><h2 class="footer-h">Services</h2><ul><li><a href="/services/sap-s4hana-implementation/">S/4HANA Implementation</a></li><li><a href="/services/rise-with-sap/">RISE with SAP</a></li><li><a href="/services/sap-s4hana-migration/">S/4HANA Migration &amp; Upgrades</a></li><li><a href="/services/sap-integration/">SAP Integration</a></li><li><a href="/services/sap-support-ams/">SAP Support &amp; AMS</a></li><li><a href="/services/sap-btp-development/">BTP &amp; Development</a></li><li><a href="/services/sap-staffing/">Staffing &amp; Augmentation</a></li></ul></div>
+    <div><h2 class="footer-h">Company</h2><ul>
+      <li><a href="/about/">About</a></li><li><a href="/industries/">Industries</a></li>
+      <li><a href="/blog/">Blog</a></li><li><a href="https://youronementor.com" target="_blank" rel="noopener">Training <span class="ext"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span><span class="sr">(opens in a new tab)</span></a></li>
+      <li><a href="/careers/">Careers</a></li><li><a href="/contact/">Contact</a></li>
+      <li><a href="/privacy-policy/">Privacy</a></li></ul></div>
+    <div><h2 class="footer-h">Get in touch</h2><ul class="footer-contact">
+      <li><a href="mailto:info@oddesyconsultingandservices.com"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6 8.5-6"/></svg>info@oddesyconsultingandservices.com</a></li>
+      <li><a href="tel:+000000000000"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z"/></svg>+00 0000 000000</a></li>
+      <li><span><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Your street address, City, State, Postal code, Country</span></li></ul></div>
+  </div>
+  <div class="container footer-bottom">
+    <p>&copy; 2026 Oddesy Consulting and Services</p>
+    <p>SAP, S/4HANA, SAP BTP, RISE with SAP and other SAP products are trademarks of SAP SE. Oddesy is an independent consultancy.</p>
+  </div>
+  <div class="wordmark" aria-hidden="true">ODDESY</div>
+</footer>
+<script>window.ODDESY = {"formEndpoint": "", "email": "info@oddesyconsultingandservices.com"};</script>
+<script src="/assets/js/site.js?v=9ad8ba4d" defer></script>
+</body>
+</html>

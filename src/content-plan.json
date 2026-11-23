@@ -85,7 +85,9 @@
    "category": "AI & Innovation",
    "intent": "informational",
    "services": "sap-btp-development",
-   "status": "todo"
+   "status": "published",
+   "slug": "what-is-sap-joule",
+   "published": "2026-11-23"
   },
   {
    "keyword": "universal journal acdoca",

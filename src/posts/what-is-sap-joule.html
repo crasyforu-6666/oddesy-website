@@ -1,0 +1,106 @@
+title: What Is SAP Joule? Capabilities, Setup and Limits
+description: What is SAP Joule? A clear guide to SAP's AI copilot: what it can do, Joule Agents and Joule Studio, setup prerequisites, data handling and how to start.
+h1: What Is SAP Joule? Capabilities, Requirements and Practical Use Cases
+summary: Joule is SAP's AI copilot, embedded across SAP's cloud applications. This guide explains what it does, how agents and Joule Studio fit in, what you need to switch it on and how SAP handles your data.
+date: 2026-11-23
+updated: 2026-11-23
+category: AI & Innovation
+keyword: what is sap joule
+services: sap-btp-development, sap-s4hana-implementation
+faq: What is SAP Joule? || Joule is SAP's generative AI copilot: a natural language assistant embedded across SAP's cloud applications. It is grounded in your SAP business data and processes, and respects each user's existing roles and authorisations.
+faq: What can Joule do? || SAP groups Joule's interactions into four patterns: informational (answer a question), navigational (take you to the right app), transactional (carry out a task such as creating a purchase requisition) and analytical (summarise and compare data). Joule Agents extend this to multi-step tasks across SAP systems.
+faq: What do I need to use Joule? || A licence for an SAP cloud product that supports Joule in a supported region, Joule Base or AI units, and the technical set-up: an SAP BTP enterprise account, SAP Cloud Identity Services and the relevant entitlements. SAP-managed provisioning reduces the technical work.
+faq: Does SAP use my data to train AI models? || SAP states that it does not share customer data with third-party large language model providers to train their models, and that third-party model providers process the data without storing it. Where the contract permits, SAP may use customer data to improve its own products, and customers can review and opt out in SAP for Me.
+---
+<p><strong>Joule is SAP's AI copilot.</strong> It is a natural language assistant built into SAP's cloud applications, such as SAP S/4HANA Cloud, SAP SuccessFactors and SAP Ariba. Unlike a general-purpose chatbot, Joule is grounded in your SAP business data and processes, and it only shows users the data their existing authorisations allow. You can ask it a question, ask it to open the right app, or ask it to do a task such as creating a purchase requisition. With <strong>Joule Agents</strong> and <strong>Joule Studio</strong>, SAP has extended it from answering questions to running multi-step work.</p>
+
+<h2>What Joule can do: the four interaction patterns</h2>
+<p>SAP's own training material groups Joule's capabilities into four patterns (<a href="https://learning.sap.com/courses/exploring-sap-business-ai-platform-architecture/exploring-joule_c08da1ed-cbf1-4e81-b8f0-c87be46e5464">SAP Learning</a>):</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Pattern</th><th>User intent</th><th>Example request</th></tr></thead>
+  <tbody>
+    <tr><td>Informational</td><td>To know something</td><td>"What is the status of purchase order 4500018543?"</td></tr>
+    <tr><td>Navigational</td><td>To go somewhere</td><td>"Show me all open production orders", with a link to the right Fiori app</td></tr>
+    <tr><td>Transactional</td><td>To do something</td><td>"Create a purchase requisition for 25 office chairs from our preferred supplier"</td></tr>
+    <tr><td>Analytical</td><td>To understand something</td><td>"Compare sales in Germany and France this quarter"</td></tr>
+  </tbody>
+</table></div>
+<p>Beyond these, Joule can summarise information and draft content such as emails or job descriptions from templates. Informational answers can also draw on your own documents if you set up <strong>document grounding</strong>, which lets you upload company documents to the Joule service.</p>
+<p>What Joule can actually do in your system depends on which SAP products you integrate and which capabilities SAP has delivered for them. Check the scope for each product rather than assuming every example works everywhere.</p>
+
+<h2>The Joule family: agents, developers, consultants and Joule Work</h2>
+<h3>Joule Agents</h3>
+<p>SAP describes Joule Agents as AI-powered automation workflows. They interpret a request in natural language, plan a series of steps and carry them out across SAP systems such as SAP Cloud ERP, SAP SuccessFactors, SAP Concur and SAP Fieldglass. The difference from the basic assistant is that an agent pursues a goal across several steps, rather than answering one prompt at a time.</p>
+<h3>Joule for Developers and Joule for Consultants</h3>
+<ul>
+  <li><strong>Joule for Developers</strong> helps developers in SAP Build Code and the ABAP Development Tools for Eclipse, for example by generating code, explaining code or generating a CDS view.</li>
+  <li><strong>Joule for Consultants</strong> is a separate offering aimed at SAP consultants and project teams.</li>
+</ul>
+<h3>Joule Work and Joule Studio</h3>
+<p>At SAP Sapphire in May 2026, SAP introduced <strong>Joule Work</strong>, a workspace that brings apps, agents and workflows into one place, and the new <strong>Joule Studio</strong>. According to <a href="https://news.sap.com/2026/05/new-joule-studio-enterprise-scale-agentic-development/">SAP's announcement</a>, Joule Studio is a fully managed offering to build and run AI agents, applications and workflows:</p>
+<ul>
+  <li><strong>Intent-based development:</strong> describe the goal in natural language, and Joule Studio generates requirements, specifications, code scaffolding, tests and a working preview.</li>
+  <li><strong>Open tooling:</strong> developers can continue in tools such as Visual Studio Code or Cursor, use frameworks such as LangChain, Pydantic AI and LlamaIndex, and orchestrate agents visually with an embedded n8n environment.</li>
+  <li><strong>Managed runtime:</strong> agents run in a managed, sandboxed environment with built-in observability, and get long-term memory backed by SAP HANA Cloud.</li>
+</ul>
+<p>SAP also notes that Joule Studio is the next generation of SAP Build. If you build extensions today, expect your tooling to move in this direction.</p>
+
+<h2>What you need to use Joule</h2>
+<p>SAP's <a href="https://help.sap.com/doc/de3af3c0f81642dbaa4d36172ed57a72/CLOUD/en-US/79bfc83ab386450c8cd9c7937ce26a3a.pdf">Joule integration guide</a> sets out the prerequisites. In summary:</p>
+<h3>Commercial</h3>
+<ul>
+  <li>A valid licence for an SAP product that supports Joule integration, such as SAP SuccessFactors or SAP S/4HANA Cloud Private Edition, running in a supported data centre.</li>
+  <li><strong>Joule Base</strong> or <strong>AI units</strong> (SKU 8019164). Which capabilities each covers is a commercial question for your SAP account executive.</li>
+</ul>
+<h3>Technical</h3>
+<ul>
+  <li>An <strong>SAP BTP enterprise global account</strong>, because Joule runs on SAP BTP services.</li>
+  <li><strong>SAP Cloud Identity Services</strong>: Identity Authentication for login and Identity Provisioning for users and authorisations. Joule and all integrated products must use the same Identity Services tenant, with users identified consistently by a global user ID.</li>
+  <li><strong>SAP Build Work Zone</strong>, which Joule uses to navigate to applications and handle role-based access. Conversational search does not require it.</li>
+  <li>The Joule entitlement in your global account, followed by running the <strong>Joule booster</strong> to set up the integration.</li>
+</ul>
+<h3>Customer-managed or SAP-managed?</h3>
+<p>There are two ways to provision Joule. With <strong>customer-managed provisioning</strong>, your team configures SAP BTP subaccounts, entitlements, trust and integrations step by step. With <strong>SAP-managed provisioning</strong>, SAP handles the technical set-up and you manage product selections in SAP for Me. SAP recommends the SAP-managed route, and it is required for Joule Work.</p>
+<h3>Example: S/4HANA Cloud Private Edition</h3>
+<p>For Private Edition, the integration guide lists steps including: integrating the system with Identity Authentication, creating an SAP Build Work Zone instance, setting the system up as a content provider through SAP Cloud Connector, running the Joule booster, configuring destinations and Identity Provisioning, and activating the Joule plug-in in the SAP Fiori launchpad. SAP warns that paths exposed through Cloud Connector for this purpose are reachable via the public internet, so only expose what is needed. If you are still choosing an edition, our comparison of <a href="/blog/s4hana-public-vs-private-cloud/">S/4HANA Cloud Public and Private Edition</a> may help.</p>
+<p>Joule is designed around SAP's cloud products. If you run S/4HANA on premise, confirm with SAP which Joule capabilities, if any, are available for your system before you plan around them.</p>
+<h3>Testing updates before they reach production</h3>
+<p>SAP is introducing a <strong>Joule Preview Landscape</strong> so customers can validate updates before they reach production. According to the integration guide, it is available in the EU10 and EU30 data centres, with framework releases staying in preview for two weeks and content releases for four weeks before moving to production.</p>
+
+<h2>How SAP handles your data</h2>
+<p>Data handling is usually the first question from security and works council teams. SAP's <a href="https://www.sap.com/products/artificial-intelligence/ai-ethics.html">Responsible AI page</a> states:</p>
+<ul>
+  <li>SAP does not share customer data with third-party LLM providers to train or improve their models.</li>
+  <li>When an SAP AI feature uses a third-party hosted foundation model, the data is sent to the provider for processing only, and is not stored or retained by the provider.</li>
+  <li>Where the contract permits, SAP may use customer data to improve existing AI features of the subscribed cloud service and, under the product development schedule, to develop new ones. Customers can see where their data may be used and opt out in SAP for Me.</li>
+  <li>SAP user interfaces show a notice when a user triggers an AI feature or sees AI-generated results.</li>
+</ul>
+<p>Joule also respects the roles and authorisations users already have. Clean authorisations matter more, not less, once users can ask for data in plain language.</p>
+
+<h2>Practical use cases to start with</h2>
+<ul>
+  <li><strong>Casual users:</strong> employees who only occasionally use SAP can find the right app or check a status without training on transaction codes.</li>
+  <li><strong>Procurement and finance:</strong> checking purchase order and invoice status, drafting requisitions, and summarising open items.</li>
+  <li><strong>HR tasks</strong> in SAP SuccessFactors, one of the products Joule integrates with.</li>
+  <li><strong>Documentation questions</strong>, using document grounding with your own process guides.</li>
+  <li><strong>Development:</strong> generating and explaining ABAP or CAP code to speed up extension work.</li>
+</ul>
+
+<h2>How to get started</h2>
+<ol>
+  <li><strong>Check eligibility.</strong> Confirm which of your SAP cloud products support Joule, in which regions, and what your contract includes.</li>
+  <li><strong>Choose provisioning.</strong> SAP-managed is simpler and required for Joule Work; customer-managed gives full control over the BTP set-up.</li>
+  <li><strong>Fix identity first.</strong> A single Cloud Identity Services tenant and consistent global user IDs avoid most integration problems.</li>
+  <li><strong>Review authorisations and data quality.</strong> Joule can only give good answers from good data and correct roles.</li>
+  <li><strong>Pilot with one group</strong> and a handful of scenarios, measure the effect, then expand.</li>
+  <li><strong>Plan for agents and extensions</strong> on SAP's platform, in line with clean core principles. Our article on <a href="/blog/sap-clean-core-explained/">SAP clean core</a> explains why that matters.</li>
+</ol>
+
+<h2>Key takeaways</h2>
+<ul>
+  <li>Joule is SAP's AI copilot, embedded in SAP's cloud applications and grounded in your business data and permissions.</li>
+  <li>It answers, navigates, executes and analyses; Joule Agents add multi-step automation, and Joule Studio is SAP's managed environment for building agents.</li>
+  <li>You need a supported SAP cloud product, Joule Base or AI units, SAP BTP, and Cloud Identity Services; SAP-managed provisioning simplifies the set-up.</li>
+  <li>SAP does not share customer data with third-party LLM providers for training; review the contract terms on SAP's own use of data.</li>
+</ul>
+<p>If you want help assessing Joule for your landscape, setting up SAP BTP or building agents and extensions, see our <a href="/services/sap-btp-development/">SAP BTP development services</a> or <a href="/contact/">contact us</a>.</p>

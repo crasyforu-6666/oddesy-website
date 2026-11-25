@@ -1,0 +1,109 @@
+title: Universal Journal (ACDOCA) in S/4HANA Explained
+description: The universal journal (ACDOCA) explained: what it replaces, how cost elements and currencies work, what happens to BSEG and custom code, and how to prepare.
+h1: The Universal Journal (ACDOCA) in SAP S/4HANA Explained
+summary: ACDOCA is the single line-item table for finance and controlling in S/4HANA. Here is what it replaced, what changed for cost elements, currencies and reporting, and what it means for your conversion and custom code.
+date: 2026-11-25
+updated: 2026-11-25
+category: Finance
+keyword: universal journal acdoca
+services: sap-s4hana-implementation, sap-s4hana-migration
+faq: What is ACDOCA in SAP S/4HANA? || ACDOCA is the database table of the universal journal. It stores the actual line items of General Ledger, Controlling, Asset Accounting, Margin Analysis and Material Ledger in one place, so finance and controlling read from the same data.
+faq: Does BSEG still exist in S/4HANA? || Yes. BSEG still exists and is still updated, and it still holds only three parallel currencies. Totals and index tables such as GLT0, FAGLFLEXT, BSIS and BSAS were replaced by compatibility views, and tables such as COEP, FAGLFLEXA and ANEP are redirected to views based on ACDOCA.
+faq: Are cost elements still separate in S/4HANA? || No. Cost elements are part of the chart of accounts and are maintained in the G/L account master. Each income statement account has a cost element category, for example primary costs or revenue, or secondary costs.
+faq: How many currencies does ACDOCA support? || ACDOCA has amount fields for transaction, balance transaction, company code and global currency, plus eight freely defined currencies, configured per ledger and company code in transaction FINSC_LEDGER. You cannot add new ledgers or currencies during the conversion itself.
+---
+<p><strong>ACDOCA is the table behind the universal journal in SAP S/4HANA.</strong> Instead of storing finance and controlling data in separate line-item and totals tables, S/4HANA records the actual line items of General Ledger, Controlling, Asset Accounting, Margin Analysis and Material Ledger in one table. Finance and controlling report from the same data, so there is nothing to reconcile between them. You still post journal entries, run allocations and acquire assets as before; what changed is where the data lands and how you read it.</p>
+
+<h2>Why SAP introduced the universal journal</h2>
+<p>In SAP ECC, each component kept its own data: line items and totals in FI, separate tables in CO, Asset Accounting and Material Ledger, plus index tables for open items. Period-end closing involved reconciling these stores, and reporting across them often needed a data warehouse with many extractors.</p>
+<p>According to SAP's training material on the <a href="https://learning.sap.com/courses/outlining-cost-management-and-profitability-analysis/discussing-the-concept-of-the-universal-journal_f62cf151-5562-44f5-8ff6-df16fb232e94">concept of the universal journal</a>, ACDOCA acts as "the definitive single source of truth for financial data". Because FI and CO use the same line items, SAP states that no reconciliation between financial accounting and controlling is necessary.</p>
+
+<h2>What ACDOCA brings together</h2>
+<ul>
+  <li><strong>General Ledger Accounting:</strong> all ledgers of the universal journal.</li>
+  <li><strong>Controlling:</strong> actual postings to cost centres, internal orders, projects and other CO objects.</li>
+  <li><strong>Asset Accounting:</strong> asset values and postings.</li>
+  <li><strong>Margin Analysis</strong> (account-based profitability analysis): market segment attributes on the journal entry.</li>
+  <li><strong>Material Ledger:</strong> inventory valuation, which is mandatory in S/4HANA.</li>
+</ul>
+<p>Every journal entry carries the full coding block: G/L account, profit centre, segment, cost centre, order, project, market segment and more. That is why you can drill down from a balance sheet account to individual assets, or break down any income statement line by any dimension in the entry.</p>
+
+<h2>What happened to the old tables</h2>
+<p>SAP's Simplification List (item "Data Model Changes in FIN", SAP Note 2270333) explains the change in two groups.</p>
+<h3>Totals and index tables replaced by compatibility views</h3>
+<p>Totals tables and application index tables were removed and replaced by identically named views, so that SELECT statements work as before. Write access (INSERT, UPDATE, DELETE, MODIFY) had to be removed from SAP standard code and must be removed from custom code (SAP Note 1976487).</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Area</th><th>Tables replaced by compatibility views</th></tr></thead>
+  <tbody>
+    <tr><td>Open item indexes</td><td>BSIS, BSAS, BSID, BSAD, BSIK, BSAK, FAGLBSIS, FAGLBSAS</td></tr>
+    <tr><td>G/L totals</td><td>GLT0, FAGLFLEXT</td></tr>
+    <tr><td>Customer and vendor totals</td><td>KNC1, KNC3, LFC1, LFC3</td></tr>
+    <tr><td>CO totals</td><td>COSP, COSS</td></tr>
+  </tbody>
+</table></div>
+<h3>Line-item tables redirected to ACDOCA</h3>
+<p>Other tables were wholly or partly replaced by ACDOCA. For these, the database interface redirects SELECTs to a compatibility view that reads from the new data model. Examples include <strong>COEP</strong> (view V_COEP), <strong>FAGLFLEXA</strong>, and the Asset Accounting tables <strong>ANEA, ANEK, ANEP, ANLC and ANLP</strong>. Again, code that writes to these tables must be adapted.</p>
+<h3>What about BSEG?</h3>
+<p>BSEG is still there and still updated. SAP's Simplification List notes that BSEG "is not (and will not be) extended" and still contains only three parallel currencies. The incompatible changes for summary and index tables and for BSEG updates are described in SAP Note 2431747.</p>
+<p>For Material Ledger tables such as MLCD and CKMI1, the redirect to compatibility views only applied up to S/4HANA 1809. From 1909, SAP states that these tables and views are obsolete and that no read or write access is allowed.</p>
+
+<h2>Cost elements are now G/L accounts</h2>
+<p>One of the biggest changes for controllers: cost elements are part of the chart of accounts and are maintained in the G/L account master. There is no separate cost element master data. Each G/L account has a type, and income statement accounts have a cost element category:</p>
+<ul>
+  <li><strong>Balance sheet account</strong></li>
+  <li><strong>Non-operating expense or income</strong></li>
+  <li><strong>Primary costs or revenue</strong></li>
+  <li><strong>Secondary costs</strong>, for internal value flows such as activity allocations, overhead and settlement</li>
+</ul>
+<p>Because secondary cost elements are G/L accounts, all CO-internal actual postings are visible in the general ledger. The CO real-time integration and reconciliation ledger used in ECC to transfer these postings are no longer needed (Simplification List item "General Ledger", SAP Note 2270339).</p>
+
+<h2>Currencies in the universal journal</h2>
+<p>In ECC, FI supported up to three parallel currencies and CO two. In S/4HANA, currencies are configured centrally per ledger and company code in transaction <code>FINSC_LEDGER</code> (Simplification List item "Currencies in Universal Journal", SAP Note 2344012). ACDOCA provides these amount fields:</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Field</th><th>Meaning</th></tr></thead>
+  <tbody>
+    <tr><td>WSL</td><td>Amount in transaction (document) currency</td></tr>
+    <tr><td>TSL</td><td>Amount in balance transaction currency</td></tr>
+    <tr><td>HSL</td><td>Amount in company code (local) currency</td></tr>
+    <tr><td>KSL</td><td>Amount in global currency, defined by the controlling area</td></tr>
+    <tr><td>OSL, VSL, BSL, CSL, DSL, ESL, FSL, GSL</td><td>Eight freely defined currencies, configured per ledger and company code</td></tr>
+    <tr><td>CO_OSL</td><td>Amount in CO object currency, where that is a separate currency</td></tr>
+  </tbody>
+</table></div>
+<p>WSL, TSL, HSL and KSL are mandatory in all ledgers. You also mark which currency types are BSEG-relevant, because BSEG still only holds three. SAP states that with Universal Parallel Accounting switched on, all amount fields are fully supported in all processes from S/4HANA 2022; without it, coverage of the additional currencies varies by process. SAP's <a href="https://learning.sap.com/courses/customizing-core-settings-in-financial-accounting-in-sap-s4hana/managing-currency-types-1">currency types lesson</a> lists the standard types, such as 10 (company code), 30 (group) and 70 (CO object currency).</p>
+
+<h2>What it means for a conversion</h2>
+<ul>
+  <li><strong>Ledgers and currencies stay as they are.</strong> According to SAP, you cannot introduce new ledgers or new currencies during the migration to S/4HANA. If you need them, plan them as a separate project before or after the conversion.</li>
+  <li><strong>Classic GL becomes ledger 0L.</strong> If you use the classic General Ledger, ledger 00 is migrated to the new leading ledger 0L.</li>
+  <li><strong>Finance data migration is a step of its own.</strong> After the technical conversion, the finance Customizing and the General Ledger, Asset Accounting, Controlling and Material Ledger data must be migrated to the new structures (SAP Note 2332030). Our <a href="/blog/sap-s4hana-migration-checklist/">S/4HANA migration checklist</a> shows where this fits.</li>
+  <li><strong>Clean up first.</strong> Inconsistencies in the G/L, assets and Material Ledger cause problems in this migration; fix them in ECC beforehand.</li>
+</ul>
+
+<h2>Custom code and reporting</h2>
+<h3>Custom code</h3>
+<ul>
+  <li>Programs that <strong>read</strong> the old tables generally keep working through the compatibility views, but performance can differ, so test heavy reports.</li>
+  <li>Programs that <strong>write</strong> to totals, index or redirected tables must be changed.</li>
+  <li>New reports should read ACDOCA, or better, SAP's released CDS views, rather than the compatibility views. That keeps the code in line with <a href="/blog/sap-clean-core-explained/">clean core</a> principles.</li>
+</ul>
+<h3>Reporting</h3>
+<p>Classic Report Writer and Report Painter reports still work, but they show the data in separate views: FI reports show the fields formerly in FAGLFLEXT, and CO reports the fields formerly in COSP and COSS. To see the combined data, SAP recommends the Fiori reports that use all the fields of the universal journal. Journal entries themselves are typically posted with the <strong>Post General Journal Entries</strong> app, with templates for recurring entries.</p>
+
+<h2>Common misunderstandings</h2>
+<ul>
+  <li><strong>"BSEG is gone."</strong> It is not; it is still updated and still limited to three currencies.</li>
+  <li><strong>"We can redesign ledgers during the conversion."</strong> Not in the conversion itself; plan it separately.</li>
+  <li><strong>"Compatibility views mean custom code needs no work."</strong> Reads usually work; writes do not, and performance needs testing.</li>
+  <li><strong>"The universal journal replaces controlling."</strong> CO processes such as allocation and settlement still exist; their results are simply stored in the same table as FI.</li>
+</ul>
+
+<h2>Key takeaways</h2>
+<ul>
+  <li>ACDOCA is the single line-item table for GL, CO, Asset Accounting, Margin Analysis and Material Ledger.</li>
+  <li>Totals and index tables became compatibility views; line-item tables such as COEP and ANEP are redirected to ACDOCA. BSEG remains.</li>
+  <li>Cost elements are G/L accounts with a cost element category.</li>
+  <li>Currencies are configured per ledger in FINSC_LEDGER, with up to eight freely defined currencies beyond the mandatory ones.</li>
+  <li>Plan ledger or currency changes outside the conversion, and adapt custom code that writes to old tables.</li>
+</ul>
+<p>Planning a finance conversion or redesigning ledgers? See our <a href="/services/sap-s4hana-implementation/">S/4HANA implementation</a> and <a href="/services/sap-s4hana-migration/">S/4HANA migration services</a>, or <a href="/contact/">contact us</a>.</p>

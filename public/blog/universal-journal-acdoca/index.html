@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script>document.documentElement.classList.add("js")</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Universal Journal (ACDOCA) in S/4HANA Explained</title>
+<meta name="description" content="The universal journal (ACDOCA) explained: what it replaces, how cost elements and currencies work, what happens to BSEG and custom code, and how to prepare.">
+<link rel="canonical" href="https://oddesyconsultingandservices.com/blog/universal-journal-acdoca/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#070a14">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Oddesy Consulting and Services">
+<meta property="og:title" content="Universal Journal (ACDOCA) in S/4HANA Explained">
+<meta property="og:description" content="The universal journal (ACDOCA) explained: what it replaces, how cost elements and currencies work, what happens to BSEG and custom code, and how to prepare.">
+<meta property="og:url" content="https://oddesyconsultingandservices.com/blog/universal-journal-acdoca/">
+<meta property="og:image" content="https://oddesyconsultingandservices.com/assets/img/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/img/logo-mark.svg" type="image/svg+xml">
+<link rel="alternate" type="application/rss+xml" title="Oddesy Consulting and Services Blog" href="/blog/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css?v=b01d1ddf">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "@id": "https://oddesyconsultingandservices.com/#organization", "name": "Oddesy Consulting and Services", "url": "https://oddesyconsultingandservices.com/", "logo": "https://oddesyconsultingandservices.com/assets/img/logo-mark.svg", "image": "https://oddesyconsultingandservices.com/assets/img/og-image.png", "email": "info@oddesyconsultingandservices.com", "telephone": "+00 0000 000000", "address": {"@type": "PostalAddress", "streetAddress": "Your street address, City, State, Postal code, Country", "addressLocality": "Your City", "addressCountry": "Your Country"}, "sameAs": ["https://www.linkedin.com/"], "knowsAbout": ["SAP S/4HANA", "RISE with SAP", "SAP BTP", "SAP Integration Suite", "SAP AMS"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://oddesyconsultingandservices.com/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://oddesyconsultingandservices.com/blog/"}, {"@type": "ListItem", "position": 3, "name": "Finance", "item": "https://oddesyconsultingandservices.com/blog/category/finance/"}, {"@type": "ListItem", "position": 4, "name": "The Universal Journal (ACDOCA) in SAP S/…", "item": "https://oddesyconsultingandservices.com/blog/universal-journal-acdoca/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "The Universal Journal (ACDOCA) in SAP S/4HANA Explained", "description": "The universal journal (ACDOCA) explained: what it replaces, how cost elements and currencies work, what happens to BSEG and custom code, and how to prepare.", "datePublished": "2026-11-25", "dateModified": "2026-11-25", "url": "https://oddesyconsultingandservices.com/blog/universal-journal-acdoca/", "mainEntityOfPage": "https://oddesyconsultingandservices.com/blog/universal-journal-acdoca/", "image": "https://oddesyconsultingandservices.com/assets/img/og-image.png", "author": {"@type": "Organization", "name": "Oddesy Consulting and Services", "url": "https://oddesyconsultingandservices.com/"}, "publisher": {"@id": "https://oddesyconsultingandservices.com/#organization"}, "articleSection": "Finance", "keywords": "universal journal acdoca", "wordCount": 1297}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is ACDOCA in SAP S/4HANA?", "acceptedAnswer": {"@type": "Answer", "text": "ACDOCA is the database table of the universal journal. It stores the actual line items of General Ledger, Controlling, Asset Accounting, Margin Analysis and Material Ledger in one place, so finance and controlling read from the same data."}}, {"@type": "Question", "name": "Does BSEG still exist in S/4HANA?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. BSEG still exists and is still updated, and it still holds only three parallel currencies. Totals and index tables such as GLT0, FAGLFLEXT, BSIS and BSAS were replaced by compatibility views, and tables such as COEP, FAGLFLEXA and ANEP are redirected to views based on ACDOCA."}}, {"@type": "Question", "name": "Are cost elements still separate in S/4HANA?", "acceptedAnswer": {"@type": "Answer", "text": "No. Cost elements are part of the chart of accounts and are maintained in the G/L account master. Each income statement account has a cost element category, for example primary costs or revenue, or secondary costs."}}, {"@type": "Question", "name": "How many currencies does ACDOCA support?", "acceptedAnswer": {"@type": "Answer", "text": "ACDOCA has amount fields for transaction, balance transaction, company code and global currency, plus eight freely defined currencies, configured per ledger and company code in transaction FINSC_LEDGER. You cannot add new ledgers or currencies during the conversion itself."}}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="nav-shell">
+    <a href="/" class="brand" aria-label="Oddesy Consulting and Services home">
+      <img src="/assets/img/logo-mark.svg" alt="" width="34" height="34">
+      <span class="brand-text">Oddesy<span>Consulting &amp; Services</span></span>
+    </a>
+    <nav id="primary-nav" class="primary-nav" aria-label="Main">
+      <ul class="menu">
+        <li><a href="/about/">About</a></li>
+        <li class="has-sub">
+          <a href="/services/" class="sub-trigger" aria-haspopup="true">Services <span class="caret" aria-hidden="true"></span></a>
+          <div class="mega"><ul><li><a href="/services/sap-s4hana-implementation/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 15c-1.5 1.5-2 5-2 5s3.5-.5 5-2"/><path d="M9 15l-3-3c1-4 4-9 13-9 0 9-5 12-9 13z"/><circle cx="15" cy="9" r="1.6"/></svg></span><span><strong>S/4HANA Implementation</strong><small>Greenfield S/4HANA deployments in public or private cloud, designed fit-to-standard and delivered on SAP Activate.</small></span></a></li><li><a href="/services/rise-with-sap/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18h10a4 4 0 0 0 .6-7.96A6 6 0 0 0 6.1 10.5 3.75 3.75 0 0 0 7 18z"/></svg></span><span><strong>RISE with SAP</strong><small>Business case, scoping and transition support for the RISE with SAP subscription.</small></span></a></li><li><a href="/services/sap-s4hana-migration/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h12l-3-3"/><path d="M20 17H8l3 3"/></svg></span><span><strong>S/4HANA Migration &amp; Upgrades</strong><small>ECC to S/4HANA conversion, selective data transition and S/4HANA release upgrades.</small></span></a></li><li><a href="/services/sap-integration/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1"/><path d="M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"/></svg></span><span><strong>SAP Integration</strong><small>SAP Integration Suite, APIs and EDI connecting SAP to CRM, e-commerce, banks and machines.</small></span></a></li><li><a href="/services/sap-support-ams/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/></svg></span><span><strong>SAP Support &amp; AMS</strong><small>SLA-based functional, technical and Basis support for SAP ECC and S/4HANA.</small></span></a></li><li><a href="/services/sap-btp-development/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8l-4 4 4 4"/><path d="M16 8l4 4-4 4"/><path d="M13.5 5l-3 14"/></svg></span><span><strong>BTP &amp; Development</strong><small>Fiori/UI5 apps, ABAP, workflows and self-service portals built on SAP BTP.</small></span></a></li><li><a href="/services/sap-staffing/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2c2.9.4 5 2.8 5 5.8"/></svg></span><span><strong>Staffing &amp; Augmentation</strong><small>Pre-screened SAP consultants on contract, contract-to-hire or permanent terms.</small></span></a></li></ul>
+            <a class="mega-all" href="/services/">All SAP services <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a></div>
+        </li>
+        <li><a href="/industries/">Industries</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youronementor.com" target="_blank" rel="noopener">Training <span class="ext"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span><span class="sr">(opens in a new tab)</span></a></li>
+        <li><a href="/careers/">Careers</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+      <a href="/contact/" class="btn btn-glow btn-sm nav-cta">Book a call <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
+    </nav>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu"><span></span><span></span></button>
+  </div>
+</header>
+<main id="main">
+<section class="page-hero dark article-hero"><div class="aurora" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div><div class="grid-overlay" aria-hidden="true"></div><div class="container hero-inner narrow">
+  <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/blog/">Blog</a></li><li><a href="/blog/category/finance/">Finance</a></li><li aria-current="page">The Universal Journal (ACDOCA) in SAP S/…</li></ol></nav>
+  <p class="pill"><span class="dot"></span>Finance &middot; 6 min read</p>
+  <h1>The Universal Journal (ACDOCA) in SAP S/4HANA Explained</h1>
+  <p class="lead">ACDOCA is the single line-item table for finance and controlling in S/4HANA. Here is what it replaced, what changed for cost elements, currencies and reporting, and what it means for your conversion and custom code.</p>
+  <p class="byline">By the Oddesy Consulting and Services team &middot; <time datetime="2026-11-25">25 Nov 2026</time></p>
+</div></section>
+<section class="section article-sec"><div class="container article-grid">
+  <article class="prose article-body"><p><strong>ACDOCA is the table behind the universal journal in SAP S/4HANA.</strong> Instead of storing finance and controlling data in separate line-item and totals tables, S/4HANA records the actual line items of General Ledger, Controlling, Asset Accounting, Margin Analysis and Material Ledger in one table. Finance and controlling report from the same data, so there is nothing to reconcile between them. You still post journal entries, run allocations and acquire assets as before; what changed is where the data lands and how you read it.</p>
+
+<h2>Why SAP introduced the universal journal</h2>
+<p>In SAP ECC, each component kept its own data: line items and totals in FI, separate tables in CO, Asset Accounting and Material Ledger, plus index tables for open items. Period-end closing involved reconciling these stores, and reporting across them often needed a data warehouse with many extractors.</p>
+<p>According to SAP's training material on the <a href="https://learning.sap.com/courses/outlining-cost-management-and-profitability-analysis/discussing-the-concept-of-the-universal-journal_f62cf151-5562-44f5-8ff6-df16fb232e94">concept of the universal journal</a>, ACDOCA acts as "the definitive single source of truth for financial data". Because FI and CO use the same line items, SAP states that no reconciliation between financial accounting and controlling is necessary.</p>
+
+<h2>What ACDOCA brings together</h2>
+<ul>
+  <li><strong>General Ledger Accounting:</strong> all ledgers of the universal journal.</li>
+  <li><strong>Controlling:</strong> actual postings to cost centres, internal orders, projects and other CO objects.</li>
+  <li><strong>Asset Accounting:</strong> asset values and postings.</li>
+  <li><strong>Margin Analysis</strong> (account-based profitability analysis): market segment attributes on the journal entry.</li>
+  <li><strong>Material Ledger:</strong> inventory valuation, which is mandatory in S/4HANA.</li>
+</ul>
+<p>Every journal entry carries the full coding block: G/L account, profit centre, segment, cost centre, order, project, market segment and more. That is why you can drill down from a balance sheet account to individual assets, or break down any income statement line by any dimension in the entry.</p>
+
+<h2>What happened to the old tables</h2>
+<p>SAP's Simplification List (item "Data Model Changes in FIN", SAP Note 2270333) explains the change in two groups.</p>
+<h3>Totals and index tables replaced by compatibility views</h3>
+<p>Totals tables and application index tables were removed and replaced by identically named views, so that SELECT statements work as before. Write access (INSERT, UPDATE, DELETE, MODIFY) had to be removed from SAP standard code and must be removed from custom code (SAP Note 1976487).</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Area</th><th>Tables replaced by compatibility views</th></tr></thead>
+  <tbody>
+    <tr><td>Open item indexes</td><td>BSIS, BSAS, BSID, BSAD, BSIK, BSAK, FAGLBSIS, FAGLBSAS</td></tr>
+    <tr><td>G/L totals</td><td>GLT0, FAGLFLEXT</td></tr>
+    <tr><td>Customer and vendor totals</td><td>KNC1, KNC3, LFC1, LFC3</td></tr>
+    <tr><td>CO totals</td><td>COSP, COSS</td></tr>
+  </tbody>
+</table></div>
+<h3>Line-item tables redirected to ACDOCA</h3>
+<p>Other tables were wholly or partly replaced by ACDOCA. For these, the database interface redirects SELECTs to a compatibility view that reads from the new data model. Examples include <strong>COEP</strong> (view V_COEP), <strong>FAGLFLEXA</strong>, and the Asset Accounting tables <strong>ANEA, ANEK, ANEP, ANLC and ANLP</strong>. Again, code that writes to these tables must be adapted.</p>
+<h3>What about BSEG?</h3>
+<p>BSEG is still there and still updated. SAP's Simplification List notes that BSEG "is not (and will not be) extended" and still contains only three parallel currencies. The incompatible changes for summary and index tables and for BSEG updates are described in SAP Note 2431747.</p>
+<p>For Material Ledger tables such as MLCD and CKMI1, the redirect to compatibility views only applied up to S/4HANA 1809. From 1909, SAP states that these tables and views are obsolete and that no read or write access is allowed.</p>
+
+<h2>Cost elements are now G/L accounts</h2>
+<p>One of the biggest changes for controllers: cost elements are part of the chart of accounts and are maintained in the G/L account master. There is no separate cost element master data. Each G/L account has a type, and income statement accounts have a cost element category:</p>
+<ul>
+  <li><strong>Balance sheet account</strong></li>
+  <li><strong>Non-operating expense or income</strong></li>
+  <li><strong>Primary costs or revenue</strong></li>
+  <li><strong>Secondary costs</strong>, for internal value flows such as activity allocations, overhead and settlement</li>
+</ul>
+<p>Because secondary cost elements are G/L accounts, all CO-internal actual postings are visible in the general ledger. The CO real-time integration and reconciliation ledger used in ECC to transfer these postings are no longer needed (Simplification List item "General Ledger", SAP Note 2270339).</p>
+
+<h2>Currencies in the universal journal</h2>
+<p>In ECC, FI supported up to three parallel currencies and CO two. In S/4HANA, currencies are configured centrally per ledger and company code in transaction <code>FINSC_LEDGER</code> (Simplification List item "Currencies in Universal Journal", SAP Note 2344012). ACDOCA provides these amount fields:</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Field</th><th>Meaning</th></tr></thead>
+  <tbody>
+    <tr><td>WSL</td><td>Amount in transaction (document) currency</td></tr>
+    <tr><td>TSL</td><td>Amount in balance transaction currency</td></tr>
+    <tr><td>HSL</td><td>Amount in company code (local) currency</td></tr>
+    <tr><td>KSL</td><td>Amount in global currency, defined by the controlling area</td></tr>
+    <tr><td>OSL, VSL, BSL, CSL, DSL, ESL, FSL, GSL</td><td>Eight freely defined currencies, configured per ledger and company code</td></tr>
+    <tr><td>CO_OSL</td><td>Amount in CO object currency, where that is a separate currency</td></tr>
+  </tbody>
+</table></div>
+<p>WSL, TSL, HSL and KSL are mandatory in all ledgers. You also mark which currency types are BSEG-relevant, because BSEG still only holds three. SAP states that with Universal Parallel Accounting switched on, all amount fields are fully supported in all processes from S/4HANA 2022; without it, coverage of the additional currencies varies by process. SAP's <a href="https://learning.sap.com/courses/customizing-core-settings-in-financial-accounting-in-sap-s4hana/managing-currency-types-1">currency types lesson</a> lists the standard types, such as 10 (company code), 30 (group) and 70 (CO object currency).</p>
+
+<h2>What it means for a conversion</h2>
+<ul>
+  <li><strong>Ledgers and currencies stay as they are.</strong> According to SAP, you cannot introduce new ledgers or new currencies during the migration to S/4HANA. If you need them, plan them as a separate project before or after the conversion.</li>
+  <li><strong>Classic GL becomes ledger 0L.</strong> If you use the classic General Ledger, ledger 00 is migrated to the new leading ledger 0L.</li>
+  <li><strong>Finance data migration is a step of its own.</strong> After the technical conversion, the finance Customizing and the General Ledger, Asset Accounting, Controlling and Material Ledger data must be migrated to the new structures (SAP Note 2332030). Our <a href="/blog/sap-s4hana-migration-checklist/">S/4HANA migration checklist</a> shows where this fits.</li>
+  <li><strong>Clean up first.</strong> Inconsistencies in the G/L, assets and Material Ledger cause problems in this migration; fix them in ECC beforehand.</li>
+</ul>
+
+<h2>Custom code and reporting</h2>
+<h3>Custom code</h3>
+<ul>
+  <li>Programs that <strong>read</strong> the old tables generally keep working through the compatibility views, but performance can differ, so test heavy reports.</li>
+  <li>Programs that <strong>write</strong> to totals, index or redirected tables must be changed.</li>
+  <li>New reports should read ACDOCA, or better, SAP's released CDS views, rather than the compatibility views. That keeps the code in line with <a href="/blog/sap-clean-core-explained/">clean core</a> principles.</li>
+</ul>
+<h3>Reporting</h3>
+<p>Classic Report Writer and Report Painter reports still work, but they show the data in separate views: FI reports show the fields formerly in FAGLFLEXT, and CO reports the fields formerly in COSP and COSS. To see the combined data, SAP recommends the Fiori reports that use all the fields of the universal journal. Journal entries themselves are typically posted with the <strong>Post General Journal Entries</strong> app, with templates for recurring entries.</p>
+
+<h2>Common misunderstandings</h2>
+<ul>
+  <li><strong>"BSEG is gone."</strong> It is not; it is still updated and still limited to three currencies.</li>
+  <li><strong>"We can redesign ledgers during the conversion."</strong> Not in the conversion itself; plan it separately.</li>
+  <li><strong>"Compatibility views mean custom code needs no work."</strong> Reads usually work; writes do not, and performance needs testing.</li>
+  <li><strong>"The universal journal replaces controlling."</strong> CO processes such as allocation and settlement still exist; their results are simply stored in the same table as FI.</li>
+</ul>
+
+<h2>Key takeaways</h2>
+<ul>
+  <li>ACDOCA is the single line-item table for GL, CO, Asset Accounting, Margin Analysis and Material Ledger.</li>
+  <li>Totals and index tables became compatibility views; line-item tables such as COEP and ANEP are redirected to ACDOCA. BSEG remains.</li>
+  <li>Cost elements are G/L accounts with a cost element category.</li>
+  <li>Currencies are configured per ledger in FINSC_LEDGER, with up to eight freely defined currencies beyond the mandatory ones.</li>
+  <li>Plan ledger or currency changes outside the conversion, and adapt custom code that writes to old tables.</li>
+</ul>
+<p>Planning a finance conversion or redesigning ledgers? See our <a href="/services/sap-s4hana-implementation/">S/4HANA implementation</a> and <a href="/services/sap-s4hana-migration/">S/4HANA migration services</a>, or <a href="/contact/">contact us</a>.</p>
+    <h2>Frequently asked questions</h2><div class="faq inline-faq"><details><summary>What is ACDOCA in SAP S/4HANA?<span class="plus"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>ACDOCA is the database table of the universal journal. It stores the actual line items of General Ledger, Controlling, Asset Accounting, Margin Analysis and Material Ledger in one place, so finance and controlling read from the same data.</p></details><details><summary>Does BSEG still exist in S/4HANA?<span class="plus"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>Yes. BSEG still exists and is still updated, and it still holds only three parallel currencies. Totals and index tables such as GLT0, FAGLFLEXT, BSIS and BSAS were replaced by compatibility views, and tables such as COEP, FAGLFLEXA and ANEP are redirected to views based on ACDOCA.</p></details><details><summary>Are cost elements still separate in S/4HANA?<span class="plus"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>No. Cost elements are part of the chart of accounts and are maintained in the G/L account master. Each income statement account has a cost element category, for example primary costs or revenue, or secondary costs.</p></details><details><summary>How many currencies does ACDOCA support?<span class="plus"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>ACDOCA has amount fields for transaction, balance transaction, company code and global currency, plus eight freely defined currencies, configured per ledger and company code in transaction FINSC_LEDGER. You cannot add new ledgers or currencies during the conversion itself.</p></details></div>
+  </article>
+  <aside class="sidebar">
+    <div class="side-box"><h2 class="side-h">Related services</h2><ul class="side-nav"><li><a href="/services/sap-s4hana-implementation/"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 15c-1.5 1.5-2 5-2 5s3.5-.5 5-2"/><path d="M9 15l-3-3c1-4 4-9 13-9 0 9-5 12-9 13z"/><circle cx="15" cy="9" r="1.6"/></svg>SAP S/4HANA Implementation</a></li><li><a href="/services/sap-s4hana-migration/"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h12l-3-3"/><path d="M20 17H8l3 3"/></svg>SAP S/4HANA Migration &amp; Upgrades</a></li></ul></div>
+    
+    <div class="side-box side-cta"><div class="aurora" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div><div class="grid-overlay" aria-hidden="true"></div><div class="rel"><h2 class="side-h">Talk to an expert</h2>
+      <p>Get a free 30-minute review of your SAP roadmap.</p>
+      <a href="/contact/" class="btn btn-light btn-block">Book a call <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a></div></div>
+  </aside>
+</div></section>
+<section class="section soft"><div class="container"><div class="section-head center reveal"><p class="eyebrow">Keep reading</p><h2>More from <em>the blog</em></h2></div><div class="post-grid"><a class="post-card spot reveal" href="/blog/what-is-sap-joule/">
+  <div class="post-meta"><span class="tag">AI &amp; Innovation</span><span>6 min read</span></div>
+  <h3>What Is SAP Joule? Capabilities, Requirements and Practical Use Cases</h3><p>Joule is SAP&#x27;s AI copilot, embedded across SAP&#x27;s cloud applications. This guide explains what it does, how agents and Joule Studio fit in, what you need to switch it on and how SAP handles your data.</p>
+  <span class="post-foot"><time datetime="2026-11-23">23 Nov 2026</time><span class="more">Read <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></span></a><a class="post-card spot reveal" href="/blog/s4hana-public-vs-private-cloud/">
+  <div class="post-meta"><span class="tag">Cloud &amp; RISE</span><span>6 min read</span></div>
+  <h3>SAP S/4HANA Cloud Public Edition vs Private Edition: How to Choose</h3><p>Public Edition is standard SaaS with half-yearly upgrades; Private Edition is S/4HANA in SAP&#x27;s private cloud with room to convert and customise. Here is how they really differ and how to decide.</p>
+  <span class="post-foot"><time datetime="2026-11-20">20 Nov 2026</time><span class="more">Read <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></span></a><a class="post-card spot reveal" href="/blog/sap-pi-po-end-of-maintenance/">
+  <div class="post-meta"><span class="tag">Integration</span><span>6 min read</span></div>
+  <h3>SAP PI/PO End of Maintenance: What 2027 and 2030 Mean and How to Move to SAP Integration Suite</h3><p>Mainstream maintenance for SAP Process Orchestration 7.5 ends in 2027. Here is what that means, what SAP&#x27;s assessment and migration tools can and cannot do, and how to plan the move.</p>
+  <span class="post-foot"><time datetime="2026-11-18">18 Nov 2026</time><span class="more">Read <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></span></a></div></div></section>
+
+<section class="section cta-section"><div class="container">
+  <div class="cta-card reveal">
+    <div class="aurora" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div><div class="grid-overlay" aria-hidden="true"></div>
+    <div class="cta-content">
+      <p class="pill pill-dark"><span class="dot"></span>Free 30-minute consultation</p>
+      <h2>Let's map your next <em>SAP move</em>.</h2>
+      <p>Talk to a senior consultant about your landscape, timeline and options. Practical advice, no sales pitch.</p>
+      <div class="hero-actions center-x">
+        <a href="/contact/" class="btn btn-light">Book your consultation <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
+        <a href="mailto:info@oddesyconsultingandservices.com" class="btn btn-ghost"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6 8.5-6"/></svg>info@oddesyconsultingandservices.com</a>
+      </div>
+    </div>
+  </div>
+</div></section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-about">
+      <a href="/" class="brand"><img src="/assets/img/logo-mark.svg" alt="" width="34" height="34">
+      <span class="brand-text">Oddesy<span>Consulting &amp; Services</span></span></a>
+      <p>Independent SAP consultancy for implementation, migration, integration and support.</p>
+      <a class="social" href="https://www.linkedin.com/" rel="noopener" aria-label="LinkedIn"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg></a>
+    </div>
+    <div><h2 class="footer-h">Services</h2><ul><li><a href="/services/sap-s4hana-implementation/">S/4HANA Implementation</a></li><li><a href="/services/rise-with-sap/">RISE with SAP</a></li><li><a href="/services/sap-s4hana-migration/">S/4HANA Migration &amp; Upgrades</a></li><li><a href="/services/sap-integration/">SAP Integration</a></li><li><a href="/services/sap-support-ams/">SAP Support &amp; AMS</a></li><li><a href="/services/sap-btp-development/">BTP &amp; Development</a></li><li><a href="/services/sap-staffing/">Staffing &amp; Augmentation</a></li></ul></div>
+    <div><h2 class="footer-h">Company</h2><ul>
+      <li><a href="/about/">About</a></li><li><a href="/industries/">Industries</a></li>
+      <li><a href="/blog/">Blog</a></li><li><a href="https://youronementor.com" target="_blank" rel="noopener">Training <span class="ext"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span><span class="sr">(opens in a new tab)</span></a></li>
+      <li><a href="/careers/">Careers</a></li><li><a href="/contact/">Contact</a></li>
+      <li><a href="/privacy-policy/">Privacy</a></li></ul></div>
+    <div><h2 class="footer-h">Get in touch</h2><ul class="footer-contact">
+      <li><a href="mailto:info@oddesyconsultingandservices.com"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6 8.5-6"/></svg>info@oddesyconsultingandservices.com</a></li>
+      <li><a href="tel:+000000000000"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z"/></svg>+00 0000 000000</a></li>
+      <li><span><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Your street address, City, State, Postal code, Country</span></li></ul></div>
+  </div>
+  <div class="container footer-bottom">
+    <p>&copy; 2026 Oddesy Consulting and Services</p>
+    <p>SAP, S/4HANA, SAP BTP, RISE with SAP and other SAP products are trademarks of SAP SE. Oddesy is an independent consultancy.</p>
+  </div>
+  <div class="wordmark" aria-hidden="true">ODDESY</div>
+</footer>
+<script>window.ODDESY = {"formEndpoint": "", "email": "info@oddesyconsultingandservices.com"};</script>
+<script src="/assets/js/site.js?v=9ad8ba4d" defer></script>
+</body>
+</html>

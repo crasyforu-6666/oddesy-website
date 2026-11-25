@@ -95,7 +95,9 @@
    "category": "Finance",
    "intent": "informational",
    "services": "sap-s4hana-implementation",
-   "status": "todo"
+   "status": "published",
+   "slug": "universal-journal-acdoca",
+   "published": "2026-11-25"
   },
   {
    "keyword": "sap ewm interview questions",

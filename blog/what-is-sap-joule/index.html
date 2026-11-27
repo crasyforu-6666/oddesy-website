@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script>document.documentElement.classList.add("js")</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Is SAP Joule? Capabilities, Setup and Limits</title>
+<meta name="description" content="What is SAP Joule? A clear guide to SAP&#x27;s AI copilot: what it can do, Joule Agents and Joule Studio, setup prerequisites, data handling and how to start.">
+<link rel="canonical" href="https://oddesyconsultingandservices.com/blog/what-is-sap-joule/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#070a14">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Oddesy Consulting and Services">
+<meta property="og:title" content="What Is SAP Joule? Capabilities, Setup and Limits">
+<meta property="og:description" content="What is SAP Joule? A clear guide to SAP&#x27;s AI copilot: what it can do, Joule Agents and Joule Studio, setup prerequisites, data handling and how to start.">
+<meta property="og:url" content="https://oddesyconsultingandservices.com/blog/what-is-sap-joule/">
+<meta property="og:image" content="https://oddesyconsultingandservices.com/assets/img/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/img/logo-mark.svg" type="image/svg+xml">
+<link rel="alternate" type="application/rss+xml" title="Oddesy Consulting and Services Blog" href="/blog/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css?v=b01d1ddf">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "@id": "https://oddesyconsultingandservices.com/#organization", "name": "Oddesy Consulting and Services", "url": "https://oddesyconsultingandservices.com/", "logo": "https://oddesyconsultingandservices.com/assets/img/logo-mark.svg", "image": "https://oddesyconsultingandservices.com/assets/img/og-image.png", "email": "info@oddesyconsultingandservices.com", "telephone": "+00 0000 000000", "address": {"@type": "PostalAddress", "streetAddress": "Your street address, City, State, Postal code, Country", "addressLocality": "Your City", "addressCountry": "Your Country"}, "sameAs": ["https://www.linkedin.com/"], "knowsAbout": ["SAP S/4HANA", "RISE with SAP", "SAP BTP", "SAP Integration Suite", "SAP AMS"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://oddesyconsultingandservices.com/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://oddesyconsultingandservices.com/blog/"}, {"@type": "ListItem", "position": 3, "name": "AI & Innovation", "item": "https://oddesyconsultingandservices.com/blog/category/ai-innovation/"}, {"@type": "ListItem", "position": 4, "name": "What Is SAP Joule? Capabilities, Require…", "item": "https://oddesyconsultingandservices.com/blog/what-is-sap-joule/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "What Is SAP Joule? Capabilities, Requirements and Practical Use Cases", "description": "What is SAP Joule? A clear guide to SAP's AI copilot: what it can do, Joule Agents and Joule Studio, setup prerequisites, data handling and how to start.", "datePublished": "2026-11-23", "dateModified": "2026-11-23", "url": "https://oddesyconsultingandservices.com/blog/what-is-sap-joule/", "mainEntityOfPage": "https://oddesyconsultingandservices.com/blog/what-is-sap-joule/", "image": "https://oddesyconsultingandservices.com/assets/img/og-image.png", "author": {"@type": "Organization", "name": "Oddesy Consulting and Services", "url": "https://oddesyconsultingandservices.com/"}, "publisher": {"@id": "https://oddesyconsultingandservices.com/#organization"}, "articleSection": "AI & Innovation", "keywords": "what is sap joule", "wordCount": 1398}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is SAP Joule?", "acceptedAnswer": {"@type": "Answer", "text": "Joule is SAP's generative AI copilot: a natural language assistant embedded across SAP's cloud applications. It is grounded in your SAP business data and processes, and respects each user's existing roles and authorisations."}}, {"@type": "Question", "name": "What can Joule do?", "acceptedAnswer": {"@type": "Answer", "text": "SAP groups Joule's interactions into four patterns: informational (answer a question), navigational (take you to the right app), transactional (carry out a task such as creating a purchase requisition) and analytical (summarise and compare data). Joule Agents extend this to multi-step tasks across SAP systems."}}, {"@type": "Question", "name": "What do I need to use Joule?", "acceptedAnswer": {"@type": "Answer", "text": "A licence for an SAP cloud product that supports Joule in a supported region, Joule Base or AI units, and the technical set-up: an SAP BTP enterprise account, SAP Cloud Identity Services and the relevant entitlements. SAP-managed provisioning reduces the technical work."}}, {"@type": "Question", "name": "Does SAP use my data to train AI models?", "acceptedAnswer": {"@type": "Answer", "text": "SAP states that it does not share customer data with third-party large language model providers to train their models, and that third-party model providers process the data without storing it. Where the contract permits, SAP may use customer data to improve its own products, and customers can review and opt out in SAP for Me."}}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="nav-shell">
+    <a href="/" class="brand" aria-label="Oddesy Consulting and Services home">
+      <img src="/assets/img/logo-mark.svg" alt="" width="34" height="34">
+      <span class="brand-text">Oddesy<span>Consulting &amp; Services</span></span>
+    </a>
+    <nav id="primary-nav" class="primary-nav" aria-label="Main">
+      <ul class="menu">
+        <li><a href="/about/">About</a></li>
+        <li class="has-sub">
+          <a href="/services/" class="sub-trigger" aria-haspopup="true">Services <span class="caret" aria-hidden="true"></span></a>
+          <div class="mega"><ul><li><a href="/services/sap-s4hana-implementation/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 15c-1.5 1.5-2 5-2 5s3.5-.5 5-2"/><path d="M9 15l-3-3c1-4 4-9 13-9 0 9-5 12-9 13z"/><circle cx="15" cy="9" r="1.6"/></svg></span><span><strong>S/4HANA Implementation</strong><small>Greenfield S/4HANA deployments in public or private cloud, designed fit-to-standard and delivered on SAP Activate.</small></span></a></li><li><a href="/services/rise-with-sap/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18h10a4 4 0 0 0 .6-7.96A6 6 0 0 0 6.1 10.5 3.75 3.75 0 0 0 7 18z"/></svg></span><span><strong>RISE with SAP</strong><small>Business case, scoping and transition support for the RISE with SAP subscription.</small></span></a></li><li><a href="/services/sap-s4hana-migration/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h12l-3-3"/><path d="M20 17H8l3 3"/></svg></span><span><strong>S/4HANA Migration &amp; Upgrades</strong><small>ECC to S/4HANA conversion, selective data transition and S/4HANA release upgrades.</small></span></a></li><li><a href="/services/sap-integration/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1"/><path d="M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"/></svg></span><span><strong>SAP Integration</strong><small>SAP Integration Suite, APIs and EDI connecting SAP to CRM, e-commerce, banks and machines.</small></span></a></li><li><a href="/services/sap-support-ams/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/></svg></span><span><strong>SAP Support &amp; AMS</strong><small>SLA-based functional, technical and Basis support for SAP ECC and S/4HANA.</small></span></a></li><li><a href="/services/sap-btp-development/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8l-4 4 4 4"/><path d="M16 8l4 4-4 4"/><path d="M13.5 5l-3 14"/></svg></span><span><strong>BTP &amp; Development</strong><small>Fiori/UI5 apps, ABAP, workflows and self-service portals built on SAP BTP.</small></span></a></li><li><a href="/services/sap-staffing/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2c2.9.4 5 2.8 5 5.8"/></svg></span><span><strong>Staffing &amp; Augmentation</strong><small>Pre-screened SAP consultants on contract, contract-to-hire or permanent terms.</small></span></a></li></ul>
+            <a class="mega-all" href="/services/">All SAP services <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a></div>
+        </li>
+        <li><a href="/industries/">Industries</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youronementor.com" target="_blank" rel="noopener">Training <span class="ext"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span><span class="sr">(opens in a new tab)</span></a></li>
+        <li><a href="/careers/">Careers</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+      <a href="/contact/" class="btn btn-glow btn-sm nav-cta">Book a call <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
+    </nav>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu"><span></span><span></span></button>
+  </div>
+</header>
+<main id="main">
+<section class="page-hero dark article-hero"><div class="aurora" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div><div class="grid-overlay" aria-hidden="true"></div><div class="container hero-inner narrow">
+  <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/blog/">Blog</a></li><li><a href="/blog/category/ai-innovation/">AI &amp; Innovation</a></li><li aria-current="page">What Is SAP Joule? Capabilities, Require…</li></ol></nav>
+  <p class="pill"><span class="dot"></span>AI &amp; Innovation &middot; 6 min read</p>
+  <h1>What Is SAP Joule? Capabilities, Requirements and Practical Use Cases</h1>
+  <p class="lead">Joule is SAP&#x27;s AI copilot, embedded across SAP&#x27;s cloud applications. This guide explains what it does, how agents and Joule Studio fit in, what you need to switch it on and how SAP handles your data.</p>
+  <p class="byline">By the Oddesy Consulting and Services team &middot; <time datetime="2026-11-23">23 Nov 2026</time></p>
+</div></section>
+<section class="section article-sec"><div class="container article-grid">
+  <article class="prose article-body"><p><strong>Joule is SAP's AI copilot.</strong> It is a natural language assistant built into SAP's cloud applications, such as SAP S/4HANA Cloud, SAP SuccessFactors and SAP Ariba. Unlike a general-purpose chatbot, Joule is grounded in your SAP business data and processes, and it only shows users the data their existing authorisations allow. You can ask it a question, ask it to open the right app, or ask it to do a task such as creating a purchase requisition. With <strong>Joule Agents</strong> and <strong>Joule Studio</strong>, SAP has extended it from answering questions to running multi-step work.</p>
+
+<h2>What Joule can do: the four interaction patterns</h2>
+<p>SAP's own training material groups Joule's capabilities into four patterns (<a href="https://learning.sap.com/courses/exploring-sap-business-ai-platform-architecture/exploring-joule_c08da1ed-cbf1-4e81-b8f0-c87be46e5464">SAP Learning</a>):</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Pattern</th><th>User intent</th><th>Example request</th></tr></thead>
+  <tbody>
+    <tr><td>Informational</td><td>To know something</td><td>"What is the status of purchase order 4500018543?"</td></tr>
+    <tr><td>Navigational</td><td>To go somewhere</td><td>"Show me all open production orders", with a link to the right Fiori app</td></tr>
+    <tr><td>Transactional</td><td>To do something</td><td>"Create a purchase requisition for 25 office chairs from our preferred supplier"</td></tr>
+    <tr><td>Analytical</td><td>To understand something</td><td>"Compare sales in Germany and France this quarter"</td></tr>
+  </tbody>
+</table></div>
+<p>Beyond these, Joule can summarise information and draft content such as emails or job descriptions from templates. Informational answers can also draw on your own documents if you set up <strong>document grounding</strong>, which lets you upload company documents to the Joule service.</p>
+<p>What Joule can actually do in your system depends on which SAP products you integrate and which capabilities SAP has delivered for them. Check the scope for each product rather than assuming every example works everywhere.</p>
+
+<h2>The Joule family: agents, developers, consultants and Joule Work</h2>
+<h3>Joule Agents</h3>
+<p>SAP describes Joule Agents as AI-powered automation workflows. They interpret a request in natural language, plan a series of steps and carry them out across SAP systems such as SAP Cloud ERP, SAP SuccessFactors, SAP Concur and SAP Fieldglass. The difference from the basic assistant is that an agent pursues a goal across several steps, rather than answering one prompt at a time.</p>
+<h3>Joule for Developers and Joule for Consultants</h3>
+<ul>
+  <li><strong>Joule for Developers</strong> helps developers in SAP Build Code and the ABAP Development Tools for Eclipse, for example by generating code, explaining code or generating a CDS view.</li>
+  <li><strong>Joule for Consultants</strong> is a separate offering aimed at SAP consultants and project teams.</li>
+</ul>
+<h3>Joule Work and Joule Studio</h3>
+<p>At SAP Sapphire in May 2026, SAP introduced <strong>Joule Work</strong>, a workspace that brings apps, agents and workflows into one place, and the new <strong>Joule Studio</strong>. According to <a href="https://news.sap.com/2026/05/new-joule-studio-enterprise-scale-agentic-development/">SAP's announcement</a>, Joule Studio is a fully managed offering to build and run AI agents, applications and workflows:</p>
+<ul>
+  <li><strong>Intent-based development:</strong> describe the goal in natural language, and Joule Studio generates requirements, specifications, code scaffolding, tests and a working preview.</li>
+  <li><strong>Open tooling:</strong> developers can continue in tools such as Visual Studio Code or Cursor, use frameworks such as LangChain, Pydantic AI and LlamaIndex, and orchestrate agents visually with an embedded n8n environment.</li>
+  <li><strong>Managed runtime:</strong> agents run in a managed, sandboxed environment with built-in observability, and get long-term memory backed by SAP HANA Cloud.</li>
+</ul>
+<p>SAP also notes that Joule Studio is the next generation of SAP Build. If you build extensions today, expect your tooling to move in this direction.</p>
+
+<h2>What you need to use Joule</h2>
+<p>SAP's <a href="https://help.sap.com/doc/de3af3c0f81642dbaa4d36172ed57a72/CLOUD/en-US/79bfc83ab386450c8cd9c7937ce26a3a.pdf">Joule integration guide</a> sets out the prerequisites. In summary:</p>
+<h3>Commercial</h3>
+<ul>
+  <li>A valid licence for an SAP product that supports Joule integration, such as SAP SuccessFactors or SAP S/4HANA Cloud Private Edition, running in a supported data centre.</li>
+  <li><strong>Joule Base</strong> or <strong>AI units</strong> (SKU 8019164). Which capabilities each covers is a commercial question for your SAP account executive.</li>
+</ul>
+<h3>Technical</h3>
+<ul>
+  <li>An <strong>SAP BTP enterprise global account</strong>, because Joule runs on SAP BTP services.</li>
+  <li><strong>SAP Cloud Identity Services</strong>: Identity Authentication for login and Identity Provisioning for users and authorisations. Joule and all integrated products must use the same Identity Services tenant, with users identified consistently by a global user ID.</li>
+  <li><strong>SAP Build Work Zone</strong>, which Joule uses to navigate to applications and handle role-based access. Conversational search does not require it.</li>
+  <li>The Joule entitlement in your global account, followed by running the <strong>Joule booster</strong> to set up the integration.</li>
+</ul>
+<h3>Customer-managed or SAP-managed?</h3>
+<p>There are two ways to provision Joule. With <strong>customer-managed provisioning</strong>, your team configures SAP BTP subaccounts, entitlements, trust and integrations step by step. With <strong>SAP-managed provisioning</strong>, SAP handles the technical set-up and you manage product selections in SAP for Me. SAP recommends the SAP-managed route, and it is required for Joule Work.</p>
+<h3>Example: S/4HANA Cloud Private Edition</h3>
+<p>For Private Edition, the integration guide lists steps including: integrating the system with Identity Authentication, creating an SAP Build Work Zone instance, setting the system up as a content provider through SAP Cloud Connector, running the Joule booster, configuring destinations and Identity Provisioning, and activating the Joule plug-in in the SAP Fiori launchpad. SAP warns that paths exposed through Cloud Connector for this purpose are reachable via the public internet, so only expose what is needed. If you are still choosing an edition, our comparison of <a href="/blog/s4hana-public-vs-private-cloud/">S/4HANA Cloud Public and Private Edition</a> may help.</p>
+<p>Joule is designed around SAP's cloud products. If you run S/4HANA on premise, confirm with SAP which Joule capabilities, if any, are available for your system before you plan around them.</p>
+<h3>Testing updates before they reach production</h3>
+<p>SAP is introducing a <strong>Joule Preview Landscape</strong> so customers can validate updates before they reach production. According to the integration guide, it is available in the EU10 and EU30 data centres, with framework releases staying in preview for two weeks and content releases for four weeks before moving to production.</p>
+
+<h2>How SAP handles your data</h2>
+<p>Data handling is usually the first question from security and works council teams. SAP's <a href="https://www.sap.com/products/artificial-intelligence/ai-ethics.html">Responsible AI page</a> states:</p>
+<ul>
+  <li>SAP does not share customer data with third-party LLM providers to train or improve their models.</li>
+  <li>When an SAP AI feature uses a third-party hosted foundation model, the data is sent to the provider for processing only, and is not stored or retained by the provider.</li>
+  <li>Where the contract permits, SAP may use customer data to improve existing AI features of the subscribed cloud service and, under the product development schedule, to develop new ones. Customers can see where their data may be used and opt out in SAP for Me.</li>
+  <li>SAP user interfaces show a notice when a user triggers an AI feature or sees AI-generated results.</li>
+</ul>
+<p>Joule also respects the roles and authorisations users already have. Clean authorisations matter more, not less, once users can ask for data in plain language.</p>
+
+<h2>Practical use cases to start with</h2>
+<ul>
+  <li><strong>Casual users:</strong> employees who only occasionally use SAP can find the right app or check a status without training on transaction codes.</li>
+  <li><strong>Procurement and finance:</strong> checking purchase order and invoice status, drafting requisitions, and summarising open items.</li>
+  <li><strong>HR tasks</strong> in SAP SuccessFactors, one of the products Joule integrates with.</li>
+  <li><strong>Documentation questions</strong>, using document grounding with your own process guides.</li>
+  <li><strong>Development:</strong> generating and explaining ABAP or CAP code to speed up extension work.</li>
+</ul>
+
+<h2>How to get started</h2>
+<ol>
+  <li><strong>Check eligibility.</strong> Confirm which of your SAP cloud products support Joule, in which regions, and what your contract includes.</li>
+  <li><strong>Choose provisioning.</strong> SAP-managed is simpler and required for Joule Work; customer-managed gives full control over the BTP set-up.</li>
+  <li><strong>Fix identity first.</strong> A single Cloud Identity Services tenant and consistent global user IDs avoid most integration problems.</li>
+  <li><strong>Review authorisations and data quality.</strong> Joule can only give good answers from good data and correct roles.</li>
+  <li><strong>Pilot with one group</strong> and a handful of scenarios, measure the effect, then expand.</li>
+  <li><strong>Plan for agents and extensions</strong> on SAP's platform, in line with clean core principles. Our article on <a href="/blog/sap-clean-core-explained/">SAP clean core</a> explains why that matters.</li>
+</ol>
+
+<h2>Key takeaways</h2>
+<ul>
+  <li>Joule is SAP's AI copilot, embedded in SAP's cloud applications and grounded in your business data and permissions.</li>
+  <li>It answers, navigates, executes and analyses; Joule Agents add multi-step automation, and Joule Studio is SAP's managed environment for building agents.</li>
+  <li>You need a supported SAP cloud product, Joule Base or AI units, SAP BTP, and Cloud Identity Services; SAP-managed provisioning simplifies the set-up.</li>
+  <li>SAP does not share customer data with third-party LLM providers for training; review the contract terms on SAP's own use of data.</li>
+</ul>
+<p>If you want help assessing Joule for your landscape, setting up SAP BTP or building agents and extensions, see our <a href="/services/sap-btp-development/">SAP BTP development services</a> or <a href="/contact/">contact us</a>.</p>
+    <h2>Frequently asked questions</h2><div class="faq inline-faq"><details><summary>What is SAP Joule?<span class="plus"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>Joule is SAP&#x27;s generative AI copilot: a natural language assistant embedded across SAP&#x27;s cloud applications. It is grounded in your SAP business data and processes, and respects each user&#x27;s existing roles and authorisations.</p></details><details><summary>What can Joule do?<span class="plus"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>SAP groups Joule&#x27;s interactions into four patterns: informational (answer a question), navigational (take you to the right app), transactional (carry out a task such as creating a purchase requisition) and analytical (summarise and compare data). Joule Agents extend this to multi-step tasks across SAP systems.</p></details><details><summary>What do I need to use Joule?<span class="plus"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>A licence for an SAP cloud product that supports Joule in a supported region, Joule Base or AI units, and the technical set-up: an SAP BTP enterprise account, SAP Cloud Identity Services and the relevant entitlements. SAP-managed provisioning reduces the technical work.</p></details><details><summary>Does SAP use my data to train AI models?<span class="plus"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>SAP states that it does not share customer data with third-party large language model providers to train their models, and that third-party model providers process the data without storing it. Where the contract permits, SAP may use customer data to improve its own products, and customers can review and opt out in SAP for Me.</p></details></div>
+  </article>
+  <aside class="sidebar">
+    <div class="side-box"><h2 class="side-h">Related services</h2><ul class="side-nav"><li><a href="/services/sap-s4hana-implementation/"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 15c-1.5 1.5-2 5-2 5s3.5-.5 5-2"/><path d="M9 15l-3-3c1-4 4-9 13-9 0 9-5 12-9 13z"/><circle cx="15" cy="9" r="1.6"/></svg>SAP S/4HANA Implementation</a></li><li><a href="/services/sap-btp-development/"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8l-4 4 4 4"/><path d="M16 8l4 4-4 4"/><path d="M13.5 5l-3 14"/></svg>SAP BTP &amp; Custom Development</a></li></ul></div>
+    
+    <div class="side-box side-cta"><div class="aurora" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div><div class="grid-overlay" aria-hidden="true"></div><div class="rel"><h2 class="side-h">Talk to an expert</h2>
+      <p>Get a free 30-minute review of your SAP roadmap.</p>
+      <a href="/contact/" class="btn btn-light btn-block">Book a call <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a></div></div>
+  </aside>
+</div></section>
+<section class="section soft"><div class="container"><div class="section-head center reveal"><p class="eyebrow">Keep reading</p><h2>More from <em>the blog</em></h2></div><div class="post-grid"><a class="post-card spot reveal" href="/blog/sap-ewm-interview-questions/">
+  <div class="post-meta"><span class="tag">Careers &amp; Skills</span><span>8 min read</span></div>
+  <h3>SAP EWM Interview Questions and Answers for 2026</h3><p>The SAP EWM questions interviewers ask most, from warehouse structure and process types to warehouse order creation, POSC and LOSC, availability groups, RF and embedded EWM, with answers checked against SAP&#x27;s training material.</p>
+  <span class="post-foot"><time datetime="2026-11-27">27 Nov 2026</time><span class="more">Read <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></span></a><a class="post-card spot reveal" href="/blog/universal-journal-acdoca/">
+  <div class="post-meta"><span class="tag">Finance</span><span>6 min read</span></div>
+  <h3>The Universal Journal (ACDOCA) in SAP S/4HANA Explained</h3><p>ACDOCA is the single line-item table for finance and controlling in S/4HANA. Here is what it replaced, what changed for cost elements, currencies and reporting, and what it means for your conversion and custom code.</p>
+  <span class="post-foot"><time datetime="2026-11-25">25 Nov 2026</time><span class="more">Read <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></span></a><a class="post-card spot reveal" href="/blog/s4hana-public-vs-private-cloud/">
+  <div class="post-meta"><span class="tag">Cloud &amp; RISE</span><span>6 min read</span></div>
+  <h3>SAP S/4HANA Cloud Public Edition vs Private Edition: How to Choose</h3><p>Public Edition is standard SaaS with half-yearly upgrades; Private Edition is S/4HANA in SAP&#x27;s private cloud with room to convert and customise. Here is how they really differ and how to decide.</p>
+  <span class="post-foot"><time datetime="2026-11-20">20 Nov 2026</time><span class="more">Read <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></span></a></div></div></section>
+
+<section class="section cta-section"><div class="container">
+  <div class="cta-card reveal">
+    <div class="aurora" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div><div class="grid-overlay" aria-hidden="true"></div>
+    <div class="cta-content">
+      <p class="pill pill-dark"><span class="dot"></span>Free 30-minute consultation</p>
+      <h2>Let's map your next <em>SAP move</em>.</h2>
+      <p>Talk to a senior consultant about your landscape, timeline and options. Practical advice, no sales pitch.</p>
+      <div class="hero-actions center-x">
+        <a href="/contact/" class="btn btn-light">Book your consultation <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
+        <a href="mailto:info@oddesyconsultingandservices.com" class="btn btn-ghost"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6 8.5-6"/></svg>info@oddesyconsultingandservices.com</a>
+      </div>
+    </div>
+  </div>
+</div></section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-about">
+      <a href="/" class="brand"><img src="/assets/img/logo-mark.svg" alt="" width="34" height="34">
+      <span class="brand-text">Oddesy<span>Consulting &amp; Services</span></span></a>
+      <p>Independent SAP consultancy for implementation, migration, integration and support.</p>
+      <a class="social" href="https://www.linkedin.com/" rel="noopener" aria-label="LinkedIn"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg></a>
+    </div>
+    <div><h2 class="footer-h">Services</h2><ul><li><a href="/services/sap-s4hana-implementation/">S/4HANA Implementation</a></li><li><a href="/services/rise-with-sap/">RISE with SAP</a></li><li><a href="/services/sap-s4hana-migration/">S/4HANA Migration &amp; Upgrades</a></li><li><a href="/services/sap-integration/">SAP Integration</a></li><li><a href="/services/sap-support-ams/">SAP Support &amp; AMS</a></li><li><a href="/services/sap-btp-development/">BTP &amp; Development</a></li><li><a href="/services/sap-staffing/">Staffing &amp; Augmentation</a></li></ul></div>
+    <div><h2 class="footer-h">Company</h2><ul>
+      <li><a href="/about/">About</a></li><li><a href="/industries/">Industries</a></li>
+      <li><a href="/blog/">Blog</a></li><li><a href="https://youronementor.com" target="_blank" rel="noopener">Training <span class="ext"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span><span class="sr">(opens in a new tab)</span></a></li>
+      <li><a href="/careers/">Careers</a></li><li><a href="/contact/">Contact</a></li>
+      <li><a href="/privacy-policy/">Privacy</a></li></ul></div>
+    <div><h2 class="footer-h">Get in touch</h2><ul class="footer-contact">
+      <li><a href="mailto:info@oddesyconsultingandservices.com"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6 8.5-6"/></svg>info@oddesyconsultingandservices.com</a></li>
+      <li><a href="tel:+000000000000"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z"/></svg>+00 0000 000000</a></li>
+      <li><span><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Your street address, City, State, Postal code, Country</span></li></ul></div>
+  </div>
+  <div class="container footer-bottom">
+    <p>&copy; 2026 Oddesy Consulting and Services</p>
+    <p>SAP, S/4HANA, SAP BTP, RISE with SAP and other SAP products are trademarks of SAP SE. Oddesy is an independent consultancy.</p>
+  </div>
+  <div class="wordmark" aria-hidden="true">ODDESY</div>
+</footer>
+<script>window.ODDESY = {"formEndpoint": "", "email": "info@oddesyconsultingandservices.com"};</script>
+<script src="/assets/js/site.js?v=9ad8ba4d" defer></script>
+</body>
+</html>

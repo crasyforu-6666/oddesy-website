@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script>document.documentElement.classList.add("js")</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAP PI/PO End of Maintenance: 2027, 2030 and Next Steps</title>
+<meta name="description" content="SAP PI/PO end of maintenance explained: what the 2027 and 2030 dates mean, how SAP&#x27;s migration tools work, and a practical plan to move to Integration Suite.">
+<link rel="canonical" href="https://oddesyconsultingandservices.com/blog/sap-pi-po-end-of-maintenance/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#070a14">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Oddesy Consulting and Services">
+<meta property="og:title" content="SAP PI/PO End of Maintenance: 2027, 2030 and Next Steps">
+<meta property="og:description" content="SAP PI/PO end of maintenance explained: what the 2027 and 2030 dates mean, how SAP&#x27;s migration tools work, and a practical plan to move to Integration Suite.">
+<meta property="og:url" content="https://oddesyconsultingandservices.com/blog/sap-pi-po-end-of-maintenance/">
+<meta property="og:image" content="https://oddesyconsultingandservices.com/assets/img/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/img/logo-mark.svg" type="image/svg+xml">
+<link rel="alternate" type="application/rss+xml" title="Oddesy Consulting and Services Blog" href="/blog/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css?v=b01d1ddf">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "@id": "https://oddesyconsultingandservices.com/#organization", "name": "Oddesy Consulting and Services", "url": "https://oddesyconsultingandservices.com/", "logo": "https://oddesyconsultingandservices.com/assets/img/logo-mark.svg", "image": "https://oddesyconsultingandservices.com/assets/img/og-image.png", "email": "info@oddesyconsultingandservices.com", "telephone": "+00 0000 000000", "address": {"@type": "PostalAddress", "streetAddress": "Your street address, City, State, Postal code, Country", "addressLocality": "Your City", "addressCountry": "Your Country"}, "sameAs": ["https://www.linkedin.com/"], "knowsAbout": ["SAP S/4HANA", "RISE with SAP", "SAP BTP", "SAP Integration Suite", "SAP AMS"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://oddesyconsultingandservices.com/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://oddesyconsultingandservices.com/blog/"}, {"@type": "ListItem", "position": 3, "name": "Integration", "item": "https://oddesyconsultingandservices.com/blog/category/integration/"}, {"@type": "ListItem", "position": 4, "name": "SAP PI/PO End of Maintenance: What 2027…", "item": "https://oddesyconsultingandservices.com/blog/sap-pi-po-end-of-maintenance/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "SAP PI/PO End of Maintenance: What 2027 and 2030 Mean and How to Move to SAP Integration Suite", "description": "SAP PI/PO end of maintenance explained: what the 2027 and 2030 dates mean, how SAP's migration tools work, and a practical plan to move to Integration Suite.", "datePublished": "2026-11-18", "dateModified": "2026-11-18", "url": "https://oddesyconsultingandservices.com/blog/sap-pi-po-end-of-maintenance/", "mainEntityOfPage": "https://oddesyconsultingandservices.com/blog/sap-pi-po-end-of-maintenance/", "image": "https://oddesyconsultingandservices.com/assets/img/og-image.png", "author": {"@type": "Organization", "name": "Oddesy Consulting and Services", "url": "https://oddesyconsultingandservices.com/"}, "publisher": {"@id": "https://oddesyconsultingandservices.com/#organization"}, "articleSection": "Integration", "keywords": "sap pi po end of maintenance", "wordCount": 1347}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "When does SAP PI/PO maintenance end?", "acceptedAnswer": {"@type": "Answer", "text": "SAP PI and PO 7.5 follow SAP NetWeaver 7.5: mainstream maintenance until the end of 2027, with the option of extended maintenance until the end of 2030. Confirm the details for your contract in SAP Note 1648480 and with SAP."}}, {"@type": "Question", "name": "Will SAP PO stop working after 2027?", "acceptedAnswer": {"@type": "Answer", "text": "No. The software does not switch off when mainstream maintenance ends, but standard support changes unless you take extended maintenance. The risk is running a critical integration platform with shrinking support."}}, {"@type": "Question", "name": "What replaces SAP PI/PO?", "acceptedAnswer": {"@type": "Answer", "text": "SAP positions SAP Integration Suite, on SAP Business Technology Platform, as the successor. For scenarios that must run inside your own network, Integration Suite offers Edge Integration Cell, a runtime you deploy in your private landscape while design and monitoring stay in the cloud."}}, {"@type": "Question", "name": "Can SAP PO interfaces be migrated automatically?", "acceptedAnswer": {"@type": "Answer", "text": "Partly. SAP's Migration Assessment estimates effort per integrated configuration object, and the Migration Tooling in Cloud Integration can generate integration flows from supported ICOs. Unsupported adapters and steps, many Java mappings and some ABAP proxy features still need manual work."}}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="nav-shell">
+    <a href="/" class="brand" aria-label="Oddesy Consulting and Services home">
+      <img src="/assets/img/logo-mark.svg" alt="" width="34" height="34">
+      <span class="brand-text">Oddesy<span>Consulting &amp; Services</span></span>
+    </a>
+    <nav id="primary-nav" class="primary-nav" aria-label="Main">
+      <ul class="menu">
+        <li><a href="/about/">About</a></li>
+        <li class="has-sub">
+          <a href="/services/" class="sub-trigger" aria-haspopup="true">Services <span class="caret" aria-hidden="true"></span></a>
+          <div class="mega"><ul><li><a href="/services/sap-s4hana-implementation/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 15c-1.5 1.5-2 5-2 5s3.5-.5 5-2"/><path d="M9 15l-3-3c1-4 4-9 13-9 0 9-5 12-9 13z"/><circle cx="15" cy="9" r="1.6"/></svg></span><span><strong>S/4HANA Implementation</strong><small>Greenfield S/4HANA deployments in public or private cloud, designed fit-to-standard and delivered on SAP Activate.</small></span></a></li><li><a href="/services/rise-with-sap/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18h10a4 4 0 0 0 .6-7.96A6 6 0 0 0 6.1 10.5 3.75 3.75 0 0 0 7 18z"/></svg></span><span><strong>RISE with SAP</strong><small>Business case, scoping and transition support for the RISE with SAP subscription.</small></span></a></li><li><a href="/services/sap-s4hana-migration/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h12l-3-3"/><path d="M20 17H8l3 3"/></svg></span><span><strong>S/4HANA Migration &amp; Upgrades</strong><small>ECC to S/4HANA conversion, selective data transition and S/4HANA release upgrades.</small></span></a></li><li><a href="/services/sap-integration/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1"/><path d="M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"/></svg></span><span><strong>SAP Integration</strong><small>SAP Integration Suite, APIs and EDI connecting SAP to CRM, e-commerce, banks and machines.</small></span></a></li><li><a href="/services/sap-support-ams/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/></svg></span><span><strong>SAP Support &amp; AMS</strong><small>SLA-based functional, technical and Basis support for SAP ECC and S/4HANA.</small></span></a></li><li><a href="/services/sap-btp-development/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8l-4 4 4 4"/><path d="M16 8l4 4-4 4"/><path d="M13.5 5l-3 14"/></svg></span><span><strong>BTP &amp; Development</strong><small>Fiori/UI5 apps, ABAP, workflows and self-service portals built on SAP BTP.</small></span></a></li><li><a href="/services/sap-staffing/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2c2.9.4 5 2.8 5 5.8"/></svg></span><span><strong>Staffing &amp; Augmentation</strong><small>Pre-screened SAP consultants on contract, contract-to-hire or permanent terms.</small></span></a></li></ul>
+            <a class="mega-all" href="/services/">All SAP services <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a></div>
+        </li>
+        <li><a href="/industries/">Industries</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youronementor.com" target="_blank" rel="noopener">Training <span class="ext"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span><span class="sr">(opens in a new tab)</span></a></li>
+        <li><a href="/careers/">Careers</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+      <a href="/contact/" class="btn btn-glow btn-sm nav-cta">Book a call <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
+    </nav>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu"><span></span><span></span></button>
+  </div>
+</header>
+<main id="main">
+<section class="page-hero dark article-hero"><div class="aurora" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div><div class="grid-overlay" aria-hidden="true"></div><div class="container hero-inner narrow">
+  <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/blog/">Blog</a></li><li><a href="/blog/category/integration/">Integration</a></li><li aria-current="page">SAP PI/PO End of Maintenance: What 2027…</li></ol></nav>
+  <p class="pill"><span class="dot"></span>Integration &middot; 6 min read</p>
+  <h1>SAP PI/PO End of Maintenance: What 2027 and 2030 Mean and How to Move to SAP Integration Suite</h1>
+  <p class="lead">Mainstream maintenance for SAP Process Orchestration 7.5 ends in 2027. Here is what that means, what SAP&#x27;s assessment and migration tools can and cannot do, and how to plan the move.</p>
+  <p class="byline">By the Oddesy Consulting and Services team &middot; <time datetime="2026-11-18">18 Nov 2026</time></p>
+</div></section>
+<section class="section article-sec"><div class="container article-grid">
+  <article class="prose article-body"><p>If your company runs SAP Process Integration (PI) or SAP Process Orchestration (PO), the key date is <strong>the end of 2027</strong>. That is when mainstream maintenance for SAP NetWeaver 7.5, and therefore for PI and PO 7.5, ends. Extended maintenance is available until the end of 2030. The software will not stop working on 1 January 2028, but every year you stay on it, you run your interfaces on a platform SAP is winding down. SAP's successor is <strong>SAP Integration Suite</strong>, and SAP provides tools to assess and partly automate the move.</p>
+
+<h2>The dates, and what they actually mean</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>Date</th><th>What happens</th><th>What it means for you</th></tr></thead>
+  <tbody>
+    <tr><td>Until end of 2027</td><td>Mainstream maintenance for SAP NetWeaver 7.5, including PI and PO 7.5</td><td>Normal support, fixes and updates under your existing contract</td></tr>
+    <tr><td>2028 to end of 2030</td><td>Optional extended maintenance</td><td>Support continues if you buy it; plan to finish migrating in this window at the latest</td></tr>
+    <tr><td>After 2030</td><td>Extended maintenance ends</td><td>Treat 2030 as the hard planning limit and confirm any remaining options with SAP</td></tr>
+  </tbody>
+</table></div>
+<p>SAP's training material for the migration states the reason plainly: SAP NetWeaver 7.5 is supported in mainstream maintenance until the end of 2027, with the option of extended maintenance until the end of 2030 (<a href="https://learning.sap.com/courses/sap-process-orchestration-to-sap-integration-suite-migration/understanding-the-rationale-for-a-migration">SAP Learning</a>). The same 2027/2030 pattern applies to SAP ECC, which we cover in our guide to <a href="/blog/sap-ecc-end-of-maintenance-2027/">ECC end of maintenance</a>. Maintenance terms are contract-specific, so check SAP Note 1648480 and speak to SAP before committing to a timeline.</p>
+<p>Older releases, such as PI 7.31 and 7.40, have their own maintenance dates. If you still run one of them, check its status in the SAP Product Availability Matrix now.</p>
+
+<h2>Why waiting is risky</h2>
+<ul>
+  <li><strong>Interfaces are business-critical.</strong> Orders, invoices, bank files and warehouse messages often all pass through PO. An unsupported integration layer is a risk to the whole business, not only to IT.</li>
+  <li><strong>Migration takes longer than expected.</strong> Every interface has to be assessed, rebuilt or migrated, tested end to end with partners, and cut over. Large landscapes take many months.</li>
+  <li><strong>It interacts with S/4HANA.</strong> Many companies are converting ERP at the same time, so integration work competes for the same people and test windows. Our <a href="/blog/sap-s4hana-migration-checklist/">S/4HANA migration checklist</a> shows where interfaces fit.</li>
+</ul>
+
+<h2>Your target options</h2>
+<h3>SAP Integration Suite (cloud)</h3>
+<p>Integration Suite runs on SAP Business Technology Platform. Besides Cloud Integration (the successor to PO's message processing), it includes API management, event-driven integration, B2B trading partner management and pre-built integration content for SAP and non-SAP applications. For most companies this is the main target.</p>
+<h3>Edge Integration Cell (hybrid)</h3>
+<p>Some interfaces must stay inside the company network, for security, compliance or because both ends are on premise. <strong>Edge Integration Cell</strong> lets you design and monitor integrations in Integration Suite while deploying and running them in your private landscape. SAP explicitly positions it as a migration path for PI customers with ground-to-ground scenarios. It does not yet match Cloud Integration feature for feature: SAP lists restrictions, including B2B scenarios and monitoring, the partner directory, the RFC receiver adapter and custom or partner adapters. Check SAP Note 3391207 for the current list before you design around it.</p>
+<h3>Third-party integration platforms</h3>
+<p>Some organisations use the deadline to review their integration platform more widely. That is a valid choice, but weigh it against the SAP-specific content, adapters and tools you would give up.</p>
+
+<h2>How SAP's migration tools work</h2>
+<p>SAP provides two capabilities in Integration Suite, which should be used in this order.</p>
+<h3>1. Migration Assessment</h3>
+<p>Migration Assessment connects to the Enterprise Services Repository and Integration Directory of your PO system and extracts your design-time objects. According to <a href="https://learning.sap.com/courses/sap-process-orchestration-to-sap-integration-suite-migration/using-migration-assessment-tools">SAP Learning</a>, it then:</p>
+<ul>
+  <li>evaluates each scenario for migration status, showstoppers and possible workarounds;</li>
+  <li>estimates the effort for each integrated configuration object (ICO) as a T-shirt size;</li>
+  <li>supports PO 7.31 SP28 and above, 7.40 SP23 and above, and 7.50 SP06 and above.</li>
+</ul>
+<p>It must be activated in the SAP BTP cockpit, and users need the right authorisations. Connectivity to the on-premise PO system goes through SAP Cloud Connector.</p>
+<h3>2. Migration Tooling</h3>
+<p>Migration Tooling is a pattern-based feature in Cloud Integration that generates integration flows from your PO objects using templates. SAP describes it as semi-automated: where a scenario matches a supported pattern, much of the work is automated, but manual changes may still be needed. According to SAP Learning, the current scope is:</p>
+<ul>
+  <li><strong>Objects:</strong> integrated configuration objects (ICOs).</li>
+  <li><strong>Channels:</strong> HTTP, REST, SOAP, IDoc, FTP, XI and SFTP.</li>
+  <li><strong>Flow steps:</strong> message mapping, Java mapping, XSLT mapping, function libraries, imported archives, XML/JSON converters and routing.</li>
+  <li><strong>Events:</strong> timer.</li>
+</ul>
+<p>Anything outside that list, such as other adapters or classic configuration scenarios that are not ICOs, needs more manual effort. Check the current scope in SAP's <a href="https://help.sap.com/docs/integration-suite/sap-integration-suite/migration-tooling">Migration Tooling documentation</a>, because SAP extends it over time.</p>
+
+<h2>Technical topics that need special attention</h2>
+<h3>ABAP proxies</h3>
+<p>ABAP proxy interfaces can be migrated using the XI adapter in Integration Suite and continue to run. SAP lists limitations, however: proxy generation with SPROXY against Cloud Integration is not supported, acknowledgements are not supported, and Exactly Once In Order (EOIO) is not supported without a custom solution. Plan where you will maintain proxy definitions once the Enterprise Services Repository is gone.</p>
+<h3>Java mappings</h3>
+<p>Small Java mappings can be rewritten as Groovy scripts; more complex ones can sometimes be reused through a Groovy script wrapper. SAP warns that some use cases may not work with the wrapper, including binary attachments, Microsoft Office documents, encryption and decryption, mapping lookups, file system operations, message signing and dynamic headers. Retest every migrated mapping.</p>
+<h3>Asynchronous processing</h3>
+<p>Cloud Integration offers a pipeline concept that mimics PO's processing pipelines for asynchronous scenarios, which helps when you migrate many similar interfaces.</p>
+<h3>Custom adapters</h3>
+<p>Custom or partner adapters built for PO do not move across automatically. Each one needs a replacement plan.</p>
+
+<h2>A practical migration plan</h2>
+<ol>
+  <li><strong>Inventory the landscape.</strong> List every interface with its sender, receiver, adapter, volume, business owner and criticality. Mark the ones that are no longer used.</li>
+  <li><strong>Run Migration Assessment</strong> to classify each ICO and size the effort.</li>
+  <li><strong>Decide the target per interface:</strong> Cloud Integration, Edge Integration Cell, SAP pre-built content, or retire. SAP notes that pre-built content for S/4HANA can remove the need to migrate some scenarios at all.</li>
+  <li><strong>Stop building on PO.</strong> SAP recommends that new integrations, even with ECC, be built on Integration Suite to avoid adding to the migration backlog.</li>
+  <li><strong>Choose an approach:</strong> move interfaces as they are (brownfield), redesign them (greenfield), or combine the two. Most landscapes end up mixed.</li>
+  <li><strong>Migrate in waves</strong>, starting with simple, high-volume patterns that the Migration Tooling supports, to build skills and templates.</li>
+  <li><strong>Test end to end</strong>, including partners, error handling, monitoring and alerting, not only message mapping.</li>
+  <li><strong>Run in parallel</strong> during the transition. SAP expects many customers to run PO and Integration Suite side by side until migration is complete.</li>
+  <li><strong>Decommission PO</strong> once the last interface has moved and the support model for Integration Suite is in place.</li>
+</ol>
+
+<h2>Common mistakes</h2>
+<ul>
+  <li><strong>Treating it as a technical lift and shift.</strong> Many interfaces can be simplified or replaced by standard APIs.</li>
+  <li><strong>Skipping the inventory.</strong> Unused and undocumented interfaces inflate the scope and the test effort.</li>
+  <li><strong>Assuming the tools migrate everything.</strong> They speed up supported patterns; the rest is project work.</li>
+  <li><strong>Forgetting operations.</strong> Monitoring, alerting, certificate handling and transports work differently on Integration Suite, so plan the support model early.</li>
+  <li><strong>Leaving it until 2030.</strong> Extended maintenance buys time at extra cost; it is not a plan.</li>
+</ul>
+
+<h2>Key takeaways</h2>
+<ul>
+  <li>PI/PO 7.5 mainstream maintenance ends at the end of 2027; extended maintenance runs to the end of 2030.</li>
+  <li>SAP Integration Suite is the successor; Edge Integration Cell covers scenarios that must run on premise, with some restrictions.</li>
+  <li>Migration Assessment sizes the work; Migration Tooling automates supported ICO patterns. Proxies, Java mappings and custom adapters need attention.</li>
+  <li>Start with an inventory, build new interfaces on Integration Suite now, and migrate in waves.</li>
+</ul>
+<p>If you want an experienced team to assess your PO landscape or run the migration, see our <a href="/services/sap-integration/">SAP integration services</a> and <a href="/services/sap-btp-development/">SAP BTP development</a>, or <a href="/contact/">contact us</a>.</p>
+    <h2>Frequently asked questions</h2><div class="faq inline-faq"><details><summary>When does SAP PI/PO maintenance end?<span class="plus"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>SAP PI and PO 7.5 follow SAP NetWeaver 7.5: mainstream maintenance until the end of 2027, with the option of extended maintenance until the end of 2030. Confirm the details for your contract in SAP Note 1648480 and with SAP.</p></details><details><summary>Will SAP PO stop working after 2027?<span class="plus"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>No. The software does not switch off when mainstream maintenance ends, but standard support changes unless you take extended maintenance. The risk is running a critical integration platform with shrinking support.</p></details><details><summary>What replaces SAP PI/PO?<span class="plus"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>SAP positions SAP Integration Suite, on SAP Business Technology Platform, as the successor. For scenarios that must run inside your own network, Integration Suite offers Edge Integration Cell, a runtime you deploy in your private landscape while design and monitoring stay in the cloud.</p></details><details><summary>Can SAP PO interfaces be migrated automatically?<span class="plus"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>Partly. SAP&#x27;s Migration Assessment estimates effort per integrated configuration object, and the Migration Tooling in Cloud Integration can generate integration flows from supported ICOs. Unsupported adapters and steps, many Java mappings and some ABAP proxy features still need manual work.</p></details></div>
+  </article>
+  <aside class="sidebar">
+    <div class="side-box"><h2 class="side-h">Related services</h2><ul class="side-nav"><li><a href="/services/sap-integration/"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1"/><path d="M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"/></svg>SAP Integration</a></li><li><a href="/services/sap-btp-development/"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8l-4 4 4 4"/><path d="M16 8l4 4-4 4"/><path d="M13.5 5l-3 14"/></svg>SAP BTP &amp; Custom Development</a></li></ul></div>
+    
+    <div class="side-box side-cta"><div class="aurora" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div><div class="grid-overlay" aria-hidden="true"></div><div class="rel"><h2 class="side-h">Talk to an expert</h2>
+      <p>Get a free 30-minute review of your SAP roadmap.</p>
+      <a href="/contact/" class="btn btn-light btn-block">Book a call <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a></div></div>
+  </aside>
+</div></section>
+<section class="section soft"><div class="container"><div class="section-head center reveal"><p class="eyebrow">Keep reading</p><h2>More from <em>the blog</em></h2></div><div class="post-grid"><a class="post-card spot reveal" href="/blog/sap-ewm-interview-questions/">
+  <div class="post-meta"><span class="tag">Careers &amp; Skills</span><span>8 min read</span></div>
+  <h3>SAP EWM Interview Questions and Answers for 2026</h3><p>The SAP EWM questions interviewers ask most, from warehouse structure and process types to warehouse order creation, POSC and LOSC, availability groups, RF and embedded EWM, with answers checked against SAP&#x27;s training material.</p>
+  <span class="post-foot"><time datetime="2026-11-27">27 Nov 2026</time><span class="more">Read <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></span></a><a class="post-card spot reveal" href="/blog/universal-journal-acdoca/">
+  <div class="post-meta"><span class="tag">Finance</span><span>6 min read</span></div>
+  <h3>The Universal Journal (ACDOCA) in SAP S/4HANA Explained</h3><p>ACDOCA is the single line-item table for finance and controlling in S/4HANA. Here is what it replaced, what changed for cost elements, currencies and reporting, and what it means for your conversion and custom code.</p>
+  <span class="post-foot"><time datetime="2026-11-25">25 Nov 2026</time><span class="more">Read <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></span></a><a class="post-card spot reveal" href="/blog/what-is-sap-joule/">
+  <div class="post-meta"><span class="tag">AI &amp; Innovation</span><span>6 min read</span></div>
+  <h3>What Is SAP Joule? Capabilities, Requirements and Practical Use Cases</h3><p>Joule is SAP&#x27;s AI copilot, embedded across SAP&#x27;s cloud applications. This guide explains what it does, how agents and Joule Studio fit in, what you need to switch it on and how SAP handles your data.</p>
+  <span class="post-foot"><time datetime="2026-11-23">23 Nov 2026</time><span class="more">Read <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></span></a></div></div></section>
+
+<section class="section cta-section"><div class="container">
+  <div class="cta-card reveal">
+    <div class="aurora" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div><div class="grid-overlay" aria-hidden="true"></div>
+    <div class="cta-content">
+      <p class="pill pill-dark"><span class="dot"></span>Free 30-minute consultation</p>
+      <h2>Let's map your next <em>SAP move</em>.</h2>
+      <p>Talk to a senior consultant about your landscape, timeline and options. Practical advice, no sales pitch.</p>
+      <div class="hero-actions center-x">
+        <a href="/contact/" class="btn btn-light">Book your consultation <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
+        <a href="mailto:info@oddesyconsultingandservices.com" class="btn btn-ghost"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6 8.5-6"/></svg>info@oddesyconsultingandservices.com</a>
+      </div>
+    </div>
+  </div>
+</div></section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-about">
+      <a href="/" class="brand"><img src="/assets/img/logo-mark.svg" alt="" width="34" height="34">
+      <span class="brand-text">Oddesy<span>Consulting &amp; Services</span></span></a>
+      <p>Independent SAP consultancy for implementation, migration, integration and support.</p>
+      <a class="social" href="https://www.linkedin.com/" rel="noopener" aria-label="LinkedIn"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg></a>
+    </div>
+    <div><h2 class="footer-h">Services</h2><ul><li><a href="/services/sap-s4hana-implementation/">S/4HANA Implementation</a></li><li><a href="/services/rise-with-sap/">RISE with SAP</a></li><li><a href="/services/sap-s4hana-migration/">S/4HANA Migration &amp; Upgrades</a></li><li><a href="/services/sap-integration/">SAP Integration</a></li><li><a href="/services/sap-support-ams/">SAP Support &amp; AMS</a></li><li><a href="/services/sap-btp-development/">BTP &amp; Development</a></li><li><a href="/services/sap-staffing/">Staffing &amp; Augmentation</a></li></ul></div>
+    <div><h2 class="footer-h">Company</h2><ul>
+      <li><a href="/about/">About</a></li><li><a href="/industries/">Industries</a></li>
+      <li><a href="/blog/">Blog</a></li><li><a href="https://youronementor.com" target="_blank" rel="noopener">Training <span class="ext"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span><span class="sr">(opens in a new tab)</span></a></li>
+      <li><a href="/careers/">Careers</a></li><li><a href="/contact/">Contact</a></li>
+      <li><a href="/privacy-policy/">Privacy</a></li></ul></div>
+    <div><h2 class="footer-h">Get in touch</h2><ul class="footer-contact">
+      <li><a href="mailto:info@oddesyconsultingandservices.com"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6 8.5-6"/></svg>info@oddesyconsultingandservices.com</a></li>
+      <li><a href="tel:+000000000000"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z"/></svg>+00 0000 000000</a></li>
+      <li><span><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Your street address, City, State, Postal code, Country</span></li></ul></div>
+  </div>
+  <div class="container footer-bottom">
+    <p>&copy; 2026 Oddesy Consulting and Services</p>
+    <p>SAP, S/4HANA, SAP BTP, RISE with SAP and other SAP products are trademarks of SAP SE. Oddesy is an independent consultancy.</p>
+  </div>
+  <div class="wordmark" aria-hidden="true">ODDESY</div>
+</footer>
+<script>window.ODDESY = {"formEndpoint": "", "email": "info@oddesyconsultingandservices.com"};</script>
+<script src="/assets/js/site.js?v=9ad8ba4d" defer></script>
+</body>
+</html>

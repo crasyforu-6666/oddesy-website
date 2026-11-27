@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script>document.documentElement.classList.add("js")</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAP EWM Interview Questions and Answers (2026)</title>
+<meta name="description" content="SAP EWM interview questions with clear answers: warehouse structure, process types, warehouse orders, storage control, stock and RF, plus S/4HANA topics.">
+<link rel="canonical" href="https://oddesyconsultingandservices.com/blog/sap-ewm-interview-questions/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#070a14">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Oddesy Consulting and Services">
+<meta property="og:title" content="SAP EWM Interview Questions and Answers (2026)">
+<meta property="og:description" content="SAP EWM interview questions with clear answers: warehouse structure, process types, warehouse orders, storage control, stock and RF, plus S/4HANA topics.">
+<meta property="og:url" content="https://oddesyconsultingandservices.com/blog/sap-ewm-interview-questions/">
+<meta property="og:image" content="https://oddesyconsultingandservices.com/assets/img/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/img/logo-mark.svg" type="image/svg+xml">
+<link rel="alternate" type="application/rss+xml" title="Oddesy Consulting and Services Blog" href="/blog/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css?v=b01d1ddf">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "@id": "https://oddesyconsultingandservices.com/#organization", "name": "Oddesy Consulting and Services", "url": "https://oddesyconsultingandservices.com/", "logo": "https://oddesyconsultingandservices.com/assets/img/logo-mark.svg", "image": "https://oddesyconsultingandservices.com/assets/img/og-image.png", "email": "info@oddesyconsultingandservices.com", "telephone": "+00 0000 000000", "address": {"@type": "PostalAddress", "streetAddress": "Your street address, City, State, Postal code, Country", "addressLocality": "Your City", "addressCountry": "Your Country"}, "sameAs": ["https://www.linkedin.com/"], "knowsAbout": ["SAP S/4HANA", "RISE with SAP", "SAP BTP", "SAP Integration Suite", "SAP AMS"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://oddesyconsultingandservices.com/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://oddesyconsultingandservices.com/blog/"}, {"@type": "ListItem", "position": 3, "name": "Careers & Skills", "item": "https://oddesyconsultingandservices.com/blog/category/careers-skills/"}, {"@type": "ListItem", "position": 4, "name": "SAP EWM Interview Questions and Answers…", "item": "https://oddesyconsultingandservices.com/blog/sap-ewm-interview-questions/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "SAP EWM Interview Questions and Answers for 2026", "description": "SAP EWM interview questions with clear answers: warehouse structure, process types, warehouse orders, storage control, stock and RF, plus S/4HANA topics.", "datePublished": "2026-11-27", "dateModified": "2026-11-27", "url": "https://oddesyconsultingandservices.com/blog/sap-ewm-interview-questions/", "mainEntityOfPage": "https://oddesyconsultingandservices.com/blog/sap-ewm-interview-questions/", "image": "https://oddesyconsultingandservices.com/assets/img/og-image.png", "author": {"@type": "Organization", "name": "Oddesy Consulting and Services", "url": "https://oddesyconsultingandservices.com/"}, "publisher": {"@id": "https://oddesyconsultingandservices.com/#organization"}, "articleSection": "Careers & Skills", "keywords": "sap ewm interview questions", "wordCount": 1714}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What are the most common SAP EWM interview questions?", "acceptedAnswer": {"@type": "Answer", "text": "Expect questions on the warehouse structure (warehouse number, storage type, section, bin, activity area), warehouse process types, warehouse tasks and orders, process- and layout-oriented storage control, stock types and availability groups, RF, and the difference between embedded, decentralised, basic and advanced EWM."}}, {"@type": "Question", "name": "What is the difference between a warehouse task and a warehouse order in SAP EWM?", "acceptedAnswer": {"@type": "Answer", "text": "A warehouse task is a single movement, such as moving a product or handling unit from one bin to another. A warehouse order groups warehouse tasks into an executable work package for one worker, created according to warehouse order creation rules."}}, {"@type": "Question", "name": "What is the difference between POSC and LOSC?", "acceptedAnswer": {"@type": "Answer", "text": "Process-oriented storage control defines the steps of a process, such as unloading, counting, deconsolidation and putaway. Layout-oriented storage control adds intermediate steps when the physical layout requires them, such as an identification point. EWM always determines process-oriented storage control first."}}, {"@type": "Question", "name": "How should I prepare for an SAP EWM interview?", "acceptedAnswer": {"@type": "Answer", "text": "Be able to walk through inbound and outbound processes end to end, explain the configuration objects that control them, and describe real problems you solved. For S/4HANA roles, also know embedded versus decentralised EWM and basic versus advanced scope."}}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="nav-shell">
+    <a href="/" class="brand" aria-label="Oddesy Consulting and Services home">
+      <img src="/assets/img/logo-mark.svg" alt="" width="34" height="34">
+      <span class="brand-text">Oddesy<span>Consulting &amp; Services</span></span>
+    </a>
+    <nav id="primary-nav" class="primary-nav" aria-label="Main">
+      <ul class="menu">
+        <li><a href="/about/">About</a></li>
+        <li class="has-sub">
+          <a href="/services/" class="sub-trigger" aria-haspopup="true">Services <span class="caret" aria-hidden="true"></span></a>
+          <div class="mega"><ul><li><a href="/services/sap-s4hana-implementation/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 15c-1.5 1.5-2 5-2 5s3.5-.5 5-2"/><path d="M9 15l-3-3c1-4 4-9 13-9 0 9-5 12-9 13z"/><circle cx="15" cy="9" r="1.6"/></svg></span><span><strong>S/4HANA Implementation</strong><small>Greenfield S/4HANA deployments in public or private cloud, designed fit-to-standard and delivered on SAP Activate.</small></span></a></li><li><a href="/services/rise-with-sap/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18h10a4 4 0 0 0 .6-7.96A6 6 0 0 0 6.1 10.5 3.75 3.75 0 0 0 7 18z"/></svg></span><span><strong>RISE with SAP</strong><small>Business case, scoping and transition support for the RISE with SAP subscription.</small></span></a></li><li><a href="/services/sap-s4hana-migration/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h12l-3-3"/><path d="M20 17H8l3 3"/></svg></span><span><strong>S/4HANA Migration &amp; Upgrades</strong><small>ECC to S/4HANA conversion, selective data transition and S/4HANA release upgrades.</small></span></a></li><li><a href="/services/sap-integration/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1"/><path d="M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"/></svg></span><span><strong>SAP Integration</strong><small>SAP Integration Suite, APIs and EDI connecting SAP to CRM, e-commerce, banks and machines.</small></span></a></li><li><a href="/services/sap-support-ams/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/></svg></span><span><strong>SAP Support &amp; AMS</strong><small>SLA-based functional, technical and Basis support for SAP ECC and S/4HANA.</small></span></a></li><li><a href="/services/sap-btp-development/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8l-4 4 4 4"/><path d="M16 8l4 4-4 4"/><path d="M13.5 5l-3 14"/></svg></span><span><strong>BTP &amp; Development</strong><small>Fiori/UI5 apps, ABAP, workflows and self-service portals built on SAP BTP.</small></span></a></li><li><a href="/services/sap-staffing/"><span class="mi"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2c2.9.4 5 2.8 5 5.8"/></svg></span><span><strong>Staffing &amp; Augmentation</strong><small>Pre-screened SAP consultants on contract, contract-to-hire or permanent terms.</small></span></a></li></ul>
+            <a class="mega-all" href="/services/">All SAP services <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a></div>
+        </li>
+        <li><a href="/industries/">Industries</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="https://youronementor.com" target="_blank" rel="noopener">Training <span class="ext"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span><span class="sr">(opens in a new tab)</span></a></li>
+        <li><a href="/careers/">Careers</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+      <a href="/contact/" class="btn btn-glow btn-sm nav-cta">Book a call <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
+    </nav>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu"><span></span><span></span></button>
+  </div>
+</header>
+<main id="main">
+<section class="page-hero dark article-hero"><div class="aurora" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div><div class="grid-overlay" aria-hidden="true"></div><div class="container hero-inner narrow">
+  <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/blog/">Blog</a></li><li><a href="/blog/category/careers-skills/">Careers &amp; Skills</a></li><li aria-current="page">SAP EWM Interview Questions and Answers…</li></ol></nav>
+  <p class="pill"><span class="dot"></span>Careers &amp; Skills &middot; 8 min read</p>
+  <h1>SAP EWM Interview Questions and Answers for 2026</h1>
+  <p class="lead">The SAP EWM questions interviewers ask most, from warehouse structure and process types to warehouse order creation, POSC and LOSC, availability groups, RF and embedded EWM, with answers checked against SAP&#x27;s training material.</p>
+  <p class="byline">By the Oddesy Consulting and Services team &middot; <time datetime="2026-11-27">27 Nov 2026</time></p>
+</div></section>
+<section class="section article-sec"><div class="container article-grid">
+  <article class="prose article-body"><p>SAP EWM interviews test two things: whether you understand how the warehouse is modelled in the system, and whether you can explain how a process actually flows from delivery to confirmed warehouse task. Definitions matter less than being able to say <em>why</em> the system behaves as it does. Below are the questions that come up most often, grouped by topic, with answers checked against SAP's own EWM training material on <a href="https://learning.sap.com/courses/processes-in-sap-s-4hana-ewm/outlining-warehouse-structures">SAP Learning</a>.</p>
+
+<h2>Warehouse structure</h2>
+
+<h3>1. Describe the EWM warehouse structure.</h3>
+<p>From top to bottom:</p>
+<ul>
+  <li><strong>Warehouse number:</strong> the highest organisational unit, usually one building or distribution centre. It is four characters in EWM (three in ERP) and has a supply chain unit with business attribute INV assigned, which supplies the time zone.</li>
+  <li><strong>Storage type:</strong> a physical or logical subdivision with its own putaway and removal rules, identified by a four-character code and a storage type role.</li>
+  <li><strong>Storage section:</strong> an optional grouping of bins with similar attributes within a storage type, such as fast movers or heavy parts.</li>
+  <li><strong>Storage bin:</strong> the smallest addressable location, with a coordinate of up to 18 characters, for example aisle-stack-level.</li>
+  <li><strong>Activity area:</strong> a logical grouping of bins, possibly across storage types, used to sort and organise work.</li>
+</ul>
+
+<h3>2. How is the warehouse linked to ERP inventory management?</h3>
+<p>A plant and storage location are linked to an ERP warehouse number, which is marked as EWM-relevant and mapped to the EWM warehouse number. In SAP's standard scenario, two storage locations are used: received on dock (ROD) for stock still in putaway, and available for sale (AFS) once it reaches its final bin. EWM then posts the change from ROD to AFS. SAP notes this two-location set-up is not mandatory.</p>
+
+<h3>3. What storage type roles do you know?</h3>
+<p>Examples include standard storage type, identification point, pick point, combined identification and pick point, staging area group, work center, doors, yard, production supply, and storage types for automated storage controlled by material flow control.</p>
+
+<h3>4. Are activity areas mandatory?</h3>
+<p>No, with one exception: physical inventory. Putaway and picking can use bins outside an activity area, but activity areas are the main tool for sorting bins and controlling the workload of warehouse resources.</p>
+
+<h3>5. What is a quant?</h3>
+<p>The stock of one product in one location: a bin, a resource or a transportation unit. Each batch is a separate quant. A quant is created on putaway into an empty bin and deleted automatically when the stock is removed.</p>
+
+<h2>Process control</h2>
+
+<h3>6. What does the warehouse process type control?</h3>
+<p>The warehouse process type controls each movement in the warehouse. It is assigned to every warehouse request item and determines how warehouse tasks are created. For simple movements it can hold the source or destination storage type and bin; for complex ones it points to a storage process (for process-oriented storage control) or a warehouse order creation rule. Each process type belongs to a warehouse process category, such as putaway, stock removal, internal movement or posting change.</p>
+
+<h3>7. How is the warehouse process type determined?</h3>
+<p>When the warehouse request is created, EWM searches its determination table using fields such as document type, item type, delivery priority and the process type determination indicator from the warehouse product master. It starts with the most specific combination and works down until it finds a match, always within the warehouse number. The indicator lets you route products differently, for example sending some straight to high-rack storage and others to relabelling first.</p>
+
+<h3>8. What is the difference between a warehouse task and a warehouse order?</h3>
+<p>A warehouse task is a single movement of a product or handling unit. A warehouse order is an executable work package made up of warehouse tasks (or physical inventory items) for one worker, within a given time.</p>
+
+<h3>9. How does warehouse order creation work?</h3>
+<p>EWM groups warehouse tasks by activity area, determines the warehouse order creation rule (WOCR) from the activity area and the activity, sorts the tasks, applies item filters (such as weight, volume or route), forms consolidation groups, applies subtotal filters and limits, and creates the warehouse order. It repeats with the next rule until all tasks are processed. A WOCR combines a creation category, filters, limits, sort rules and packing profiles. SAP's training states that up to 15 sort fields can be configured per sort rule.</p>
+
+<h3>10. Explain POSC and LOSC.</h3>
+<p>Process-oriented storage control (POSC) defines the steps a process needs, for example unloading, counting, quality inspection, deconsolidation and final putaway. Layout-oriented storage control (LOSC) handles the physical layout: if goods cannot move directly from one area to another, it inserts intermediate steps, such as an identification point. EWM always determines POSC first; LOSC then checks whether the sequence is possible in the layout and adjusts it if required.</p>
+
+<h2>Stock and inventory</h2>
+
+<h3>11. What is an availability group?</h3>
+<p>EWM does not store the ERP plant and storage location in its quant data. Instead, the combination of plant, storage location, logical system and warehouse number is mapped to an availability group. The availability group plus the non-location-dependent stock type (which corresponds to the ERP stock type) gives the EWM stock type. That mapping is the link between EWM stock and ERP plant and storage location stock.</p>
+
+<h3>12. What are the owner and the party entitled to dispose?</h3>
+<p>Every stock in EWM has both. The party entitled to dispose is the organisation that may dispose of the stock, usually the plant where it is planned. The owner is the organisation that owns it, also usually a plant. For supplier consignment stock, the supplier is the owner and the plant is the party entitled to dispose. Incorrect business partner assignments here can cause goods receipt errors.</p>
+
+<h3>13. Which physical inventory methods does EWM support?</h3>
+<p>According to SAP's feature scope description, basic warehouse management supports annual and ad hoc inventory, cycle counting, low-stock and zero-stock checks, putaway inventory and recounting. Sample-based inventory is not supported in basic scope, but an interface to a partner solution is available.</p>
+
+<h2>Mobile and monitoring</h2>
+
+<h3>14. How does the RF framework work?</h3>
+<p>Users log on with transaction <code>/SCWM/RFUI</code>, using an SAP user to which an EWM resource can be assigned. Screens are built from templates combined into display profiles assigned to the device, so the same transactions work on GUI, character-based (via SAPConsole) and browser-based devices. Standard RF functions cover putaway, picking, loading, unloading, deconsolidation, packing, physical inventory and replenishment. Standard function keys include F7 for back and F8 for list.</p>
+
+<h3>15. What are exception codes?</h3>
+<p>They describe non-standard situations, such as a product missing from the expected bin, a bin that cannot be accessed or a damaged handling unit. They can be entered in desktop transactions or on RF devices. On RF, the exception is entered in real time at the location, so the system reaction can differ from the same exception entered later at a desk.</p>
+
+<h3>16. What do you use the warehouse management monitor for?</h3>
+<p>To see the current situation in the warehouse and act on it: documents and processes, stock and bins, resources and workload, and alerts. When a user is logged on to RF, the monitor also shows their resource, the stock on it and their selected warehouse orders.</p>
+
+<h2>EWM in SAP S/4HANA</h2>
+
+<h3>17. What is the difference between embedded and decentralised EWM?</h3>
+<p>Embedded EWM runs inside the S/4HANA system; SAP has included it since S/4HANA 1610. Decentralised EWM runs in its own S/4HANA-based system with only EWM active, connected to an ERP system. Decentralised deployment is chosen for very high throughput or warehouses that must keep running independently of the ERP system. Our comparison of <a href="/blog/sap-ewm-vs-wm/">SAP EWM vs WM</a> covers the deployment options in detail.</p>
+
+<h3>18. What is the difference between basic and advanced EWM?</h3>
+<p>In SAP's feature scope description, basic warehouse management sits in SAP S/4HANA Enterprise Management. Extended (advanced) warehouse management, with functions such as slotting, wave management, labour management, yard management, material flow control, value-added services, kitting and cross-docking, sits in the Enhanced LoB Functions, which may need a separate licence.</p>
+
+<h3>19. What happened to SAP WM in S/4HANA?</h3>
+<p>Classic LE-WM is only available in S/4HANA through the compatibility packs. Its successor for simple warehouses is Stock Room Management, which reuses major parts of LE-WM but excludes components such as Task and Resource Management, wave management, cross-docking, yard management and value-added services. For those, EWM is the replacement.</p>
+
+<h2>Scenario questions for experienced candidates</h2>
+<ul>
+  <li>Goods receipt fails with an error about ERP stock data for the party entitled to dispose. What do you check?</li>
+  <li>Warehouse orders are too large for one picker. Which settings do you change?</li>
+  <li>Pallets need to be checked at an identification point before high-rack putaway. How do you configure it?</li>
+  <li>A product should go to a quality check first, but only for one supplier. How would you route it?</li>
+  <li>Pickers walk too far. How would you improve the pick path?</li>
+  <li>The business wants to see stock still in putaway separately from available stock. How do you set that up?</li>
+</ul>
+<p>Answer with the object you would change (process type, WOCR, storage process, availability group), the reason, and how you would test it.</p>
+
+<h2>How to prepare</h2>
+<ol>
+  <li><strong>Walk through inbound and outbound end to end</strong> in a system, noting the delivery, warehouse request, tasks, orders and postings at each step.</li>
+  <li><strong>Learn the control objects</strong>: process type determination, storage processes and WOCRs are where most configuration questions sit.</li>
+  <li><strong>Understand the ERP integration</strong>: storage locations, availability groups, stock types and business partners.</li>
+  <li><strong>Know the S/4HANA landscape</strong>: embedded versus decentralised, basic versus advanced, and the end of LE-WM.</li>
+  <li><strong>Prepare three project stories</strong> with a concrete problem, what you changed and the result.</li>
+</ol>
+<p>For structured, hands-on preparation, <a href="https://youronementor.com">youronementor.com</a> offers SAP MM and EWM training. If you are an EWM consultant looking for your next project, see our <a href="/careers/">careers page</a> or our <a href="/services/sap-staffing/">SAP staffing services</a>. MM questions often come up in the same interview; our <a href="/blog/sap-mm-interview-questions/">SAP MM interview questions</a> cover that side.</p>
+
+<h2>Key takeaways</h2>
+<ul>
+  <li>Know the structure: warehouse number, storage type, section, bin, activity area and quant.</li>
+  <li>Be able to explain process type determination, warehouse order creation and POSC versus LOSC.</li>
+  <li>Understand how EWM stock links to ERP through availability groups, stock types, owner and party entitled to dispose.</li>
+  <li>For S/4HANA roles, know embedded versus decentralised, basic versus advanced, and the move away from LE-WM.</li>
+</ul>
+    <h2>Frequently asked questions</h2><div class="faq inline-faq"><details><summary>What are the most common SAP EWM interview questions?<span class="plus"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>Expect questions on the warehouse structure (warehouse number, storage type, section, bin, activity area), warehouse process types, warehouse tasks and orders, process- and layout-oriented storage control, stock types and availability groups, RF, and the difference between embedded, decentralised, basic and advanced EWM.</p></details><details><summary>What is the difference between a warehouse task and a warehouse order in SAP EWM?<span class="plus"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>A warehouse task is a single movement, such as moving a product or handling unit from one bin to another. A warehouse order groups warehouse tasks into an executable work package for one worker, created according to warehouse order creation rules.</p></details><details><summary>What is the difference between POSC and LOSC?<span class="plus"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>Process-oriented storage control defines the steps of a process, such as unloading, counting, deconsolidation and putaway. Layout-oriented storage control adds intermediate steps when the physical layout requires them, such as an identification point. EWM always determines process-oriented storage control first.</p></details><details><summary>How should I prepare for an SAP EWM interview?<span class="plus"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>Be able to walk through inbound and outbound processes end to end, explain the configuration objects that control them, and describe real problems you solved. For S/4HANA roles, also know embedded versus decentralised EWM and basic versus advanced scope.</p></details></div>
+  </article>
+  <aside class="sidebar">
+    <div class="side-box"><h2 class="side-h">Related services</h2><ul class="side-nav"><li><a href="/services/sap-staffing/"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2c2.9.4 5 2.8 5 5.8"/></svg>SAP Staffing &amp; Resource Augmentation</a></li></ul></div>
+    <div class="side-box side-train"><h2 class="side-h">Learn SAP MM &amp; EWM</h2><p>Live batches, self-paced courses and 1-on-1 mentorship.</p><a href="https://youronementor.com" target="_blank" rel="noopener" class="btn btn-dark btn-block">Explore training <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg><span class="sr">(opens in a new tab)</span></a></div>
+    <div class="side-box side-cta"><div class="aurora" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div><div class="grid-overlay" aria-hidden="true"></div><div class="rel"><h2 class="side-h">Talk to an expert</h2>
+      <p>Get a free 30-minute review of your SAP roadmap.</p>
+      <a href="/contact/" class="btn btn-light btn-block">Book a call <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a></div></div>
+  </aside>
+</div></section>
+<section class="section soft"><div class="container"><div class="section-head center reveal"><p class="eyebrow">Keep reading</p><h2>More from <em>the blog</em></h2></div><div class="post-grid"><a class="post-card spot reveal" href="/blog/sap-mm-interview-questions/">
+  <div class="post-meta"><span class="tag">Careers &amp; Skills</span><span>9 min read</span></div>
+  <h3>SAP MM Interview Questions and Answers, Including What Changed in S/4HANA</h3><p>The SAP MM questions that come up again and again in interviews, with concise answers, plus the S/4HANA changes such as MATDOC, Business Partner and MRP Live that separate strong candidates.</p>
+  <span class="post-foot"><time datetime="2026-11-13">13 Nov 2026</time><span class="more">Read <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></span></a><a class="post-card spot reveal" href="/blog/universal-journal-acdoca/">
+  <div class="post-meta"><span class="tag">Finance</span><span>6 min read</span></div>
+  <h3>The Universal Journal (ACDOCA) in SAP S/4HANA Explained</h3><p>ACDOCA is the single line-item table for finance and controlling in S/4HANA. Here is what it replaced, what changed for cost elements, currencies and reporting, and what it means for your conversion and custom code.</p>
+  <span class="post-foot"><time datetime="2026-11-25">25 Nov 2026</time><span class="more">Read <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></span></a><a class="post-card spot reveal" href="/blog/what-is-sap-joule/">
+  <div class="post-meta"><span class="tag">AI &amp; Innovation</span><span>6 min read</span></div>
+  <h3>What Is SAP Joule? Capabilities, Requirements and Practical Use Cases</h3><p>Joule is SAP&#x27;s AI copilot, embedded across SAP&#x27;s cloud applications. This guide explains what it does, how agents and Joule Studio fit in, what you need to switch it on and how SAP handles your data.</p>
+  <span class="post-foot"><time datetime="2026-11-23">23 Nov 2026</time><span class="more">Read <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></span></a></div></div></section>
+
+<section class="section cta-section"><div class="container">
+  <div class="cta-card reveal">
+    <div class="aurora" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div><div class="grid-overlay" aria-hidden="true"></div>
+    <div class="cta-content">
+      <p class="pill pill-dark"><span class="dot"></span>Free 30-minute consultation</p>
+      <h2>Let's map your next <em>SAP move</em>.</h2>
+      <p>Talk to a senior consultant about your landscape, timeline and options. Practical advice, no sales pitch.</p>
+      <div class="hero-actions center-x">
+        <a href="/contact/" class="btn btn-light">Book your consultation <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
+        <a href="mailto:info@oddesyconsultingandservices.com" class="btn btn-ghost"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6 8.5-6"/></svg>info@oddesyconsultingandservices.com</a>
+      </div>
+    </div>
+  </div>
+</div></section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-about">
+      <a href="/" class="brand"><img src="/assets/img/logo-mark.svg" alt="" width="34" height="34">
+      <span class="brand-text">Oddesy<span>Consulting &amp; Services</span></span></a>
+      <p>Independent SAP consultancy for implementation, migration, integration and support.</p>
+      <a class="social" href="https://www.linkedin.com/" rel="noopener" aria-label="LinkedIn"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg></a>
+    </div>
+    <div><h2 class="footer-h">Services</h2><ul><li><a href="/services/sap-s4hana-implementation/">S/4HANA Implementation</a></li><li><a href="/services/rise-with-sap/">RISE with SAP</a></li><li><a href="/services/sap-s4hana-migration/">S/4HANA Migration &amp; Upgrades</a></li><li><a href="/services/sap-integration/">SAP Integration</a></li><li><a href="/services/sap-support-ams/">SAP Support &amp; AMS</a></li><li><a href="/services/sap-btp-development/">BTP &amp; Development</a></li><li><a href="/services/sap-staffing/">Staffing &amp; Augmentation</a></li></ul></div>
+    <div><h2 class="footer-h">Company</h2><ul>
+      <li><a href="/about/">About</a></li><li><a href="/industries/">Industries</a></li>
+      <li><a href="/blog/">Blog</a></li><li><a href="https://youronementor.com" target="_blank" rel="noopener">Training <span class="ext"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span><span class="sr">(opens in a new tab)</span></a></li>
+      <li><a href="/careers/">Careers</a></li><li><a href="/contact/">Contact</a></li>
+      <li><a href="/privacy-policy/">Privacy</a></li></ul></div>
+    <div><h2 class="footer-h">Get in touch</h2><ul class="footer-contact">
+      <li><a href="mailto:info@oddesyconsultingandservices.com"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6 8.5-6"/></svg>info@oddesyconsultingandservices.com</a></li>
+      <li><a href="tel:+000000000000"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z"/></svg>+00 0000 000000</a></li>
+      <li><span><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Your street address, City, State, Postal code, Country</span></li></ul></div>
+  </div>
+  <div class="container footer-bottom">
+    <p>&copy; 2026 Oddesy Consulting and Services</p>
+    <p>SAP, S/4HANA, SAP BTP, RISE with SAP and other SAP products are trademarks of SAP SE. Oddesy is an independent consultancy.</p>
+  </div>
+  <div class="wordmark" aria-hidden="true">ODDESY</div>
+</footer>
+<script>window.ODDESY = {"formEndpoint": "", "email": "info@oddesyconsultingandservices.com"};</script>
+<script src="/assets/js/site.js?v=9ad8ba4d" defer></script>
+</body>
+</html>

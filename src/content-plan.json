@@ -105,7 +105,9 @@
    "category": "Careers & Skills",
    "intent": "informational",
    "services": "sap-staffing",
-   "status": "todo"
+   "status": "published",
+   "slug": "sap-ewm-interview-questions",
+   "published": "2026-11-27"
   },
   {
    "keyword": "abap cloud vs classic abap",
